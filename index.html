@@ -427,12 +427,115 @@
 
   </main>
 
-  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12">
-    <div class="max-w-4xl mx-auto px-4 space-y-2">
+  <!-- ADSENSE COMPLIANT FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-4xl mx-auto px-4 space-y-4">
+      
+      <!-- Mandatory Trust & Policy Links -->
+      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold text-slate-600">
+        <button type="button" onclick="openModal('privacyModal')" class="hover:text-brand-600 transition">Privacy Policy</button>
+        <span class="text-slate-300">|</span>
+        <button type="button" onclick="openModal('termsModal')" class="hover:text-brand-600 transition">Terms & Disclaimer</button>
+        <span class="text-slate-300">|</span>
+        <button type="button" onclick="openModal('aboutModal')" class="hover:text-brand-600 transition">About Us</button>
+        <span class="text-slate-300">|</span>
+        <button type="button" onclick="openModal('contactModal')" class="hover:text-brand-600 transition">Contact & Support</button>
+      </div>
+
       <p>&copy; 2026 Any Doc Resizer. Designed for fast, private document & image formatting.</p>
-      <p>Not affiliated with any government recruitment agency. Follow all instructions stated in your official exam brochure.</p>
+      <p class="text-[11px] text-slate-400">
+        Disclaimer: AnyDoc Resizer is an independent browser-based utility tool and is NOT affiliated with, authorized, or endorsed by SSC, UPSC, NTA, IBPS, or any government portal.
+      </p>
     </div>
   </footer>
+
+  <!-- ==================== ADSENSE MANDATORY LEGAL MODALS ==================== -->
+
+  <!-- 1. Privacy Policy Modal -->
+  <div id="privacyModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="text-lg font-bold text-slate-900">Privacy Policy</h3>
+        <button onclick="closeModal('privacyModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs leading-relaxed text-slate-600">
+        <p><strong>Effective Date:</strong> October 2026</p>
+        <h4 class="font-bold text-slate-800 text-sm">1. 100% Client-Side Processing (Zero Server Uploads)</h4>
+        <p>Your privacy is our absolute priority. When you use AnyDoc Resizer to crop, resize, or compress photos, signatures, or documents, <strong>no files or personal images are ever uploaded to our servers</strong>. All image processing operations (including resizing, quality adjustment, and name/date stamping) are performed locally inside your device's web browser using HTML5 Canvas technology.</p>
+        
+        <h4 class="font-bold text-slate-800 text-sm">2. Cookies & Analytics</h4>
+        <p>We use Google Analytics 4 to collect aggregated, anonymized metrics about site traffic (such as browser type, general geography, and page views) to help us improve the tool. We may also display advertisements served by Google AdSense or other third-party ad networks. Third-party vendors, including Google, use cookies to serve ads based on prior visits to this or other websites. You may opt out of personalized advertising by visiting Google's Ads Settings.</p>
+        
+        <h4 class="font-bold text-slate-800 text-sm">3. Local Storage</h4>
+        <p>We do not store your images or documents in any persistent external database. Once you refresh or close your browser tab, all image buffers are completely wiped from your device's memory.</p>
+      </div>
+      <div class="pt-3 border-t text-right">
+        <button onclick="closeModal('privacyModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Terms & Disclaimer Modal -->
+  <div id="termsModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="text-lg font-bold text-slate-900">Terms of Service & Non-Affiliation Disclaimer</h3>
+        <button onclick="closeModal('termsModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs leading-relaxed text-slate-600">
+        <h4 class="font-bold text-slate-800 text-sm">1. Acceptance of Terms</h4>
+        <p>By using AnyDoc Resizer, you agree to these Terms of Service. This utility is provided on an "as is" and "as available" basis for personal, educational, and non-commercial assistance.</p>
+        
+        <h4 class="font-bold text-slate-800 text-sm">2. Government Non-Affiliation Disclaimer</h4>
+        <p><strong>AnyDoc Resizer is an independent tool.</strong> It is NOT affiliated, endorsed, associated with, or in any way connected to the Staff Selection Commission (SSC), Union Public Service Commission (UPSC), National Testing Agency (NTA), Institute of Banking Personnel Selection (IBPS), Indian Armed Forces, or any state police recruitment board.</p>
+        
+        <h4 class="font-bold text-slate-800 text-sm">3. Candidate Responsibility</h4>
+        <p>While AnyDoc Resizer is engineered to align strictly with official recruitment guidelines, specifications and requirements may change without prior notice. Users must verify their final exported files against the latest official exam brochures before submitting their applications.</p>
+      </div>
+      <div class="pt-3 border-t text-right">
+        <button onclick="closeModal('termsModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. About Us Modal -->
+  <div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="text-lg font-bold text-slate-900">About AnyDoc Resizer</h3>
+        <button onclick="closeModal('aboutModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs leading-relaxed text-slate-600">
+        <p><strong>AnyDoc Resizer</strong> was created to solve a widespread, frustrating hurdle faced by millions of candidates, students, and job seekers: rigid, unforgiving upload constraints on online application portals.</p>
+        <p>Most portals reject forms if an image is even 1 KB above the limit or slightly off in pixel dimensions. Standard image editors either introduce heavy pixelation or require users to guess slider percentages blindly.</p>
+        <p><strong>Our Architecture:</strong> AnyDoc Resizer operates on a decentralized, zero-server architecture. All processing is computed inside your browser using mathematical binary search algorithms that preserve maximum clarity right beneath strict byte boundaries.</p>
+      </div>
+      <div class="pt-3 border-t text-right">
+        <button onclick="closeModal('aboutModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Contact & Support Modal -->
+  <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-4 shadow-xl text-left">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="text-lg font-bold text-slate-900">Contact & Support</h3>
+        <button onclick="closeModal('contactModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs leading-relaxed text-slate-600">
+        <p>Have a question, feedback, or a new exam preset request? We'd love to hear from you.</p>
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+          <span class="text-[11px] font-bold uppercase text-slate-500 block">Email Inquiries</span>
+          <a href="mailto:support@anydocresizer.com" class="text-brand-600 font-semibold text-sm">support@anydocresizer.com</a>
+        </div>
+        <p class="text-slate-400 text-[11px]">We aim to reply to all legitimate support tickets and portal specification change notices within 24–48 hours.</p>
+      </div>
+      <div class="pt-3 border-t text-right">
+        <button onclick="closeModal('contactModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
+      </div>
+    </div>
+  </div>
 
   <canvas id="engineCanvas" class="hidden"></canvas>
   <canvas id="comboCanvas" class="hidden"></canvas>
@@ -442,6 +545,14 @@
     let originalFileSizeKB = 0;
     let cameraStream = null;
     let isHindi = false;
+
+    // Modal Handlers
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
 
     // DOM Elements
     const dropZone = document.getElementById('dropZone');
@@ -739,7 +850,6 @@
 
           if (optCleanPaper.checked) {
             let brightness = (r * 0.299 + g * 0.587 + b * 0.114);
-            // Threshold clean shadows to pure #FFFFFF
             if (brightness > 175) {
               r = 255; g = 255; b = 255;
             } else if (optDarkenInk.checked) {
@@ -753,7 +863,7 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
-      // Binary Search Quality Compression
+      // Binary Search Compression
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
@@ -889,7 +999,6 @@
       if (!comboPhotoBlob || !comboSignBlob) return;
       const zip = new JSZip();
 
-      // Convert base64 data to blobs
       const photoData = comboPhotoBlob.split(',')[1];
       const signData = comboSignBlob.split(',')[1];
 
