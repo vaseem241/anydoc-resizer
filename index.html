@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Any Doc Resizer — Exam Photo & Signature Compressor (20KB - 50KB)</title>
-  <meta name="description" content="Free client-side tool to resize and compress photos and signatures for Police, Army, SSC, UPSC, IBPS, Passport, and Visa forms. 100% private, zero uploads.">
-  <meta name="keywords" content="police photo resizer, army agniveer photo size, photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, upsc photo size, ssc image resizer">
+  <title>Any Doc Resizer — Exam Photo, Signature & Name/Date Stamper (20KB - 50KB)</title>
+  <meta name="description" content="Free tool for Police, Army, SSC, UPSC & Bank exams. Resize photos and signatures, add Name & Date of Photo (DOP), live camera capture, 100% browser-based private.">
+  <meta name="keywords" content="photo par date kaise dale, police photo resizer, army agniveer photo size, signature compressor 10kb to 20kb, ssc live photo size, ibps photo compressor">
 
   <!-- Matching Resize-Arrows Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%234f46e5'/><path d='M32 44 V32 H44 M32 32 L46 46 M68 44 V32 H56 M68 32 L54 46 M32 56 V68 H44 M32 68 L46 54 M68 56 V68 H56 M68 68 L54 54' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
@@ -42,26 +42,30 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
 
+  <!-- Navigation / Header -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <!-- Logo matching favicon -->
-        <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm">
+        <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
           </svg>
         </div>
         <div>
           <span class="text-lg font-bold text-slate-900 leading-none block">Any Doc Resizer</span>
-          <span class="text-[11px] text-slate-500">Fast, Local & Secure</span>
+          <span id="txtTagline" class="text-[11px] text-slate-500">Fast, Local & Secure</span>
         </div>
       </div>
 
+      <!-- Controls: Language Toggle & Share -->
       <div class="flex items-center gap-2">
-        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          100% Client-Side Private
-        </span>
+        <button id="langToggleBtn" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
+          हिंदी में बदलें
+        </button>
+        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Resize%20photo%20%26%20signature%20strictly%20to%2020KB-50KB%20for%20Govt%20Exams%20free%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          <span class="hidden sm:inline">WhatsApp</span>
+        </a>
       </div>
     </div>
   </header>
@@ -78,14 +82,15 @@
 
     <!-- Hero Title -->
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+      <h1 id="txtHeroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
         Gov & Exam Form Image Compressor
       </h1>
-      <p class="mt-2 text-sm sm:text-base text-slate-600">
-        Directly fit required dimensions and KB limits for <strong>Police, Army, SSC, Bank & UPSC</strong> without blur.
+      <p id="txtHeroDesc" class="mt-2 text-sm sm:text-base text-slate-600">
+        Directly fit required dimensions and KB limits for <strong>Police, Army, SSC, Bank & UPSC</strong> with Name/Date stamper.
       </p>
     </div>
 
+    <!-- Tabs Navigation -->
     <div class="flex justify-center mb-8">
       <div class="inline-flex p-1 bg-slate-200/80 rounded-xl max-w-full overflow-x-auto">
         <button id="tabPhoto" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
@@ -108,7 +113,7 @@
           
           <!-- Preset Dropdown -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Portal Preset</label>
+            <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Portal Preset</label>
             <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
               
               <optgroup label="Police Recruitment (Constable & SI)">
@@ -157,15 +162,32 @@
             </select>
           </div>
 
-          <!-- Upload Drop Zone -->
-          <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-8 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[180px]">
-            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
-            <div class="w-12 h-12 mb-3 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+          <!-- Upload Drop Zone & Live Camera Button -->
+          <div class="space-y-2">
+            <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[150px]">
+              <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
+              <div class="w-10 h-10 mb-2 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+              </div>
+              <p id="txtUploadPrompt" class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
+              <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP</p>
+              <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
             </div>
-            <p class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
-            <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP files</p>
-            <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
+
+            <!-- Live Camera Button -->
+            <button id="btnOpenCamera" type="button" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
+              <span id="txtCameraBtn">Take Live Webcam / Phone Photo (SSC Live Capture)</span>
+            </button>
+          </div>
+
+          <!-- Live Camera View Container (Hidden by default) -->
+          <div id="cameraContainer" class="hidden p-4 rounded-xl bg-slate-900 border border-slate-700 space-y-3">
+            <video id="webcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
+            <div class="flex gap-2">
+              <button id="btnSnapPhoto" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-xs transition">Capture Photo</button>
+              <button id="btnCloseCamera" type="button" class="px-4 bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 rounded-lg text-xs transition">Cancel</button>
+            </div>
           </div>
 
           <!-- Parameter Fields -->
@@ -188,6 +210,24 @@
             </div>
           </div>
 
+          <!-- Candidate Name & Date of Photo (DOP) Strip Generator -->
+          <div id="nameDateContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <label class="flex items-center gap-2 cursor-pointer font-bold text-xs text-slate-700 uppercase tracking-wider">
+              <input type="checkbox" id="chkAddNameDate" class="rounded text-brand-600">
+              <span id="txtAddDOP">Add Name & Date of Photo (DOP) Strip</span>
+            </label>
+            <div id="nameDateFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Candidate Name</label>
+                <input type="text" id="candidateName" placeholder="e.g. RAHUL SHARMA" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Date of Taking Photo (DOP)</label>
+                <input type="text" id="photoDate" value="04/10/2026" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none">
+              </div>
+            </div>
+          </div>
+
           <!-- Signature Enhancer Options -->
           <div id="signatureOptions" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
             <span class="text-xs font-bold text-slate-700 block uppercase tracking-wider">Signature Clarity Tools</span>
@@ -205,7 +245,7 @@
 
           <!-- Process Button -->
           <button id="btnProcess" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
-            <span>Upload an image to start</span>
+            <span id="txtProcessBtn">Upload an image to start</span>
           </button>
         </div>
       </div>
@@ -239,7 +279,7 @@
           <div class="mt-5">
             <a id="downloadBtn" download="form_ready_document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-              <span>Download Form-Ready File</span>
+              <span id="txtDownloadBtn">Download Form-Ready File</span>
             </a>
           </div>
         </div>
@@ -379,7 +419,10 @@
 
   <script>
     let rawImage = null;
+    let cameraStream = null;
+    let isHindi = false;
 
+    // DOM Elements
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const loadedFileName = document.getElementById('loadedFileName');
@@ -403,6 +446,32 @@
     const canvas = document.getElementById('engineCanvas');
     const ctx = canvas.getContext('2d');
 
+    // Camera elements
+    const btnOpenCamera = document.getElementById('btnOpenCamera');
+    const cameraContainer = document.getElementById('cameraContainer');
+    const webcamVideo = document.getElementById('webcamVideo');
+    const btnSnapPhoto = document.getElementById('btnSnapPhoto');
+    const btnCloseCamera = document.getElementById('btnCloseCamera');
+
+    // Name & DOP elements
+    const nameDateContainer = document.getElementById('nameDateContainer');
+    const chkAddNameDate = document.getElementById('chkAddNameDate');
+    const nameDateFields = document.getElementById('nameDateFields');
+    const candidateName = document.getElementById('candidateName');
+    const photoDate = document.getElementById('photoDate');
+
+    // Language toggle
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const txtTagline = document.getElementById('txtTagline');
+    const txtHeroTitle = document.getElementById('txtHeroTitle');
+    const txtHeroDesc = document.getElementById('txtHeroDesc');
+    const lblSelectPreset = document.getElementById('lblSelectPreset');
+    const txtUploadPrompt = document.getElementById('txtUploadPrompt');
+    const txtCameraBtn = document.getElementById('txtCameraBtn');
+    const txtAddDOP = document.getElementById('txtAddDOP');
+    const txtProcessBtn = document.getElementById('txtProcessBtn');
+    const txtDownloadBtn = document.getElementById('txtDownloadBtn');
+
     const tabPhoto = document.getElementById('tabPhoto');
     const tabSign = document.getElementById('tabSign');
     const tabCheat = document.getElementById('tabCheat');
@@ -410,7 +479,6 @@
     const specsDirectory = document.getElementById('specsDirectory');
 
     const PRESETS = {
-      // Police
       up_police_photo: { w: 180, h: 225, min: 20, max: 50, sign: false },
       up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
       delhi_police_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
@@ -419,8 +487,6 @@
       bihar_police_sign:  { w: 140, h: 60,  min: 10, max: 25, sign: true },
       crpf_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
       crpf_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
-
-      // Defence & Armed Forces
       army_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
       army_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
       airforce_photo: { w: 350, h: 450, min: 10, max: 50, sign: false },
@@ -428,20 +494,14 @@
       navy_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
       navy_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
       nda_cds_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
-
-      // SSC & Railways
       ssc_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
       ssc_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
       rrb_photo: { w: 320, h: 240, min: 30, max: 70, sign: false },
       rrb_sign:  { w: 140, h: 60,  min: 30, max: 70, sign: true },
-
-      // Banking
       ibps_photo:       { w: 200, h: 230, min: 20, max: 50, sign: false },
       ibps_sign:        { w: 140, h: 60,  min: 10, max: 20, sign: true },
       ibps_thumb:       { w: 240, h: 240, min: 20, max: 50, sign: false },
       ibps_declaration: { w: 800, h: 400, min: 50, max: 100, sign: false },
-
-      // UPSC & Passport
       upsc_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
       upsc_sign:   { w: 350, h: 150, min: 20, max: 100, sign: true },
       passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
@@ -459,13 +519,92 @@
 
       if (p.sign) {
         signatureOptions.classList.remove('hidden');
+        nameDateContainer.classList.add('hidden');
       } else {
         signatureOptions.classList.add('hidden');
+        nameDateContainer.classList.remove('hidden');
       }
     }
 
     presetSelector.addEventListener('change', (e) => applyPreset(e.target.value));
 
+    // Name & DOP Toggle
+    chkAddNameDate.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        nameDateFields.classList.remove('hidden');
+      } else {
+        nameDateFields.classList.add('hidden');
+      }
+    });
+
+    // Language switch functionality
+    langToggleBtn.addEventListener('click', () => {
+      isHindi = !isHindi;
+      if (isHindi) {
+        langToggleBtn.textContent = 'Switch to English';
+        txtTagline.textContent = 'तेज़, सुरक्षित और पूरी तरह मुफ़्त';
+        txtHeroTitle.textContent = 'सरकारी परीक्षा फोटो और सिग्नेचर रिसाइज़र';
+        txtHeroDesc.innerHTML = 'पुलिस, सेना (Army), SSC और बैंकिंग फॉर्म के लिए सही साइज़ और <strong>20 KB – 50 KB</strong> में सेट करें।';
+        lblSelectPreset.textContent = 'परीक्षा चुनें (पोर्टल प्रीसेट)';
+        txtUploadPrompt.textContent = 'फोटो चुनें या यहाँ ड्रैग करें';
+        txtCameraBtn.textContent = 'लाइव कैमरा से फोटो खींचें (SSC लाइव फोटो)';
+        txtAddDOP.textContent = 'फोटो पर नाम और तारीख (DOP पट्टी) जोड़ें';
+        txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए पहले फोटो अपलोड करें';
+        txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
+      } else {
+        langToggleBtn.textContent = 'हिंदी में बदलें';
+        txtTagline.textContent = 'Fast, Local & Secure';
+        txtHeroTitle.textContent = 'Gov & Exam Form Image Compressor';
+        txtHeroDesc.innerHTML = 'Directly fit required dimensions and KB limits for <strong>Police, Army, SSC, Bank & UPSC</strong> with Name/Date stamper.';
+        lblSelectPreset.textContent = 'Select Portal Preset';
+        txtUploadPrompt.textContent = 'Select Image or Drag & Drop';
+        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (SSC Live Capture)';
+        txtAddDOP.textContent = 'Add Name & Date of Photo (DOP) Strip';
+        txtProcessBtn.textContent = rawImage ? 'Format & Compress Image' : 'Upload an image to start';
+        txtDownloadBtn.textContent = 'Download Form-Ready File';
+      }
+    });
+
+    // Live Camera capture handlers
+    btnOpenCamera.addEventListener('click', async () => {
+      try {
+        cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+        webcamVideo.srcObject = cameraStream;
+        cameraContainer.classList.remove('hidden');
+      } catch (err) {
+        alert('Could not access camera. Please allow camera permissions or upload an image directly.');
+      }
+    });
+
+    btnCloseCamera.addEventListener('click', () => {
+      if (cameraStream) {
+        cameraStream.getTracks().forEach(track => track.stop());
+      }
+      cameraContainer.classList.add('hidden');
+    });
+
+    btnSnapPhoto.addEventListener('click', () => {
+      const snapCanvas = document.createElement('canvas');
+      snapCanvas.width = webcamVideo.videoWidth || 640;
+      snapCanvas.height = webcamVideo.videoHeight || 480;
+      const snapCtx = snapCanvas.getContext('2d');
+      snapCtx.drawImage(webcamVideo, 0, 0, snapCanvas.width, snapCanvas.height);
+
+      const capturedImg = new Image();
+      capturedImg.onload = () => {
+        rawImage = capturedImg;
+        loadedFileName.textContent = `Live Webcam Photo Captured (${snapCanvas.width}x${snapCanvas.height})`;
+        loadedFileName.classList.remove('hidden');
+        btnProcess.disabled = false;
+        btnProcess.innerHTML = `<span>${isHindi ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'Format & Compress Image'}</span>`;
+        // Stop camera
+        if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
+        cameraContainer.classList.add('hidden');
+      };
+      capturedImg.src = snapCanvas.toDataURL('image/jpeg');
+    });
+
+    // Tab Navigation
     function setTab(activeTab) {
       [tabPhoto, tabSign, tabCheat].forEach(t => {
         t.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
@@ -516,7 +655,7 @@
           loadedFileName.textContent = `Selected: ${file.name} (${Math.round(file.size / 1024)} KB)`;
           loadedFileName.classList.remove('hidden');
           btnProcess.disabled = false;
-          btnProcess.innerHTML = `<span>Format & Compress Image</span>`;
+          btnProcess.innerHTML = `<span>${isHindi ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'Format & Compress Image'}</span>`;
         };
         img.src = e.target.result;
       };
@@ -553,6 +692,34 @@
 
       ctx.drawImage(rawImage, offsetX, offsetY, renderW, renderH);
 
+      // Add Name & Date of Photo (DOP) Strip if enabled
+      if (chkAddNameDate.checked && !signatureOptions.classList.contains('hidden') === false) {
+        const stripHeight = Math.round(targetH * 0.22);
+        const stripY = targetH - stripHeight;
+
+        // White banner strip at bottom
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, stripY, targetW, stripHeight);
+        ctx.strokeStyle = '#E2E8F0';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(0, stripY, targetW, stripHeight);
+
+        // Candidate Name & Date Text
+        const name = (candidateName.value || 'NAME HERE').trim();
+        const dateStr = (photoDate.value || '04/10/2026').trim();
+
+        ctx.fillStyle = '#000000';
+        ctx.textAlign = 'center';
+
+        const fontSize = Math.max(10, Math.round(stripHeight * 0.32));
+        ctx.font = `bold ${fontSize}px sans-serif`;
+        ctx.fillText(name.toUpperCase(), targetW / 2, stripY + (stripHeight * 0.42));
+
+        ctx.font = `600 ${fontSize - 1}px sans-serif`;
+        ctx.fillText(`DOP: ${dateStr}`, targetW / 2, stripY + (stripHeight * 0.82));
+      }
+
+      // Apply signature enhancer effects if active
       if (!signatureOptions.classList.contains('hidden')) {
         const imgData = ctx.getImageData(0, 0, targetW, targetH);
         const data = imgData.data;
@@ -581,6 +748,7 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
+      // Binary Search Quality Compression
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
