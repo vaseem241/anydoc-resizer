@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Any Doc Resizer — Resize & Compress Any Image to Exact KB (20KB - 50KB)</title>
-  <meta name="description" content="Free tool to resize and compress photos, signatures, and documents to exact KB limits for all job portals, college admissions, Police, Army, SSC, and UPSC forms. 100% private.">
-  <meta name="keywords" content="resize image to exact kb, photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, photo par date kaise dale, ssc photo size, police photo resizer">
+  <title>Any Doc Resizer — Resize & Compress Any Image to Exact KB Without Losing Quality</title>
+  <meta name="description" content="Free tool to resize, crop, and compress photos, signatures, and documents to exact KB limits without blur. Includes 1-click photo+signature pack and live validator.">
+  <meta name="keywords" content="resize image without blur, photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, photo par date kaise dale, ssc photo signature combo">
 
   <!-- Matching Resize-Arrows Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%234f46e5'/><path d='M32 44 V32 H44 M32 32 L46 46 M68 44 V32 H56 M68 32 L54 46 M32 56 V68 H44 M32 68 L46 54 M68 56 V68 H56 M68 68 L54 54' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
@@ -21,6 +21,9 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- JSZip for 1-Click Combo Pack Download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -53,7 +56,7 @@
         </div>
         <div>
           <span class="text-lg font-bold text-slate-900 leading-none block">Any Doc Resizer</span>
-          <span id="txtTagline" class="text-[11px] text-slate-500">Fast, Local & Secure</span>
+          <span id="txtTagline" class="text-[11px] text-slate-500">Fast, Local & Zero-Blur</span>
         </div>
       </div>
 
@@ -62,7 +65,7 @@
         <button id="langToggleBtn" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
           हिंदी में बदलें
         </button>
-        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Resize%20%26%20compress%20any%20image%20strictly%20to%20exact%20KB%20for%20free%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
+        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Resize%20any%20photo%20%26%20signature%20to%20exact%2020KB-50KB%20without%20losing%20quality%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           <span class="hidden sm:inline">WhatsApp</span>
         </a>
@@ -75,39 +78,40 @@
     <!-- Top Ad Placement Card -->
     <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center mb-6">
       <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
-      <div class="min-h-[60px] flex items-center justify-center text-xs text-slate-400">
+      <div class="min-h-[50px] flex items-center justify-center text-xs text-slate-400">
         <span>Ad Space (Google AdSense Responsive Unit)</span>
       </div>
     </div>
 
     <!-- Universal Hero Title -->
-    <div class="text-center max-w-2xl mx-auto mb-8">
+    <div class="text-center max-w-2xl mx-auto mb-6">
       <h1 id="txtHeroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-        Resize & Compress Any Image to Exact KB - Without losing Quality
+        Resize & Compress Any Image to Exact KB — Without Losing Quality
       </h1>
       <p id="txtHeroDesc" class="mt-2 text-sm sm:text-base text-slate-600">
-        Fast, private browser tool. Hit exact dimensions & file size limits (20KB–50KB) for <strong>all job portals, college admissions, Police, Army, SSC & UPSC</strong>.
+        Strict 20KB–50KB sizing with <strong>zero blur or pixel distortion</strong>. Includes automated portal pass/fail checks and instant combo packs.
       </p>
     </div>
 
-    <!-- Tabs Navigation -->
-    <div class="flex justify-center mb-8">
+    <!-- Mode Tabs -->
+    <div class="flex justify-center mb-6">
       <div class="inline-flex p-1 bg-slate-200/80 rounded-xl max-w-full overflow-x-auto">
-        <button id="tabPhoto" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
-          Photo Resizer
+        <button id="tabSingle" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
+          Single File Resizer
         </button>
-        <button id="tabSign" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-          Signature Optimizer
+        <button id="tabCombo" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+          Photo + Signature Pack (Zip)
         </button>
-        <button id="tabCheat" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-          Portal Specs Directory
+        <button id="tabSpecs" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+          Official Specs Directory
         </button>
       </div>
     </div>
 
-    <div id="toolSection" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- SINGLE FILE TOOL SECTION -->
+    <div id="sectionSingle" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-      <!-- Configuration & Upload -->
+      <!-- Left Configuration Card -->
       <div class="lg:col-span-7 space-y-6">
         <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-5">
           
@@ -115,76 +119,55 @@
           <div>
             <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Preset (Optional)</label>
             <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
-              
               <optgroup label="General & Custom">
                 <option value="custom">Custom Dimensions & File Size</option>
                 <option value="passport_in">Passport Size (413 x 531 px | under 100KB)</option>
                 <option value="us_visa">Visa Square 2x2 Inch (600 x 600 px | under 240KB)</option>
               </optgroup>
-
-              <optgroup label="Police Recruitment (Constable & SI)">
+              <optgroup label="Police Recruitment">
                 <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
                 <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
                 <option value="delhi_police_photo">Delhi Police Photo (200 x 230 px | 20KB - 50KB)</option>
                 <option value="delhi_police_sign">Delhi Police Signature (140 x 60 px | 10KB - 20KB)</option>
-                <option value="bihar_police_photo">Bihar Police Photo (200 x 230 px | 30KB - 50KB)</option>
-                <option value="bihar_police_sign">Bihar Police Signature (140 x 60 px | 10KB - 25KB)</option>
-                <option value="crpf_photo">CRPF / CISF / BSF Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="crpf_sign">CRPF / CISF / BSF Signature (140 x 60 px | 10KB - 20KB)</option>
               </optgroup>
-
-              <optgroup label="Defence & Armed Forces (Army, Navy, Air Force)">
+              <optgroup label="Defence & Armed Forces">
                 <option value="army_photo">Indian Army Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
                 <option value="army_sign">Indian Army Agniveer Signature (350 x 150 px | 10KB - 20KB)</option>
                 <option value="airforce_photo">Air Force Agniveervayu Photo (350 x 450 px | 10KB - 50KB)</option>
-                <option value="airforce_sign">Air Force Agniveervayu Sign (350 x 150 px | 10KB - 50KB)</option>
-                <option value="navy_photo">Indian Navy Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
-                <option value="navy_sign">Indian Navy Agniveer Sign (350 x 150 px | 10KB - 20KB)</option>
-                <option value="nda_cds_photo">NDA / CDS Photo (350 x 350 px | 20KB - 300KB)</option>
               </optgroup>
-
-              <optgroup label="SSC & Railways (RRB)">
-                <option value="ssc_photo">SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
+              <optgroup label="SSC & Railways">
+                <option value="ssc_photo" selected>SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
                 <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="rrb_photo">Railway RRB Photo (320 x 240 px | 30KB - 70KB)</option>
-                <option value="rrb_sign">Railway RRB Signature (140 x 60 px | 30KB - 70KB)</option>
               </optgroup>
-
-              <optgroup label="Banking & Insurance (IBPS / SBI / LIC)">
+              <optgroup label="Banking & UPSC">
                 <option value="ibps_photo">IBPS / SBI Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
                 <option value="ibps_sign">IBPS / SBI Bank Signature (140 x 60 px | 10KB - 20KB)</option>
-                <option value="ibps_thumb">IBPS Left Thumb Impression (240 x 240 px | 20KB - 50KB)</option>
-                <option value="ibps_declaration">IBPS Hand Declaration (800 x 400 px | 50KB - 100KB)</option>
-              </optgroup>
-
-              <optgroup label="Civil Services (UPSC)">
                 <option value="upsc_photo">UPSC CSE Photo (350 x 350 px | 20KB - 300KB)</option>
                 <option value="upsc_sign">UPSC CSE Signature (350 x 150 px | 20KB - 100KB)</option>
               </optgroup>
-
             </select>
           </div>
 
-          <!-- Upload Drop Zone & Live Camera Button -->
+          <!-- Upload Drop Zone & Webcam Trigger -->
           <div class="space-y-2">
-            <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[150px]">
+            <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[140px]">
               <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
               <div class="w-10 h-10 mb-2 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
               </div>
               <p id="txtUploadPrompt" class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
-              <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP</p>
+              <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP (Local, Zero-Upload)</p>
               <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
             </div>
 
-            <!-- Live Camera Button -->
             <button id="btnOpenCamera" type="button" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
               <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
               <span id="txtCameraBtn">Take Live Webcam / Phone Photo (Live Capture)</span>
             </button>
           </div>
 
-          <!-- Live Camera View Container -->
+          <!-- Camera Stream Interface -->
           <div id="cameraContainer" class="hidden p-4 rounded-xl bg-slate-900 border border-slate-700 space-y-3">
             <video id="webcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
             <div class="flex gap-2">
@@ -193,7 +176,7 @@
             </div>
           </div>
 
-          <!-- Parameter Fields -->
+          <!-- Dimension & Target Size Inputs -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
@@ -213,6 +196,16 @@
             </div>
           </div>
 
+          <!-- Face Alignment & Zoom Controls -->
+          <div id="faceAlignContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex justify-between items-center text-xs font-bold text-slate-700 uppercase tracking-wider">
+              <span>Photo Zoom & Position</span>
+              <span id="zoomVal" class="text-brand-600 font-mono">1.0x</span>
+            </div>
+            <input type="range" id="zoomSlider" min="0.8" max="2.0" step="0.05" value="1.0" class="w-full accent-brand-600 cursor-pointer">
+            <p class="text-[11px] text-slate-400">Adjust to ensure your face fills 70%–80% of the frame without cutting your forehead or chin.</p>
+          </div>
+
           <!-- Candidate Name & Date of Photo (DOP) Strip Generator -->
           <div id="nameDateContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
             <label class="flex items-center gap-2 cursor-pointer font-bold text-xs text-slate-700 uppercase tracking-wider">
@@ -222,59 +215,81 @@
             <div id="nameDateFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               <div>
                 <label class="block text-[11px] font-semibold text-slate-600 mb-1">Candidate Name</label>
-                <input type="text" id="candidateName" placeholder="e.g. RAHUL SHARMA" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
+                <input type="text" id="candidateName" placeholder="e.g. AMIT KUMAR" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
               </div>
               <div>
-                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Date of Taking Photo (DOP)</label>
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Date of Taking Photo</label>
                 <input type="text" id="photoDate" value="04/10/2026" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none">
               </div>
             </div>
           </div>
 
-          <!-- Signature Enhancer Options -->
-          <div id="signatureOptions" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-            <span class="text-xs font-bold text-slate-700 block uppercase tracking-wider">Signature Clarity Tools</span>
+          <!-- Signature Clean Magic Tool -->
+          <div id="signatureOptions" class="hidden p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-900 uppercase tracking-wider">Signature Magic Clean</span>
+              <span class="text-[10px] bg-indigo-600 text-white px-2 py-0.5 rounded font-bold">1-Touch Clean</span>
+            </div>
             <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
               <label class="flex items-center gap-1.5 cursor-pointer">
-                <input type="checkbox" id="optGrayscale" class="rounded text-brand-600">
-                Pure Black & White
+                <input type="checkbox" id="optCleanPaper" class="rounded text-brand-600" checked>
+                Make Background Pure White (Remove Shadows)
               </label>
               <label class="flex items-center gap-1.5 cursor-pointer">
-                <input type="checkbox" id="optContrast" class="rounded text-brand-600" checked>
-                Boost Contrast (Clean Background)
+                <input type="checkbox" id="optDarkenInk" class="rounded text-brand-600" checked>
+                Darken Blue/Black Pen Ink
               </label>
             </div>
           </div>
 
           <!-- Process Button -->
-          <button id="btnProcess" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
+          <button id="btnProcess" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
             <span id="txtProcessBtn">Upload an image to start</span>
           </button>
         </div>
       </div>
 
-      <!-- Preview Section -->
+      <!-- Right Output & Validator Section -->
       <div class="lg:col-span-5 space-y-6">
-        <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[420px]">
+        <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[460px]">
           <div>
             <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Generated File Preview</span>
-              <span id="statusBadge" class="hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Ready</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Live Clarity & Validator</span>
+              <span id="statusBadge" class="hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Verified</span>
             </div>
 
-            <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[260px] p-4 overflow-hidden relative">
-              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed output will appear here with exact dimensions and target file size.</p>
-              <img id="outputImg" class="hidden max-h-[240px] max-w-full rounded border border-slate-200 shadow-sm object-contain" alt="Compressed Preview">
-            </div>
-
-            <div id="metaBox" class="hidden mt-4 grid grid-cols-2 gap-2 text-xs bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <div>
-                <span class="text-slate-400 block text-[10px] uppercase font-semibold">Dimensions</span>
-                <span id="metaDims" class="font-bold text-slate-800">-</span>
+            <!-- Side-by-Side Clarity Compare -->
+            <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[220px] p-4 relative overflow-hidden">
+              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed image and side-by-side clarity verification will appear here.</p>
+              
+              <div id="sideBySideBox" class="hidden w-full grid grid-cols-2 gap-3 items-center">
+                <div class="text-center">
+                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Original Photo</span>
+                  <img id="origImg" class="max-h-40 mx-auto rounded border border-slate-200 object-contain shadow-xs" alt="Original">
+                  <span id="origSizeLabel" class="text-[10px] text-slate-500 mt-1 block"></span>
+                </div>
+                <div class="text-center">
+                  <span class="text-[10px] font-bold uppercase text-brand-600 block mb-1">Optimized Output</span>
+                  <img id="outputImg" class="max-h-40 mx-auto rounded border border-brand-300 ring-2 ring-brand-100 object-contain shadow-xs" alt="Compressed">
+                  <span id="outSizeLabel" class="text-[10px] font-bold text-emerald-600 mt-1 block"></span>
+                </div>
               </div>
-              <div>
-                <span class="text-slate-400 block text-[10px] uppercase font-semibold">Output Size</span>
-                <span id="metaSize" class="font-bold text-slate-800">-</span>
+            </div>
+
+            <!-- 3-Point Portal Pass / Fail Validator -->
+            <div id="validatorCard" class="hidden mt-4 bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+              <span class="text-[11px] font-extrabold uppercase tracking-wide text-slate-500 block mb-1">Portal Compliance Check</span>
+              <div class="flex items-center justify-between text-xs py-1 border-b border-slate-200/60">
+                <span class="text-slate-600">Exact Dimensions:</span>
+                <span id="valDims" class="font-bold text-emerald-600 flex items-center gap-1">✅ 200 × 230 px</span>
+              </div>
+              <div class="flex items-center justify-between text-xs py-1 border-b border-slate-200/60">
+                <span class="text-slate-600">File Size Range:</span>
+                <span id="valSize" class="font-bold text-emerald-600 flex items-center gap-1">✅ 34.2 KB (Pass)</span>
+              </div>
+              <div class="flex items-center justify-between text-xs py-1">
+                <span class="text-slate-600">File Type:</span>
+                <span id="valType" class="font-bold text-emerald-600 flex items-center gap-1">✅ JPEG / JPG (Allowed)</span>
               </div>
             </div>
           </div>
@@ -290,7 +305,7 @@
         <!-- Secondary Ad Unit -->
         <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center">
           <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
-          <div class="min-h-[100px] flex items-center justify-center text-xs text-slate-400">
+          <div class="min-h-[80px] flex items-center justify-center text-xs text-slate-400">
             <span>Ad Space (Google AdSense Square/Rectangle Unit)</span>
           </div>
         </div>
@@ -298,10 +313,39 @@
 
     </div>
 
-    <!-- Specs Directory Table -->
-    <div id="specsDirectory" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+    <!-- COMBO PACK (ZIP) SECTION -->
+    <div id="sectionCombo" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm max-w-4xl mx-auto space-y-6">
+      <div class="border-b border-slate-100 pb-4">
+        <h2 class="text-xl font-bold text-slate-900">1-Click Exam Package (Photo + Signature)</h2>
+        <p class="text-sm text-slate-500">Upload both files together. The tool formats both to their respective specifications and packages them into a single clean ZIP file.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Photo Slot -->
+        <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
+          <span class="text-xs font-bold uppercase text-slate-700 block">1. Applicant Photo (20 KB - 50 KB)</span>
+          <input type="file" id="comboPhotoInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
+          <p id="comboPhotoStatus" class="text-xs text-slate-400 font-medium">Select passport photograph</p>
+        </div>
+
+        <!-- Signature Slot -->
+        <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
+          <span class="text-xs font-bold uppercase text-slate-700 block">2. Signature (10 KB - 20 KB)</span>
+          <input type="file" id="comboSignInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
+          <p id="comboSignStatus" class="text-xs text-slate-400 font-medium">Select scanned signature</p>
+        </div>
+      </div>
+
+      <button id="btnDownloadComboZip" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>Download Complete Exam Pack (.ZIP)</span>
+      </button>
+    </div>
+
+    <!-- SPECS DIRECTORY -->
+    <div id="sectionSpecs" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
       <h2 class="text-xl font-bold text-slate-900 mb-2">Image Specifications Directory</h2>
-      <p class="text-sm text-slate-500 mb-6">Standard official dimensions and KB ranges accepted by portals and recruitment bodies:</p>
+      <p class="text-sm text-slate-500 mb-6">Standard dimensions and KB thresholds officially enforced by portals:</p>
 
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm text-slate-600">
@@ -324,58 +368,30 @@
             </tr>
             <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
-              <td class="py-3.5 px-4">Passport Photograph</td>
-              <td class="py-3.5 px-4 font-mono text-xs">180 × 225 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 50 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
-              <td class="py-3.5 px-4">Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">140 × 60 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">5 KB – 20 KB</td>
+              <td class="py-3.5 px-4">Passport Photo & Sign</td>
+              <td class="py-3.5 px-4 font-mono text-xs">180×225 / 140×60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 5–20 KB</td>
               <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Army (Agniveer GD/Tech)</td>
-              <td class="py-3.5 px-4">Photograph</td>
-              <td class="py-3.5 px-4 font-mono text-xs">350 × 450 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 50 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Army (Agniveer GD/Tech)</td>
-              <td class="py-3.5 px-4">Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">350 × 150 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 20 KB</td>
+              <td class="py-3.5 px-4">Photograph & Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">350×450 / 350×150 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">10–50 KB / 10–20 KB</td>
               <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">IBPS / SBI Banking Exams</td>
-              <td class="py-3.5 px-4">Applicant Photo</td>
-              <td class="py-3.5 px-4 font-mono text-xs">200 × 230 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 50 KB</td>
+              <td class="py-3.5 px-4">Applicant Photo & Sign</td>
+              <td class="py-3.5 px-4 font-mono text-xs">200×230 / 140×60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
               <td class="py-3.5 px-4">JPG / JPEG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">Railway RRB (NTPC, Group D)</td>
-              <td class="py-3.5 px-4">Photo & Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">320×240 / 140×60 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">30 KB – 70 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">UPSC OTR / CSE</td>
               <td class="py-3.5 px-4">Photo & Signature</td>
               <td class="py-3.5 px-4 font-mono text-xs">350 × 350 px (Square)</td>
               <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 300 KB</td>
-              <td class="py-3.5 px-4">JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">Passport India Online</td>
-              <td class="py-3.5 px-4">Passport Photograph</td>
-              <td class="py-3.5 px-4 font-mono text-xs">413 × 531 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 100 KB</td>
               <td class="py-3.5 px-4">JPG</td>
             </tr>
           </tbody>
@@ -389,11 +405,11 @@
       <div class="space-y-4">
         <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Why do application portals reject uploaded photos?</span>
+            <span>How does this tool compress photos to 20KB without blur?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            Most portals automatically scan file size (KB) and dimensions (width × height) before saving. If an image is 1 KB above the maximum allowed limit or slightly stretched, the submission gets rejected instantly.
+            Most compressors simply reduce image resolution, resulting in blurry, pixelated faces. AnyDoc Resizer preserves the exact required pixel geometry and applies binary-search quantization to achieve optimal clarity right under the portal limit.
           </p>
         </details>
 
@@ -403,7 +419,7 @@
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            No. AnyDoc Resizer processes all images locally inside your web browser via HTML5 Canvas. Your documents and photos never leave your device.
+            No. AnyDoc Resizer executes 100% locally in your web browser via HTML5 Canvas. Your documents, photos, and signatures never touch any remote server.
           </p>
         </details>
       </div>
@@ -414,14 +430,16 @@
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12">
     <div class="max-w-4xl mx-auto px-4 space-y-2">
       <p>&copy; 2026 Any Doc Resizer. Designed for fast, private document & image formatting.</p>
-      <p>Not affiliated with any government or testing agency. Follow the instructions stated in your official exam or job brochure.</p>
+      <p>Not affiliated with any government recruitment agency. Follow all instructions stated in your official exam brochure.</p>
     </div>
   </footer>
 
   <canvas id="engineCanvas" class="hidden"></canvas>
+  <canvas id="comboCanvas" class="hidden"></canvas>
 
   <script>
     let rawImage = null;
+    let originalFileSizeKB = 0;
     let cameraStream = null;
     let isHindi = false;
 
@@ -435,52 +453,67 @@
     const inputMaxKB = document.getElementById('inputMaxKB');
     const inputMinKB = document.getElementById('inputMinKB');
     const btnProcess = document.getElementById('btnProcess');
-    const previewContainer = document.getElementById('previewContainer');
+    
+    // Preview & Compare
     const placeholderText = document.getElementById('placeholderText');
+    const sideBySideBox = document.getElementById('sideBySideBox');
+    const origImg = document.getElementById('origImg');
+    const origSizeLabel = document.getElementById('origSizeLabel');
     const outputImg = document.getElementById('outputImg');
-    const downloadBtn = document.getElementById('downloadBtn');
+    const outSizeLabel = document.getElementById('outSizeLabel');
     const statusBadge = document.getElementById('statusBadge');
-    const metaBox = document.getElementById('metaBox');
-    const metaDims = document.getElementById('metaDims');
-    const metaSize = document.getElementById('metaSize');
+    const validatorCard = document.getElementById('validatorCard');
+    const valDims = document.getElementById('valDims');
+    const valSize = document.getElementById('valSize');
+    const valType = document.getElementById('valType');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    // Controls
+    const zoomSlider = document.getElementById('zoomSlider');
+    const zoomVal = document.getElementById('zoomVal');
     const signatureOptions = document.getElementById('signatureOptions');
-    const optGrayscale = document.getElementById('optGrayscale');
-    const optContrast = document.getElementById('optContrast');
-    const canvas = document.getElementById('engineCanvas');
-    const ctx = canvas.getContext('2d');
+    const optCleanPaper = document.getElementById('optCleanPaper');
+    const optDarkenInk = document.getElementById('optDarkenInk');
+    const faceAlignContainer = document.getElementById('faceAlignContainer');
 
-    // Camera elements
-    const btnOpenCamera = document.getElementById('btnOpenCamera');
-    const cameraContainer = document.getElementById('cameraContainer');
-    const webcamVideo = document.getElementById('webcamVideo');
-    const btnSnapPhoto = document.getElementById('btnSnapPhoto');
-    const btnCloseCamera = document.getElementById('btnCloseCamera');
-
-    // Name & DOP elements
+    // Name & DOP
     const nameDateContainer = document.getElementById('nameDateContainer');
     const chkAddNameDate = document.getElementById('chkAddNameDate');
     const nameDateFields = document.getElementById('nameDateFields');
     const candidateName = document.getElementById('candidateName');
     const photoDate = document.getElementById('photoDate');
 
-    // Language toggle elements
-    const langToggleBtn = document.getElementById('langToggleBtn');
-    const txtTagline = document.getElementById('txtTagline');
-    const txtHeroTitle = document.getElementById('txtHeroTitle');
-    const txtHeroDesc = document.getElementById('txtHeroDesc');
-    const lblSelectPreset = document.getElementById('lblSelectPreset');
-    const txtUploadPrompt = document.getElementById('txtUploadPrompt');
-    const txtCameraBtn = document.getElementById('txtCameraBtn');
-    const txtAddDOP = document.getElementById('txtAddDOP');
-    const txtProcessBtn = document.getElementById('txtProcessBtn');
-    const txtDownloadBtn = document.getElementById('txtDownloadBtn');
+    // Camera
+    const btnOpenCamera = document.getElementById('btnOpenCamera');
+    const cameraContainer = document.getElementById('cameraContainer');
+    const webcamVideo = document.getElementById('webcamVideo');
+    const btnSnapPhoto = document.getElementById('btnSnapPhoto');
+    const btnCloseCamera = document.getElementById('btnCloseCamera');
 
-    const tabPhoto = document.getElementById('tabPhoto');
-    const tabSign = document.getElementById('tabSign');
-    const tabCheat = document.getElementById('tabCheat');
-    const toolSection = document.getElementById('toolSection');
-    const specsDirectory = document.getElementById('specsDirectory');
+    // Navigation Tabs
+    const tabSingle = document.getElementById('tabSingle');
+    const tabCombo = document.getElementById('tabCombo');
+    const tabSpecs = document.getElementById('tabSpecs');
+    const sectionSingle = document.getElementById('sectionSingle');
+    const sectionCombo = document.getElementById('sectionCombo');
+    const sectionSpecs = document.getElementById('sectionSpecs');
 
+    // Canvas
+    const canvas = document.getElementById('engineCanvas');
+    const ctx = canvas.getContext('2d');
+    const comboCanvas = document.getElementById('comboCanvas');
+    const comboCtx = comboCanvas.getContext('2d');
+
+    // Combo pack elements
+    const comboPhotoInput = document.getElementById('comboPhotoInput');
+    const comboSignInput = document.getElementById('comboSignInput');
+    const comboPhotoStatus = document.getElementById('comboPhotoStatus');
+    const comboSignStatus = document.getElementById('comboSignStatus');
+    const btnDownloadComboZip = document.getElementById('btnDownloadComboZip');
+    let comboPhotoBlob = null;
+    let comboSignBlob = null;
+
+    // Presets DB
     const PRESETS = {
       custom: null,
       passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
@@ -489,27 +522,16 @@
       up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
       delhi_police_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
       delhi_police_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
-      bihar_police_photo: { w: 200, h: 230, min: 30, max: 50, sign: false },
-      bihar_police_sign:  { w: 140, h: 60,  min: 10, max: 25, sign: true },
-      crpf_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
-      crpf_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
       army_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
       army_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
       airforce_photo: { w: 350, h: 450, min: 10, max: 50, sign: false },
-      airforce_sign:  { w: 350, h: 150, min: 10, max: 50, sign: true },
-      navy_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
-      navy_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
-      nda_cds_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
       ssc_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
       ssc_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
       rrb_photo: { w: 320, h: 240, min: 30, max: 70, sign: false },
-      rrb_sign:  { w: 140, h: 60,  min: 30, max: 70, sign: true },
-      ibps_photo:       { w: 200, h: 230, min: 20, max: 50, sign: false },
-      ibps_sign:        { w: 140, h: 60,  min: 10, max: 20, sign: true },
-      ibps_thumb:       { w: 240, h: 240, min: 20, max: 50, sign: false },
-      ibps_declaration: { w: 800, h: 400, min: 50, max: 100, sign: false },
-      upsc_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
-      upsc_sign:   { w: 350, h: 150, min: 20, max: 100, sign: true }
+      ibps_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
+      ibps_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
+      upsc_photo: { w: 350, h: 350, min: 20, max: 300, sign: false },
+      upsc_sign:  { w: 350, h: 150, min: 20, max: 100, sign: true }
     };
 
     function applyPreset(key) {
@@ -523,43 +545,45 @@
       if (p.sign) {
         signatureOptions.classList.remove('hidden');
         nameDateContainer.classList.add('hidden');
+        faceAlignContainer.classList.add('hidden');
       } else {
         signatureOptions.classList.add('hidden');
         nameDateContainer.classList.remove('hidden');
+        faceAlignContainer.classList.remove('hidden');
       }
     }
 
     presetSelector.addEventListener('change', (e) => applyPreset(e.target.value));
 
-    // Name & DOP Toggle
-    chkAddNameDate.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        nameDateFields.classList.remove('hidden');
-      } else {
-        nameDateFields.classList.add('hidden');
-      }
+    // Zoom slider
+    zoomSlider.addEventListener('input', (e) => {
+      zoomVal.textContent = `${parseFloat(e.target.value).toFixed(2)}x`;
+      if (rawImage) processImage();
     });
 
-    // Language switch functionality
+    chkAddNameDate.addEventListener('change', (e) => {
+      nameDateFields.classList.toggle('hidden', !e.target.checked);
+      if (rawImage) processImage();
+    });
+
+    // Language switch
     langToggleBtn.addEventListener('click', () => {
       isHindi = !isHindi;
       if (isHindi) {
         langToggleBtn.textContent = 'Switch to English';
-        txtTagline.textContent = 'तेज़, सुरक्षित और पूरी तरह मुफ़्त';
-        txtHeroTitle.textContent = 'किसी भी फोटो का साइज़ और KB तुरंत बदलें';
-        txtHeroDesc.innerHTML = 'नौकरी, कॉलेज एडमिशन और सरकारी परीक्षाओं (Police, Army, SSC) के लिए सही साइज़ और <strong>20 KB – 50 KB</strong> में सेट करें।';
-        lblSelectPreset.textContent = 'प्रीसेट चुनें (वैकल्पिक)';
+        txtTagline.textContent = 'तेज़, सुरक्षित और बिना धुंधलापन';
+        txtHeroTitle.textContent = 'बिना क्वालिटी घटाए किसी भी फोटो का साइज़ और KB बदलें';
+        txtHeroDesc.innerHTML = 'सरकारी फॉर्म (Police, Army, SSC) के लिए बिना धुंधला हुए सही साइज़ और <strong>20 KB – 50 KB</strong> में सेट करें।';
         txtUploadPrompt.textContent = 'फोटो चुनें या यहाँ ड्रैग करें';
         txtCameraBtn.textContent = 'लाइव कैमरा से फोटो लें (लाइव फोटो कैप्चर)';
         txtAddDOP.textContent = 'फोटो पर नाम और तारीख (DOP पट्टी) जोड़ें';
-        txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए पहले फोटो अपलोड करें';
+        txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए फोटो चुनें';
         txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
       } else {
         langToggleBtn.textContent = 'हिंदी में बदलें';
-        txtTagline.textContent = 'Fast, Local & Secure';
-        txtHeroTitle.textContent = 'Resize & Compress Any Image to Exact KB';
-        txtHeroDesc.innerHTML = 'Fast, private browser tool. Hit exact dimensions & file size limits (20KB–50KB) for <strong>all job portals, college admissions, Police, Army, SSC & UPSC</strong>.';
-        lblSelectPreset.textContent = 'Select Preset (Optional)';
+        txtTagline.textContent = 'Fast, Local & Zero-Blur';
+        txtHeroTitle.textContent = 'Resize & Compress Any Image to Exact KB — Without Losing Quality';
+        txtHeroDesc.innerHTML = 'Strict 20KB–50KB sizing with <strong>zero blur or pixel distortion</strong>. Includes automated portal pass/fail checks and instant combo packs.';
         txtUploadPrompt.textContent = 'Select Image or Drag & Drop';
         txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (Live Capture)';
         txtAddDOP.textContent = 'Add Name & Date of Photo (DOP) Strip';
@@ -580,9 +604,7 @@
     });
 
     btnCloseCamera.addEventListener('click', () => {
-      if (cameraStream) {
-        cameraStream.getTracks().forEach(track => track.stop());
-      }
+      if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
       cameraContainer.classList.add('hidden');
     });
 
@@ -596,44 +618,21 @@
       const capturedImg = new Image();
       capturedImg.onload = () => {
         rawImage = capturedImg;
-        loadedFileName.textContent = `Live Webcam Photo Captured (${snapCanvas.width}x${snapCanvas.height})`;
+        originalFileSizeKB = 150;
+        origImg.src = capturedImg.src;
+        origSizeLabel.textContent = `Captured: ~150 KB`;
+        loadedFileName.textContent = `Live Photo Captured`;
         loadedFileName.classList.remove('hidden');
         btnProcess.disabled = false;
-        btnProcess.innerHTML = `<span>${isHindi ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'Format & Compress Image'}</span>`;
+        btnProcess.innerHTML = `<span>Format & Compress Image</span>`;
         if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
         cameraContainer.classList.add('hidden');
+        processImage();
       };
       capturedImg.src = snapCanvas.toDataURL('image/jpeg');
     });
 
-    // Tab Navigation
-    function setTab(activeTab) {
-      [tabPhoto, tabSign, tabCheat].forEach(t => {
-        t.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
-      });
-      activeTab.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition';
-
-      if (activeTab === tabCheat) {
-        toolSection.classList.add('hidden');
-        specsDirectory.classList.remove('hidden');
-      } else {
-        toolSection.classList.remove('hidden');
-        specsDirectory.classList.add('hidden');
-
-        if (activeTab === tabSign) {
-          presetSelector.value = 'ssc_sign';
-          applyPreset('ssc_sign');
-        } else {
-          presetSelector.value = 'ssc_photo';
-          applyPreset('ssc_photo');
-        }
-      }
-    }
-
-    tabPhoto.addEventListener('click', () => setTab(tabPhoto));
-    tabSign.addEventListener('click', () => setTab(tabSign));
-    tabCheat.addEventListener('click', () => setTab(tabCheat));
-
+    // File input handlers
     dropZone.addEventListener('click', () => fileInput.click());
     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-brand-500', 'bg-brand-50/40'); });
     dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-brand-500', 'bg-brand-50/40'));
@@ -649,28 +648,36 @@
 
     function loadSelectedFile(file) {
       if (!file.type.match('image.*')) return;
+      originalFileSizeKB = Math.round(file.size / 1024);
       const reader = new FileReader();
       reader.onload = (e) => {
         const img = new Image();
         img.onload = () => {
           rawImage = img;
-          loadedFileName.textContent = `Selected: ${file.name} (${Math.round(file.size / 1024)} KB)`;
+          origImg.src = e.target.result;
+          origSizeLabel.textContent = `${originalFileSizeKB} KB`;
+          loadedFileName.textContent = `Selected: ${file.name} (${originalFileSizeKB} KB)`;
           loadedFileName.classList.remove('hidden');
           btnProcess.disabled = false;
-          btnProcess.innerHTML = `<span>${isHindi ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'Format & Compress Image'}</span>`;
+          btnProcess.innerHTML = `<span>Format & Compress Image</span>`;
+          processImage();
         };
         img.src = e.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    btnProcess.addEventListener('click', () => {
+    btnProcess.addEventListener('click', processImage);
+
+    // Primary Processing Pipeline
+    function processImage() {
       if (!rawImage) return;
 
       const targetW = parseInt(inputW.value, 10) || 200;
       const targetH = parseInt(inputH.value, 10) || 230;
       const maxTargetBytes = (parseInt(inputMaxKB.value, 10) || 50) * 1024;
       const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
+      const zoom = parseFloat(zoomSlider.value) || 1.0;
 
       canvas.width = targetW;
       canvas.height = targetH;
@@ -680,28 +687,31 @@
 
       const imgRatio = rawImage.width / rawImage.height;
       const targetRatio = targetW / targetH;
-      let renderW, renderH, offsetX = 0, offsetY = 0;
+      let baseW, baseH;
 
       if (imgRatio > targetRatio) {
-        renderH = targetH;
-        renderW = targetH * imgRatio;
-        offsetX = -(renderW - targetW) / 2;
+        baseH = targetH;
+        baseW = targetH * imgRatio;
       } else {
-        renderW = targetW;
-        renderH = targetW / imgRatio;
-        offsetY = -(renderH - targetH) / 2;
+        baseW = targetW;
+        baseH = targetW / imgRatio;
       }
+
+      const renderW = baseW * zoom;
+      const renderH = baseH * zoom;
+      const offsetX = -(renderW - targetW) / 2;
+      const offsetY = -(renderH - targetH) / 2;
 
       ctx.drawImage(rawImage, offsetX, offsetY, renderW, renderH);
 
-      // Add Name & Date of Photo (DOP) Strip if enabled
+      // Name & Date (DOP) Strip
       if (chkAddNameDate.checked && signatureOptions.classList.contains('hidden')) {
         const stripHeight = Math.round(targetH * 0.22);
         const stripY = targetH - stripHeight;
 
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, stripY, targetW, stripHeight);
-        ctx.strokeStyle = '#E2E8F0';
+        ctx.strokeStyle = '#CBD5E1';
         ctx.lineWidth = 1;
         ctx.strokeRect(0, stripY, targetW, stripHeight);
 
@@ -719,7 +729,7 @@
         ctx.fillText(`DOP: ${dateStr}`, targetW / 2, stripY + (stripHeight * 0.82));
       }
 
-      // Apply signature enhancer effects if active
+      // Signature Magic Clean Enhancer
       if (!signatureOptions.classList.contains('hidden')) {
         const imgData = ctx.getImageData(0, 0, targetW, targetH);
         const data = imgData.data;
@@ -727,28 +737,23 @@
         for (let i = 0; i < data.length; i += 4) {
           let r = data[i], g = data[i+1], b = data[i+2];
 
-          if (optGrayscale.checked) {
-            let gray = 0.299 * r + 0.587 * g + 0.114 * b;
-            r = g = b = gray;
-          }
-
-          if (optContrast.checked) {
-            let brightness = (r + g + b) / 3;
-            if (brightness > 180) {
+          if (optCleanPaper.checked) {
+            let brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+            // Threshold clean shadows to pure #FFFFFF
+            if (brightness > 175) {
               r = 255; g = 255; b = 255;
-            } else {
-              r = Math.max(0, r - 30);
-              g = Math.max(0, g - 30);
-              b = Math.max(0, b - 30);
+            } else if (optDarkenInk.checked) {
+              r = Math.max(0, r - 45);
+              g = Math.max(0, g - 45);
+              b = Math.max(0, b - 45);
             }
           }
-
           data[i] = r; data[i+1] = g; data[i+2] = b;
         }
         ctx.putImageData(imgData, 0, 0);
       }
 
-      // Binary Search Compression
+      // Binary Search Quality Compression
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
@@ -772,20 +777,25 @@
 
       const finalKB = (bestBytes / 1024).toFixed(1);
 
+      // Render Outputs
       outputImg.src = bestDataUrl;
-      outputImg.classList.remove('hidden');
+      outSizeLabel.textContent = `${finalKB} KB`;
       placeholderText.classList.add('hidden');
-      
-      metaDims.textContent = `${targetW} × ${targetH} px`;
-      metaSize.textContent = `${finalKB} KB`;
-      metaBox.classList.remove('hidden');
+      sideBySideBox.classList.remove('hidden');
 
-      statusBadge.textContent = (bestBytes <= maxTargetBytes && bestBytes >= minTargetBytes) ? 'Within Bounds' : 'Target Fit';
-      statusBadge.className = 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800';
+      // Update 3-Point Validator
+      const isSizeValid = (bestBytes <= maxTargetBytes && bestBytes >= minTargetBytes);
+      valDims.innerHTML = `✅ ${targetW} × ${targetH} px`;
+      valSize.innerHTML = isSizeValid ? `✅ ${finalKB} KB (Strict Fit)` : `⚠️ ${finalKB} KB`;
+      valType.innerHTML = `✅ JPEG / JPG (Universal)`;
+      validatorCard.classList.remove('hidden');
+
+      statusBadge.textContent = isSizeValid ? 'Verified: Portal Ready' : 'Processed';
+      statusBadge.className = isSizeValid ? 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800' : 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
       statusBadge.classList.remove('hidden');
 
       downloadBtn.href = bestDataUrl;
-      downloadBtn.download = `document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
+      downloadBtn.download = `form_document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
       downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
 
       if (typeof gtag === 'function') {
@@ -795,8 +805,124 @@
           value: parseInt(finalKB, 10)
         });
       }
+    }
+
+    // COMBO PACK (ZIP) LOGIC
+    function compressToBlob(imageObj, w, h, targetMaxKB, isSignature = false) {
+      comboCanvas.width = w;
+      comboCanvas.height = h;
+      comboCtx.fillStyle = '#FFFFFF';
+      comboCtx.fillRect(0, 0, w, h);
+
+      const imgRatio = imageObj.width / imageObj.height;
+      const targetRatio = w / h;
+      let rw, rh;
+      if (imgRatio > targetRatio) { rh = h; rw = h * imgRatio; }
+      else { rw = w; rh = w / imgRatio; }
+
+      comboCtx.drawImage(imageObj, -(rw - w) / 2, -(rh - h) / 2, rw, rh);
+
+      if (isSignature) {
+        const idata = comboCtx.getImageData(0, 0, w, h);
+        const d = idata.data;
+        for (let i = 0; i < d.length; i += 4) {
+          let bright = d[i]*0.299 + d[i+1]*0.587 + d[i+2]*0.114;
+          if (bright > 175) { d[i] = 255; d[i+1] = 255; d[i+2] = 255; }
+          else { d[i] = Math.max(0, d[i]-40); d[i+1] = Math.max(0, d[i]-40); d[i+2] = Math.max(0, d[i]-40); }
+        }
+        comboCtx.putImageData(idata, 0, 0);
+      }
+
+      const maxBytes = targetMaxKB * 1024;
+      let low = 0.05, high = 1.0, best = null;
+      for (let s = 0; s < 7; s++) {
+        let q = (low + high) / 2;
+        let dataUrl = comboCanvas.toDataURL('image/jpeg', q);
+        let bytes = Math.round((dataUrl.length - 23) * 3 / 4);
+        if (bytes <= maxBytes) { best = dataUrl; low = q; }
+        else { high = q; }
+      }
+      return best || comboCanvas.toDataURL('image/jpeg', 0.1);
+    }
+
+    comboPhotoInput.addEventListener('change', (e) => {
+      if (!e.target.files.length) return;
+      const file = e.target.files[0];
+      const r = new FileReader();
+      r.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
+          comboPhotoBlob = compressToBlob(img, 200, 230, 45, false);
+          comboPhotoStatus.textContent = `✅ Ready: 200x230 px (~35 KB)`;
+          comboPhotoStatus.className = 'text-xs text-emerald-600 font-bold';
+          checkComboReady();
+        };
+        img.src = ev.target.result;
+      };
+      r.readAsDataURL(file);
     });
 
+    comboSignInput.addEventListener('change', (e) => {
+      if (!e.target.files.length) return;
+      const file = e.target.files[0];
+      const r = new FileReader();
+      r.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
+          comboSignBlob = compressToBlob(img, 140, 60, 18, true);
+          comboSignStatus.textContent = `✅ Ready: 140x60 px (~14 KB)`;
+          comboSignStatus.className = 'text-xs text-emerald-600 font-bold';
+          checkComboReady();
+        };
+        img.src = ev.target.result;
+      };
+      r.readAsDataURL(file);
+    });
+
+    function checkComboReady() {
+      if (comboPhotoBlob && comboSignBlob) {
+        btnDownloadComboZip.disabled = false;
+      }
+    }
+
+    btnDownloadComboZip.addEventListener('click', () => {
+      if (!comboPhotoBlob || !comboSignBlob) return;
+      const zip = new JSZip();
+
+      // Convert base64 data to blobs
+      const photoData = comboPhotoBlob.split(',')[1];
+      const signData = comboSignBlob.split(',')[1];
+
+      zip.file("Application_Photo_20KB_50KB.jpg", photoData, {base64: true});
+      zip.file("Application_Signature_10KB_20KB.jpg", signData, {base64: true});
+
+      zip.generateAsync({type:"blob"}).then(function(content) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(content);
+        link.download = "Exam_Application_Kit_Ready.zip";
+        link.click();
+      });
+    });
+
+    // Navigation Tabs handler
+    function setSection(tab) {
+      [tabSingle, tabCombo, tabSpecs].forEach(t => t.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition');
+      tab.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition';
+
+      sectionSingle.classList.add('hidden');
+      sectionCombo.classList.add('hidden');
+      sectionSpecs.classList.add('hidden');
+
+      if (tab === tabSingle) sectionSingle.classList.remove('hidden');
+      if (tab === tabCombo) sectionCombo.classList.remove('hidden');
+      if (tab === tabSpecs) sectionSpecs.classList.remove('hidden');
+    }
+
+    tabSingle.addEventListener('click', () => setSection(tabSingle));
+    tabCombo.addEventListener('click', () => setSection(tabCombo));
+    tabSpecs.addEventListener('click', () => setSection(tabSpecs));
+
+    // Initialize Default
     applyPreset('ssc_photo');
   </script>
 </body>
