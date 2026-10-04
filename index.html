@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Any Doc Resizer — Exam Photo, Signature & Name/Date Stamper (20KB - 50KB)</title>
-  <meta name="description" content="Free tool for Police, Army, SSC, UPSC & Bank exams. Resize photos and signatures, add Name & Date of Photo (DOP), live camera capture, 100% browser-based private.">
-  <meta name="keywords" content="photo par date kaise dale, police photo resizer, army agniveer photo size, signature compressor 10kb to 20kb, ssc live photo size, ibps photo compressor">
+  <title>Any Doc Resizer — Resize & Compress Any Image to Exact KB (20KB - 50KB)</title>
+  <meta name="description" content="Free tool to resize and compress photos, signatures, and documents to exact KB limits for all job portals, college admissions, Police, Army, SSC, and UPSC forms. 100% private.">
+  <meta name="keywords" content="resize image to exact kb, photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, photo par date kaise dale, ssc photo size, police photo resizer">
 
   <!-- Matching Resize-Arrows Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%234f46e5'/><path d='M32 44 V32 H44 M32 32 L46 46 M68 44 V32 H56 M68 32 L54 46 M32 56 V68 H44 M32 68 L46 54 M68 56 V68 H56 M68 68 L54 54' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
@@ -57,12 +57,12 @@
         </div>
       </div>
 
-      <!-- Controls: Language Toggle & Share -->
+      <!-- Controls: Language Toggle & WhatsApp Share -->
       <div class="flex items-center gap-2">
         <button id="langToggleBtn" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
           हिंदी में बदलें
         </button>
-        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Resize%20photo%20%26%20signature%20strictly%20to%2020KB-50KB%20for%20Govt%20Exams%20free%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
+        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Resize%20%26%20compress%20any%20image%20strictly%20to%20exact%20KB%20for%20free%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           <span class="hidden sm:inline">WhatsApp</span>
         </a>
@@ -80,13 +80,13 @@
       </div>
     </div>
 
-    <!-- Hero Title -->
+    <!-- Universal Hero Title -->
     <div class="text-center max-w-2xl mx-auto mb-8">
       <h1 id="txtHeroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-        Gov & Exam Form Image Compressor
+        Resize & Compress Any Image to Exact KB
       </h1>
       <p id="txtHeroDesc" class="mt-2 text-sm sm:text-base text-slate-600">
-        Directly fit required dimensions and KB limits for <strong>Police, Army, SSC, Bank & UPSC</strong> with Name/Date stamper.
+        Fast, private browser tool. Hit exact dimensions & file size limits (20KB–50KB) for <strong>all job portals, college admissions, Police, Army, SSC & UPSC</strong>.
       </p>
     </div>
 
@@ -113,9 +113,15 @@
           
           <!-- Preset Dropdown -->
           <div>
-            <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Portal Preset</label>
+            <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Preset (Optional)</label>
             <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
               
+              <optgroup label="General & Custom">
+                <option value="custom">Custom Dimensions & File Size</option>
+                <option value="passport_in">Passport Size (413 x 531 px | under 100KB)</option>
+                <option value="us_visa">Visa Square 2x2 Inch (600 x 600 px | under 240KB)</option>
+              </optgroup>
+
               <optgroup label="Police Recruitment (Constable & SI)">
                 <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
                 <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
@@ -151,12 +157,9 @@
                 <option value="ibps_declaration">IBPS Hand Declaration (800 x 400 px | 50KB - 100KB)</option>
               </optgroup>
 
-              <optgroup label="Civil Services, Passport & Visa">
+              <optgroup label="Civil Services (UPSC)">
                 <option value="upsc_photo">UPSC CSE Photo (350 x 350 px | 20KB - 300KB)</option>
                 <option value="upsc_sign">UPSC CSE Signature (350 x 150 px | 20KB - 100KB)</option>
-                <option value="passport_in">Passport Online Portal (413 x 531 px | under 100KB)</option>
-                <option value="us_visa">US Visa 2x2 Inch Square (600 x 600 px | under 240KB)</option>
-                <option value="custom">Custom Dimensions & Size Limits</option>
               </optgroup>
 
             </select>
@@ -177,11 +180,11 @@
             <!-- Live Camera Button -->
             <button id="btnOpenCamera" type="button" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
               <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
-              <span id="txtCameraBtn">Take Live Webcam / Phone Photo (SSC Live Capture)</span>
+              <span id="txtCameraBtn">Take Live Webcam / Phone Photo (Live Capture)</span>
             </button>
           </div>
 
-          <!-- Live Camera View Container (Hidden by default) -->
+          <!-- Live Camera View Container -->
           <div id="cameraContainer" class="hidden p-4 rounded-xl bg-slate-900 border border-slate-700 space-y-3">
             <video id="webcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
             <div class="flex gap-2">
@@ -194,11 +197,11 @@
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
-              <input type="number" id="inputW" value="180" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+              <input type="number" id="inputW" value="200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Height (px)</label>
-              <input type="number" id="inputH" value="225" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+              <input type="number" id="inputH" value="230" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Max KB</label>
@@ -297,14 +300,14 @@
 
     <!-- Specs Directory Table -->
     <div id="specsDirectory" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-xl font-bold text-slate-900 mb-2">Government & Portal Image Specifications (Official Directory)</h2>
-      <p class="text-sm text-slate-500 mb-6">These are the standard official dimensions and KB ranges accepted by central & state portals:</p>
+      <h2 class="text-xl font-bold text-slate-900 mb-2">Image Specifications Directory</h2>
+      <p class="text-sm text-slate-500 mb-6">Standard official dimensions and KB ranges accepted by portals and recruitment bodies:</p>
 
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm text-slate-600">
           <thead class="text-xs uppercase bg-slate-50 text-slate-700 border-b border-slate-200">
             <tr>
-              <th class="py-3 px-4">Portal / Organization</th>
+              <th class="py-3 px-4">Portal / Purpose</th>
               <th class="py-3 px-4">Document Type</th>
               <th class="py-3 px-4">Required Dimensions</th>
               <th class="py-3 px-4">Required File Size</th>
@@ -312,6 +315,13 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (CGL, CHSL, GD, MTS)</td>
+              <td class="py-3.5 px-4">Photo & Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">200×230 / 140×60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
             <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
               <td class="py-3.5 px-4">Passport Photograph</td>
@@ -341,20 +351,6 @@
               <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Air Force (Agniveervayu)</td>
-              <td class="py-3.5 px-4">Photo / Sign / Thumb</td>
-              <td class="py-3.5 px-4 font-mono text-xs">350 × 450 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 50 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (CGL, CHSL, GD, MTS)</td>
-              <td class="py-3.5 px-4">Photo & Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">200×230 / 140×60 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">IBPS / SBI Banking Exams</td>
               <td class="py-3.5 px-4">Applicant Photo</td>
               <td class="py-3.5 px-4 font-mono text-xs">200 × 230 px</td>
@@ -375,6 +371,13 @@
               <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 300 KB</td>
               <td class="py-3.5 px-4">JPG</td>
             </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">Passport India Online</td>
+              <td class="py-3.5 px-4">Passport Photograph</td>
+              <td class="py-3.5 px-4 font-mono text-xs">413 × 531 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 100 KB</td>
+              <td class="py-3.5 px-4">JPG</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -386,21 +389,21 @@
       <div class="space-y-4">
         <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Why do Police, Army, and SSC portals reject photos?</span>
+            <span>Why do application portals reject uploaded photos?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            Portals automatically scan image file byte counts and aspect ratios before uploading. If your photo is even 1 KB above 50 KB or 1 pixel off from the specified 200x230 ratio, automated portal scripts immediately reject the submission.
+            Most portals automatically scan file size (KB) and dimensions (width × height) before saving. If an image is 1 KB above the maximum allowed limit or slightly stretched, the submission gets rejected instantly.
           </p>
         </details>
 
         <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Are my personal photos or signatures saved to any server?</span>
+            <span>Are my personal images uploaded to any server?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            No. This tool operates 100% locally inside your web browser using HTML5 Canvas. Your image is never uploaded to any remote server or stored in any database.
+            No. AnyDoc Resizer processes all images locally inside your web browser via HTML5 Canvas. Your documents and photos never leave your device.
           </p>
         </details>
       </div>
@@ -410,8 +413,8 @@
 
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12">
     <div class="max-w-4xl mx-auto px-4 space-y-2">
-      <p>&copy; 2026 Any Doc Resizer. Built for students & job applicants. Client-side execution ensures total data privacy.</p>
-      <p>Not affiliated with SSC, UPSC, Indian Army, or Police Recruitment boards. Follow all instructions stated in your official exam notification.</p>
+      <p>&copy; 2026 Any Doc Resizer. Designed for fast, private document & image formatting.</p>
+      <p>Not affiliated with any government or testing agency. Follow the instructions stated in your official exam or job brochure.</p>
     </div>
   </footer>
 
@@ -460,7 +463,7 @@
     const candidateName = document.getElementById('candidateName');
     const photoDate = document.getElementById('photoDate');
 
-    // Language toggle
+    // Language toggle elements
     const langToggleBtn = document.getElementById('langToggleBtn');
     const txtTagline = document.getElementById('txtTagline');
     const txtHeroTitle = document.getElementById('txtHeroTitle');
@@ -479,6 +482,9 @@
     const specsDirectory = document.getElementById('specsDirectory');
 
     const PRESETS = {
+      custom: null,
+      passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
+      us_visa:     { w: 600, h: 600, min: 50, max: 240, sign: false },
       up_police_photo: { w: 180, h: 225, min: 20, max: 50, sign: false },
       up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
       delhi_police_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
@@ -503,10 +509,7 @@
       ibps_thumb:       { w: 240, h: 240, min: 20, max: 50, sign: false },
       ibps_declaration: { w: 800, h: 400, min: 50, max: 100, sign: false },
       upsc_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
-      upsc_sign:   { w: 350, h: 150, min: 20, max: 100, sign: true },
-      passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
-      us_visa:     { w: 600, h: 600, min: 50, max: 240, sign: false },
-      custom: null
+      upsc_sign:   { w: 350, h: 150, min: 20, max: 100, sign: true }
     };
 
     function applyPreset(key) {
@@ -543,29 +546,29 @@
       if (isHindi) {
         langToggleBtn.textContent = 'Switch to English';
         txtTagline.textContent = 'तेज़, सुरक्षित और पूरी तरह मुफ़्त';
-        txtHeroTitle.textContent = 'सरकारी परीक्षा फोटो और सिग्नेचर रिसाइज़र';
-        txtHeroDesc.innerHTML = 'पुलिस, सेना (Army), SSC और बैंकिंग फॉर्म के लिए सही साइज़ और <strong>20 KB – 50 KB</strong> में सेट करें।';
-        lblSelectPreset.textContent = 'परीक्षा चुनें (पोर्टल प्रीसेट)';
+        txtHeroTitle.textContent = 'किसी भी फोटो का साइज़ और KB तुरंत बदलें';
+        txtHeroDesc.innerHTML = 'नौकरी, कॉलेज एडमिशन और सरकारी परीक्षाओं (Police, Army, SSC) के लिए सही साइज़ और <strong>20 KB – 50 KB</strong> में सेट करें।';
+        lblSelectPreset.textContent = 'प्रीसेट चुनें (वैकल्पिक)';
         txtUploadPrompt.textContent = 'फोटो चुनें या यहाँ ड्रैग करें';
-        txtCameraBtn.textContent = 'लाइव कैमरा से फोटो खींचें (SSC लाइव फोटो)';
+        txtCameraBtn.textContent = 'लाइव कैमरा से फोटो लें (लाइव फोटो कैप्चर)';
         txtAddDOP.textContent = 'फोटो पर नाम और तारीख (DOP पट्टी) जोड़ें';
         txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए पहले फोटो अपलोड करें';
         txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
       } else {
         langToggleBtn.textContent = 'हिंदी में बदलें';
         txtTagline.textContent = 'Fast, Local & Secure';
-        txtHeroTitle.textContent = 'Gov & Exam Form Image Compressor';
-        txtHeroDesc.innerHTML = 'Directly fit required dimensions and KB limits for <strong>Police, Army, SSC, Bank & UPSC</strong> with Name/Date stamper.';
-        lblSelectPreset.textContent = 'Select Portal Preset';
+        txtHeroTitle.textContent = 'Resize & Compress Any Image to Exact KB';
+        txtHeroDesc.innerHTML = 'Fast, private browser tool. Hit exact dimensions & file size limits (20KB–50KB) for <strong>all job portals, college admissions, Police, Army, SSC & UPSC</strong>.';
+        lblSelectPreset.textContent = 'Select Preset (Optional)';
         txtUploadPrompt.textContent = 'Select Image or Drag & Drop';
-        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (SSC Live Capture)';
+        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (Live Capture)';
         txtAddDOP.textContent = 'Add Name & Date of Photo (DOP) Strip';
         txtProcessBtn.textContent = rawImage ? 'Format & Compress Image' : 'Upload an image to start';
         txtDownloadBtn.textContent = 'Download Form-Ready File';
       }
     });
 
-    // Live Camera capture handlers
+    // Camera Handlers
     btnOpenCamera.addEventListener('click', async () => {
       try {
         cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
@@ -597,7 +600,6 @@
         loadedFileName.classList.remove('hidden');
         btnProcess.disabled = false;
         btnProcess.innerHTML = `<span>${isHindi ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'Format & Compress Image'}</span>`;
-        // Stop camera
         if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
         cameraContainer.classList.add('hidden');
       };
@@ -619,11 +621,11 @@
         specsDirectory.classList.add('hidden');
 
         if (activeTab === tabSign) {
-          presetSelector.value = 'up_police_sign';
-          applyPreset('up_police_sign');
+          presetSelector.value = 'ssc_sign';
+          applyPreset('ssc_sign');
         } else {
-          presetSelector.value = 'up_police_photo';
-          applyPreset('up_police_photo');
+          presetSelector.value = 'ssc_photo';
+          applyPreset('ssc_photo');
         }
       }
     }
@@ -665,8 +667,8 @@
     btnProcess.addEventListener('click', () => {
       if (!rawImage) return;
 
-      const targetW = parseInt(inputW.value, 10) || 180;
-      const targetH = parseInt(inputH.value, 10) || 225;
+      const targetW = parseInt(inputW.value, 10) || 200;
+      const targetH = parseInt(inputH.value, 10) || 230;
       const maxTargetBytes = (parseInt(inputMaxKB.value, 10) || 50) * 1024;
       const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
 
@@ -693,18 +695,16 @@
       ctx.drawImage(rawImage, offsetX, offsetY, renderW, renderH);
 
       // Add Name & Date of Photo (DOP) Strip if enabled
-      if (chkAddNameDate.checked && !signatureOptions.classList.contains('hidden') === false) {
+      if (chkAddNameDate.checked && signatureOptions.classList.contains('hidden')) {
         const stripHeight = Math.round(targetH * 0.22);
         const stripY = targetH - stripHeight;
 
-        // White banner strip at bottom
         ctx.fillStyle = '#FFFFFF';
         ctx.fillRect(0, stripY, targetW, stripHeight);
         ctx.strokeStyle = '#E2E8F0';
         ctx.lineWidth = 1;
         ctx.strokeRect(0, stripY, targetW, stripHeight);
 
-        // Candidate Name & Date Text
         const name = (candidateName.value || 'NAME HERE').trim();
         const dateStr = (photoDate.value || '04/10/2026').trim();
 
@@ -748,7 +748,7 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
-      // Binary Search Quality Compression
+      // Binary Search Compression
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
@@ -785,7 +785,7 @@
       statusBadge.classList.remove('hidden');
 
       downloadBtn.href = bestDataUrl;
-      downloadBtn.download = `form_document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
+      downloadBtn.download = `document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
       downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
 
       if (typeof gtag === 'function') {
@@ -797,7 +797,7 @@
       }
     });
 
-    applyPreset('up_police_photo');
+    applyPreset('ssc_photo');
   </script>
 </body>
 </html>
