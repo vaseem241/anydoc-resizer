@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovDoc Resizer — Exam Photo & Signature Compressor (20KB - 50KB)</title>
+  <meta name="description" content="Free client-side tool to resize and compress photos and signatures for SSC, UPSC, IBPS, Passport, and Visa forms. 100% private, zero uploads.">
+  <meta name="keywords" content="photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, upsc photo size, ssc image resizer, passport photo format">
+
+  <!-- Google Analytics 4 (Replace G-XXXXXXXXXX with your Measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white font-black text-lg shadow-sm">
+          G
+        </div>
+        <div>
+          <span class="text-lg font-bold text-slate-900 leading-none block">GovDoc Resizer</span>
+          <span class="text-[11px] text-slate-500">Fast, Local & Secure</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          100% Client-Side Private
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 w-full flex-grow">
+    
+    <!-- Top Ad Placement Card -->
+    <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center mb-6">
+      <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
+      <div class="min-h-[60px] flex items-center justify-center text-xs text-slate-400">
+        <!-- Google AdSense Responsive Display Unit Code goes here -->
+        <span>Ad Space (Google AdSense Responsive Unit)</span>
+      </div>
+    </div>
+
+    <!-- Hero Title -->
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Gov & Exam Form Image Compressor
+      </h1>
+      <p class="mt-2 text-sm sm:text-base text-slate-600">
+        Directly hit required pixel dimensions and strictly fit between <strong>20 KB – 50 KB</strong> or <strong>10 KB – 20 KB</strong> without losing clarity.
+      </p>
+    </div>
+
+    <div class="flex justify-center mb-8">
+      <div class="inline-flex p-1 bg-slate-200/80 rounded-xl max-w-full overflow-x-auto">
+        <button id="tabPhoto" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
+          Photo Resizer
+        </button>
+        <button id="tabSign" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+          Signature Optimizer
+        </button>
+        <button id="tabCheat" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+          Portal Specs Directory
+        </button>
+      </div>
+    </div>
+
+    <div id="toolSection" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- Configuration & Upload (Left/Top) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+          
+          <!-- Preset Dropdown -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Portal Requirement Preset</label>
+            <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+              <optgroup label="Popular Exam Formats">
+                <option value="ssc_photo">SSC CGL / CHSL Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ssc_sign">SSC Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="upsc_photo">UPSC Portal Photo (350 x 350 px | 20KB - 100KB)</option>
+                <option value="upsc_sign">UPSC Portal Signature (350 x 350 px | 20KB - 100KB)</option>
+                <option value="ibps_photo">IBPS / SBI Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ibps_sign">IBPS / SBI Bank Signature (140 x 60 px | 10KB - 20KB)</option>
+              </optgroup>
+              <optgroup label="Official Identity & Visa">
+                <option value="passport_in">Passport Online Portal (413 x 531 px | under 100KB)</option>
+                <option value="us_visa">US Visa 2x2 Inch Square (600 x 600 px | under 240KB)</option>
+                <option value="custom">Custom Dimensions & Size Limits</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Upload Drop Zone -->
+          <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-8 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[180px]">
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
+            <div class="w-12 h-12 mb-3 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+            </div>
+            <p class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
+            <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP files up to 25 MB</p>
+            <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
+          </div>
+
+          <!-- Parameter Fields -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
+              <input type="number" id="inputW" value="200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">Height (px)</label>
+              <input type="number" id="inputH" value="230" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">Max KB</label>
+              <input type="number" id="inputMaxKB" value="50" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">Min KB</label>
+              <input type="number" id="inputMinKB" value="20" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+            </div>
+          </div>
+
+          <!-- Signature Enhancer Options (Shows conditionally) -->
+          <div id="signatureOptions" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <span class="text-xs font-bold text-slate-700 block uppercase tracking-wider">Signature Clarity Tools</span>
+            <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
+              <label class="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" id="optGrayscale" class="rounded text-brand-600">
+                Pure Black & White
+              </label>
+              <label class="flex items-center gap-1.5 cursor-pointer">
+                <input type="checkbox" id="optContrast" class="rounded text-brand-600" checked>
+                Boost Contrast (Clean Background)
+              </label>
+            </div>
+          </div>
+
+          <!-- Process Button -->
+          <button id="btnProcess" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
+            <span>Upload an image to start</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 space-y-6">
+        <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[420px]">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Generated File Preview</span>
+              <span id="statusBadge" class="hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Ready</span>
+            </div>
+
+            <!-- Preview Image Placeholder -->
+            <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[260px] p-4 overflow-hidden relative">
+              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed output will appear here with exact dimensions and target file size.</p>
+              <img id="outputImg" class="hidden max-h-[240px] max-w-full rounded border border-slate-200 shadow-sm object-contain" alt="Compressed Preview">
+            </div>
+
+            <!-- Metadata readout -->
+            <div id="metaBox" class="hidden mt-4 grid grid-cols-2 gap-2 text-xs bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-semibold">Dimensions</span>
+                <span id="metaDims" class="font-bold text-slate-800">-</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px] uppercase font-semibold">Output Size</span>
+                <span id="metaSize" class="font-bold text-slate-800">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download Action -->
+          <div class="mt-5">
+            <a id="downloadBtn" download="form_ready_document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>Download Form-Ready File</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Secondary Ad Unit -->
+        <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center">
+          <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
+          <div class="min-h-[100px] flex items-center justify-center text-xs text-slate-400">
+            <span>Ad Space (Google AdSense Square/Rectangle Unit)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="specsDirectory" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-900 mb-2">Government & Portal Image Specifications (2026 Directory)</h2>
+      <p class="text-sm text-slate-500 mb-6">Always double check notification guidelines. These are the current official dimensions and KB ranges accepted by portals:</p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm text-slate-600">
+          <thead class="text-xs uppercase bg-slate-50 text-slate-700 border-b border-slate-200">
+            <tr>
+              <th class="py-3 px-4">Portal / Organization</th>
+              <th class="py-3 px-4">Document Type</th>
+              <th class="py-3 px-4">Required Dimensions</th>
+              <th class="py-3 px-4">Required File Size</th>
+              <th class="py-3 px-4">Format</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (Staff Selection Comm.)</td>
+              <td class="py-3.5 px-4">Passport Photograph</td>
+              <td class="py-3.5 px-4 font-mono text-xs">200 × 230 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 50 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (Staff Selection Comm.)</td>
+              <td class="py-3.5 px-4">Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">140 × 60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 20 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">UPSC OTR</td>
+              <td class="py-3.5 px-4">Photo & Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">350 × 350 px (Square)</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 300 KB</td>
+              <td class="py-3.5 px-4">JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">IBPS / SBI Banking Exams</td>
+              <td class="py-3.5 px-4">Applicant Photo</td>
+              <td class="py-3.5 px-4 font-mono text-xs">200 × 230 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 50 KB</td>
+              <td class="py-3.5 px-4">JPG / JPEG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">US State Visa DS-160</td>
+              <td class="py-3.5 px-4">Digital Photo</td>
+              <td class="py-3.5 px-4 font-mono text-xs">600 × 600 px (2x2")</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">≤ 240 KB</td>
+              <td class="py-3.5 px-4">JPEG</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <section class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
+            <span>Why do portals require exact 20 KB to 50 KB file sizes?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+            Government databases handle millions of candidates at once. Storing photos under 50 KB guarantees fast batch loading, prevents database timeouts, and simplifies standardized admit card generation.
+          </p>
+        </details>
+
+        <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
+            <span>Are my personal photos or signatures saved to any server?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+            No. This tool operates 100% locally inside your web browser using HTML5 Canvas. Your image is never uploaded to any remote server or stored in any database.
+          </p>
+        </details>
+
+        <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
+            <span>How does this tool reach the exact file size without blurring?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+            We use an automated binary search compression loop. It analyzes the raw byte size over successive quality iterations until it hits the highest possible visual clarity that still fits beneath the portal's upper limit.
+          </p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12">
+    <div class="max-w-4xl mx-auto px-4 space-y-2">
+      <p>&copy; 2026 GovDoc Resizer. Built for students & job applicants. Client-side execution ensures total data privacy.</p>
+      <p>Not affiliated with SSC, UPSC, or any government portal. Follow all instructions stated in your official exam brochure.</p>
+    </div>
+  </footer>
+
+  <!-- Hidden Processing Canvas -->
+  <canvas id="engineCanvas" class="hidden"></canvas>
+
+  <script>
+    // State variables
+    let rawImage = null;
+    let currentMode = 'photo';
+
+    // DOM Elements
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const loadedFileName = document.getElementById('loadedFileName');
+    const presetSelector = document.getElementById('presetSelector');
+    const inputW = document.getElementById('inputW');
+    const inputH = document.getElementById('inputH');
+    const inputMaxKB = document.getElementById('inputMaxKB');
+    const inputMinKB = document.getElementById('inputMinKB');
+    const btnProcess = document.getElementById('btnProcess');
+    const previewContainer = document.getElementById('previewContainer');
+    const placeholderText = document.getElementById('placeholderText');
+    const outputImg = document.getElementById('outputImg');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const statusBadge = document.getElementById('statusBadge');
+    const metaBox = document.getElementById('metaBox');
+    const metaDims = document.getElementById('metaDims');
+    const metaSize = document.getElementById('metaSize');
+    const signatureOptions = document.getElementById('signatureOptions');
+    const optGrayscale = document.getElementById('optGrayscale');
+    const optContrast = document.getElementById('optContrast');
+    const canvas = document.getElementById('engineCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Tab navigation elements
+    const tabPhoto = document.getElementById('tabPhoto');
+    const tabSign = document.getElementById('tabSign');
+    const tabCheat = document.getElementById('tabCheat');
+    const toolSection = document.getElementById('toolSection');
+    const specsDirectory = document.getElementById('specsDirectory');
+
+    const PRESETS = {
+      ssc_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
+      ssc_sign: { w: 140, h: 60, min: 10, max: 20, sign: true },
+      upsc_photo: { w: 350, h: 350, min: 20, max: 100, sign: false },
+      upsc_sign: { w: 350, h: 350, min: 20, max: 100, sign: true },
+      ibps_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
+      ibps_sign: { w: 140, h: 60, min: 10, max: 20, sign: true },
+      passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
+      us_visa: { w: 600, h: 600, min: 50, max: 240, sign: false },
+      custom: null
+    };
+
+    function applyPreset(key) {
+      const p = PRESETS[key];
+      if (!p) return;
+      inputW.value = p.w;
+      inputH.value = p.h;
+      inputMinKB.value = p.min;
+      inputMaxKB.value = p.max;
+
+      if (p.sign) {
+        signatureOptions.classList.remove('hidden');
+      } else {
+        signatureOptions.classList.add('hidden');
+      }
+    }
+
+    presetSelector.addEventListener('change', (e) => applyPreset(e.target.value));
+
+    function setTab(activeTab) {
+      [tabPhoto, tabSign, tabCheat].forEach(t => {
+        t.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition';
+      });
+      activeTab.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition';
+
+      if (activeTab === tabCheat) {
+        toolSection.classList.add('hidden');
+        specsDirectory.classList.remove('hidden');
+      } else {
+        toolSection.classList.remove('hidden');
+        specsDirectory.classList.add('hidden');
+
+        if (activeTab === tabSign) {
+          presetSelector.value = 'ssc_sign';
+          applyPreset('ssc_sign');
+        } else {
+          presetSelector.value = 'ssc_photo';
+          applyPreset('ssc_photo');
+        }
+      }
+    }
+
+    tabPhoto.addEventListener('click', () => setTab(tabPhoto));
+    tabSign.addEventListener('click', () => setTab(tabSign));
+    tabCheat.addEventListener('click', () => setTab(tabCheat));
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-brand-500', 'bg-brand-50/40'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-brand-500', 'bg-brand-50/40'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('border-brand-500', 'bg-brand-50/40');
+      if (e.dataTransfer.files.length) loadSelectedFile(e.dataTransfer.files[0]);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) loadSelectedFile(e.target.files[0]);
+    });
+
+    function loadSelectedFile(file) {
+      if (!file.type.match('image.*')) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          rawImage = img;
+          loadedFileName.textContent = `Selected: ${file.name} (${Math.round(file.size / 1024)} KB)`;
+          loadedFileName.classList.remove('hidden');
+          btnProcess.disabled = false;
+          btnProcess.innerHTML = `<span>Format & Compress Image</span>`;
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    btnProcess.addEventListener('click', () => {
+      if (!rawImage) return;
+
+      const targetW = parseInt(inputW.value, 10) || 200;
+      const targetH = parseInt(inputH.value, 10) || 230;
+      const maxTargetBytes = (parseInt(inputMaxKB.value, 10) || 50) * 1024;
+      const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
+
+      canvas.width = targetW;
+      canvas.height = targetH;
+
+      // Draw white background (mandatory for portal forms)
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, targetW, targetH);
+
+      // Draw and scale image with cover ratio
+      const imgRatio = rawImage.width / rawImage.height;
+      const targetRatio = targetW / targetH;
+      let renderW, renderH, offsetX = 0, offsetY = 0;
+
+      if (imgRatio > targetRatio) {
+        renderH = targetH;
+        renderW = targetH * imgRatio;
+        offsetX = -(renderW - targetW) / 2;
+      } else {
+        renderW = targetW;
+        renderH = targetW / imgRatio;
+        offsetY = -(renderH - targetH) / 2;
+      }
+
+      ctx.drawImage(rawImage, offsetX, offsetY, renderW, renderH);
+
+      // Apply signature filter effects if active
+      if (!signatureOptions.classList.contains('hidden')) {
+        const imgData = ctx.getImageData(0, 0, targetW, targetH);
+        const data = imgData.data;
+
+        for (let i = 0; i < data.length; i += 4) {
+          let r = data[i], g = data[i+1], b = data[i+2];
+
+          if (optGrayscale.checked) {
+            let gray = 0.299 * r + 0.587 * g + 0.114 * b;
+            r = g = b = gray;
+          }
+
+          if (optContrast.checked) {
+            // Push light off-whites to pure white and darken pen strokes
+            let brightness = (r + g + b) / 3;
+            if (brightness > 180) {
+              r = 255; g = 255; b = 255;
+            } else {
+              r = Math.max(0, r - 30);
+              g = Math.max(0, g - 30);
+              b = Math.max(0, b - 30);
+            }
+          }
+
+          data[i] = r; data[i+1] = g; data[i+2] = b;
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+
+      // Binary search loop to achieve exact file size bounds
+      let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
+
+      for (let step = 0; step < 8; step++) {
+        const testQuality = (low + high) / 2;
+        const currentDataUrl = canvas.toDataURL('image/jpeg', testQuality);
+        const calculatedBytes = Math.round((currentDataUrl.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
+
+        if (calculatedBytes <= maxTargetBytes) {
+          bestDataUrl = currentDataUrl;
+          bestBytes = calculatedBytes;
+          low = testQuality; // Try improving visual quality
+        } else {
+          high = testQuality; // Too large, lower quality
+        }
+      }
+
+      if (!bestDataUrl) {
+        bestDataUrl = canvas.toDataURL('image/jpeg', 0.1);
+        bestBytes = Math.round((bestDataUrl.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
+      }
+
+      const finalKB = (bestBytes / 1024).toFixed(1);
+
+      // Render results
+      outputImg.src = bestDataUrl;
+      outputImg.classList.remove('hidden');
+      placeholderText.classList.add('hidden');
+      
+      metaDims.textContent = `${targetW} × ${targetH} px`;
+      metaSize.textContent = `${finalKB} KB`;
+      metaBox.classList.remove('hidden');
+
+      statusBadge.textContent = (bestBytes <= maxTargetBytes && bestBytes >= minTargetBytes) ? 'Within Bounds' : 'Target Fit';
+      statusBadge.className = 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800';
+      statusBadge.classList.remove('hidden');
+
+      downloadBtn.href = bestDataUrl;
+      downloadBtn.download = `form_document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
+      downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
+
+      // Track conversion in Google Analytics
+      if (typeof gtag === 'function') {
+        gtag('event', 'doc_compression_success', {
+          event_category: 'Compression',
+          event_label: presetSelector.value,
+          value: parseInt(finalKB, 10)
+        });
+      }
+    });
+
+    // Initialize default preset on load
+    applyPreset('ssc_photo');
+  </script>
+</body>
+</html>
