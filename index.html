@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GovDoc Resizer — Exam Photo & Signature Compressor (20KB - 50KB)</title>
-  <meta name="description" content="Free client-side tool to resize and compress photos and signatures for SSC, UPSC, IBPS, Passport, and Visa forms. 100% private, zero uploads.">
-  <meta name="keywords" content="photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, upsc photo size, ssc image resizer, passport photo format">
+  <title>Any Doc Resizer — Exam Photo & Signature Compressor (20KB - 50KB)</title>
+  <meta name="description" content="Free client-side tool to resize and compress photos and signatures for Police, Army, SSC, UPSC, IBPS, Passport, and Visa forms. 100% private, zero uploads.">
+  <meta name="keywords" content="police photo resizer, army agniveer photo size, photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, upsc photo size, ssc image resizer">
 
-  <!-- Google Analytics 4 (Replace G-XXXXXXXXXX with your Measurement ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K30SBGMLGG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -66,7 +66,6 @@
     <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center mb-6">
       <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
       <div class="min-h-[60px] flex items-center justify-center text-xs text-slate-400">
-        <!-- Google AdSense Responsive Display Unit Code goes here -->
         <span>Ad Space (Google AdSense Responsive Unit)</span>
       </div>
     </div>
@@ -77,7 +76,7 @@
         Gov & Exam Form Image Compressor
       </h1>
       <p class="mt-2 text-sm sm:text-base text-slate-600">
-        Directly hit required pixel dimensions and strictly fit between <strong>20 KB – 50 KB</strong> or <strong>10 KB – 20 KB</strong> without losing clarity.
+        Directly fit required dimensions and KB limits for <strong>Police, Army, SSC, Bank & UPSC</strong> without blur.
       </p>
     </div>
 
@@ -97,27 +96,58 @@
 
     <div id="toolSection" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-      <!-- Configuration & Upload (Left/Top) -->
+      <!-- Configuration & Upload -->
       <div class="lg:col-span-7 space-y-6">
         <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-5">
           
-          <!-- Preset Dropdown -->
+          <!-- Preset Dropdown with Police, Army, SSC, Banks -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Portal Requirement Preset</label>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Portal Preset</label>
             <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
-              <optgroup label="Popular Exam Formats">
-                <option value="ssc_photo">SSC CGL / CHSL Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="ssc_sign">SSC Signature (140 x 60 px | 10KB - 20KB)</option>
-                <option value="upsc_photo">UPSC Portal Photo (350 x 350 px | 20KB - 100KB)</option>
-                <option value="upsc_sign">UPSC Portal Signature (350 x 350 px | 20KB - 100KB)</option>
+              
+              <optgroup label="Police Recruitment (Constable & SI)">
+                <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
+                <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
+                <option value="delhi_police_photo">Delhi Police Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="delhi_police_sign">Delhi Police Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="bihar_police_photo">Bihar Police Photo (200 x 230 px | 30KB - 50KB)</option>
+                <option value="bihar_police_sign">Bihar Police Signature (140 x 60 px | 10KB - 25KB)</option>
+                <option value="crpf_photo">CRPF / CISF / BSF Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="crpf_sign">CRPF / CISF / BSF Signature (140 x 60 px | 10KB - 20KB)</option>
+              </optgroup>
+
+              <optgroup label="Defence & Armed Forces (Army, Navy, Air Force)">
+                <option value="army_photo">Indian Army Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
+                <option value="army_sign">Indian Army Agniveer Signature (350 x 150 px | 10KB - 20KB)</option>
+                <option value="airforce_photo">Air Force Agniveervayu Photo (350 x 450 px | 10KB - 50KB)</option>
+                <option value="airforce_sign">Air Force Agniveervayu Sign (350 x 150 px | 10KB - 50KB)</option>
+                <option value="navy_photo">Indian Navy Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
+                <option value="navy_sign">Indian Navy Agniveer Sign (350 x 150 px | 10KB - 20KB)</option>
+                <option value="nda_cds_photo">NDA / CDS Photo (350 x 350 px | 20KB - 300KB)</option>
+              </optgroup>
+
+              <optgroup label="SSC & Railways (RRB)">
+                <option value="ssc_photo">SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="rrb_photo">Railway RRB Photo (320 x 240 px | 30KB - 70KB)</option>
+                <option value="rrb_sign">Railway RRB Signature (140 x 60 px | 30KB - 70KB)</option>
+              </optgroup>
+
+              <optgroup label="Banking & Insurance (IBPS / SBI / LIC)">
                 <option value="ibps_photo">IBPS / SBI Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
                 <option value="ibps_sign">IBPS / SBI Bank Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="ibps_thumb">IBPS Left Thumb Impression (240 x 240 px | 20KB - 50KB)</option>
+                <option value="ibps_declaration">IBPS Hand Declaration (800 x 400 px | 50KB - 100KB)</option>
               </optgroup>
-              <optgroup label="Official Identity & Visa">
+
+              <optgroup label="Civil Services, Passport & Visa">
+                <option value="upsc_photo">UPSC CSE Photo (350 x 350 px | 20KB - 300KB)</option>
+                <option value="upsc_sign">UPSC CSE Signature (350 x 150 px | 20KB - 100KB)</option>
                 <option value="passport_in">Passport Online Portal (413 x 531 px | under 100KB)</option>
                 <option value="us_visa">US Visa 2x2 Inch Square (600 x 600 px | under 240KB)</option>
                 <option value="custom">Custom Dimensions & Size Limits</option>
               </optgroup>
+
             </select>
           </div>
 
@@ -128,7 +158,7 @@
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
             </div>
             <p class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
-            <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP files up to 25 MB</p>
+            <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP files</p>
             <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
           </div>
 
@@ -136,11 +166,11 @@
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
-              <input type="number" id="inputW" value="200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+              <input type="number" id="inputW" value="180" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Height (px)</label>
-              <input type="number" id="inputH" value="230" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+              <input type="number" id="inputH" value="225" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1">Max KB</label>
@@ -152,7 +182,7 @@
             </div>
           </div>
 
-          <!-- Signature Enhancer Options (Shows conditionally) -->
+          <!-- Signature Enhancer Options -->
           <div id="signatureOptions" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
             <span class="text-xs font-bold text-slate-700 block uppercase tracking-wider">Signature Clarity Tools</span>
             <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
@@ -174,6 +204,7 @@
         </div>
       </div>
 
+      <!-- Preview Section -->
       <div class="lg:col-span-5 space-y-6">
         <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[420px]">
           <div>
@@ -182,13 +213,11 @@
               <span id="statusBadge" class="hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Ready</span>
             </div>
 
-            <!-- Preview Image Placeholder -->
             <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[260px] p-4 overflow-hidden relative">
               <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed output will appear here with exact dimensions and target file size.</p>
               <img id="outputImg" class="hidden max-h-[240px] max-w-full rounded border border-slate-200 shadow-sm object-contain" alt="Compressed Preview">
             </div>
 
-            <!-- Metadata readout -->
             <div id="metaBox" class="hidden mt-4 grid grid-cols-2 gap-2 text-xs bg-slate-50 p-3 rounded-lg border border-slate-200">
               <div>
                 <span class="text-slate-400 block text-[10px] uppercase font-semibold">Dimensions</span>
@@ -201,7 +230,6 @@
             </div>
           </div>
 
-          <!-- Download Action -->
           <div class="mt-5">
             <a id="downloadBtn" download="form_ready_document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
@@ -221,9 +249,10 @@
 
     </div>
 
+    <!-- Specs Directory Table -->
     <div id="specsDirectory" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-xl font-bold text-slate-900 mb-2">Government & Portal Image Specifications (2026 Directory)</h2>
-      <p class="text-sm text-slate-500 mb-6">Always double check notification guidelines. These are the current official dimensions and KB ranges accepted by portals:</p>
+      <h2 class="text-xl font-bold text-slate-900 mb-2">Government & Portal Image Specifications (Official Directory)</h2>
+      <p class="text-sm text-slate-500 mb-6">These are the standard official dimensions and KB ranges accepted by central & state portals:</p>
 
       <div class="overflow-x-auto">
         <table class="w-full text-left text-sm text-slate-600">
@@ -238,25 +267,46 @@
           </thead>
           <tbody class="divide-y divide-slate-100">
             <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (Staff Selection Comm.)</td>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
               <td class="py-3.5 px-4">Passport Photograph</td>
-              <td class="py-3.5 px-4 font-mono text-xs">200 × 230 px</td>
+              <td class="py-3.5 px-4 font-mono text-xs">180 × 225 px</td>
               <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 50 KB</td>
               <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (Staff Selection Comm.)</td>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
               <td class="py-3.5 px-4">Signature</td>
               <td class="py-3.5 px-4 font-mono text-xs">140 × 60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">5 KB – 20 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Army (Agniveer GD/Tech)</td>
+              <td class="py-3.5 px-4">Photograph</td>
+              <td class="py-3.5 px-4 font-mono text-xs">350 × 450 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 50 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Army (Agniveer GD/Tech)</td>
+              <td class="py-3.5 px-4">Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">350 × 150 px</td>
               <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 20 KB</td>
               <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">UPSC OTR</td>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Air Force (Agniveervayu)</td>
+              <td class="py-3.5 px-4">Photo / Sign / Thumb</td>
+              <td class="py-3.5 px-4 font-mono text-xs">350 × 450 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">10 KB – 50 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (CGL, CHSL, GD, MTS)</td>
               <td class="py-3.5 px-4">Photo & Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">350 × 350 px (Square)</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 300 KB</td>
-              <td class="py-3.5 px-4">JPG</td>
+              <td class="py-3.5 px-4 font-mono text-xs">200×230 / 140×60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
             </tr>
             <tr>
               <td class="py-3.5 px-4 font-semibold text-slate-800">IBPS / SBI Banking Exams</td>
@@ -266,27 +316,35 @@
               <td class="py-3.5 px-4">JPG / JPEG</td>
             </tr>
             <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">US State Visa DS-160</td>
-              <td class="py-3.5 px-4">Digital Photo</td>
-              <td class="py-3.5 px-4 font-mono text-xs">600 × 600 px (2x2")</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">≤ 240 KB</td>
-              <td class="py-3.5 px-4">JPEG</td>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">Railway RRB (NTPC, Group D)</td>
+              <td class="py-3.5 px-4">Photo & Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">320×240 / 140×60 px</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">30 KB – 70 KB</td>
+              <td class="py-3.5 px-4">JPEG / JPG</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 font-semibold text-slate-800">UPSC OTR / CSE</td>
+              <td class="py-3.5 px-4">Photo & Signature</td>
+              <td class="py-3.5 px-4 font-mono text-xs">350 × 350 px (Square)</td>
+              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 300 KB</td>
+              <td class="py-3.5 px-4">JPG</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- FAQ Section -->
     <section class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
       <h2 class="text-xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
       <div class="space-y-4">
         <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Why do portals require exact 20 KB to 50 KB file sizes?</span>
+            <span>Why do Police, Army, and SSC portals reject photos?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            Government databases handle millions of candidates at once. Storing photos under 50 KB guarantees fast batch loading, prevents database timeouts, and simplifies standardized admit card generation.
+            Portals automatically scan image file byte counts and aspect ratios before uploading. If your photo is even 1 KB above 50 KB or 1 pixel off from the specified 200x230 ratio, automated portal scripts immediately reject the submission.
           </p>
         </details>
 
@@ -299,16 +357,6 @@
             No. This tool operates 100% locally inside your web browser using HTML5 Canvas. Your image is never uploaded to any remote server or stored in any database.
           </p>
         </details>
-
-        <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>How does this tool reach the exact file size without blurring?</span>
-            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
-          </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            We use an automated binary search compression loop. It analyzes the raw byte size over successive quality iterations until it hits the highest possible visual clarity that still fits beneath the portal's upper limit.
-          </p>
-        </details>
       </div>
     </section>
 
@@ -317,19 +365,15 @@
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-12">
     <div class="max-w-4xl mx-auto px-4 space-y-2">
       <p>&copy; 2026 GovDoc Resizer. Built for students & job applicants. Client-side execution ensures total data privacy.</p>
-      <p>Not affiliated with SSC, UPSC, or any government portal. Follow all instructions stated in your official exam brochure.</p>
+      <p>Not affiliated with SSC, UPSC, Indian Army, or Police Recruitment boards. Follow all instructions stated in your official exam notification.</p>
     </div>
   </footer>
 
-  <!-- Hidden Processing Canvas -->
   <canvas id="engineCanvas" class="hidden"></canvas>
 
   <script>
-    // State variables
     let rawImage = null;
-    let currentMode = 'photo';
 
-    // DOM Elements
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const loadedFileName = document.getElementById('loadedFileName');
@@ -353,22 +397,50 @@
     const canvas = document.getElementById('engineCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Tab navigation elements
     const tabPhoto = document.getElementById('tabPhoto');
     const tabSign = document.getElementById('tabSign');
     const tabCheat = document.getElementById('tabCheat');
     const toolSection = document.getElementById('toolSection');
     const specsDirectory = document.getElementById('specsDirectory');
 
+    // Complete Presets Database: Police, Army, Navy, Air Force, SSC, Banking, UPSC
     const PRESETS = {
+      // Police
+      up_police_photo: { w: 180, h: 225, min: 20, max: 50, sign: false },
+      up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
+      delhi_police_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
+      delhi_police_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
+      bihar_police_photo: { w: 200, h: 230, min: 30, max: 50, sign: false },
+      bihar_police_sign:  { w: 140, h: 60,  min: 10, max: 25, sign: true },
+      crpf_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
+      crpf_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
+
+      // Defence & Armed Forces
+      army_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
+      army_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
+      airforce_photo: { w: 350, h: 450, min: 10, max: 50, sign: false },
+      airforce_sign:  { w: 350, h: 150, min: 10, max: 50, sign: true },
+      navy_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
+      navy_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
+      nda_cds_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
+
+      // SSC & Railways
       ssc_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
-      ssc_sign: { w: 140, h: 60, min: 10, max: 20, sign: true },
-      upsc_photo: { w: 350, h: 350, min: 20, max: 100, sign: false },
-      upsc_sign: { w: 350, h: 350, min: 20, max: 100, sign: true },
-      ibps_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
-      ibps_sign: { w: 140, h: 60, min: 10, max: 20, sign: true },
+      ssc_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
+      rrb_photo: { w: 320, h: 240, min: 30, max: 70, sign: false },
+      rrb_sign:  { w: 140, h: 60,  min: 30, max: 70, sign: true },
+
+      // Banking
+      ibps_photo:       { w: 200, h: 230, min: 20, max: 50, sign: false },
+      ibps_sign:        { w: 140, h: 60,  min: 10, max: 20, sign: true },
+      ibps_thumb:       { w: 240, h: 240, min: 20, max: 50, sign: false },
+      ibps_declaration: { w: 800, h: 400, min: 50, max: 100, sign: false },
+
+      // UPSC & Passport
+      upsc_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
+      upsc_sign:   { w: 350, h: 150, min: 20, max: 100, sign: true },
       passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
-      us_visa: { w: 600, h: 600, min: 50, max: 240, sign: false },
+      us_visa:     { w: 600, h: 600, min: 50, max: 240, sign: false },
       custom: null
     };
 
@@ -403,11 +475,11 @@
         specsDirectory.classList.add('hidden');
 
         if (activeTab === tabSign) {
-          presetSelector.value = 'ssc_sign';
-          applyPreset('ssc_sign');
+          presetSelector.value = 'up_police_sign';
+          applyPreset('up_police_sign');
         } else {
-          presetSelector.value = 'ssc_photo';
-          applyPreset('ssc_photo');
+          presetSelector.value = 'up_police_photo';
+          applyPreset('up_police_photo');
         }
       }
     }
@@ -449,19 +521,17 @@
     btnProcess.addEventListener('click', () => {
       if (!rawImage) return;
 
-      const targetW = parseInt(inputW.value, 10) || 200;
-      const targetH = parseInt(inputH.value, 10) || 230;
+      const targetW = parseInt(inputW.value, 10) || 180;
+      const targetH = parseInt(inputH.value, 10) || 225;
       const maxTargetBytes = (parseInt(inputMaxKB.value, 10) || 50) * 1024;
       const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
 
       canvas.width = targetW;
       canvas.height = targetH;
 
-      // Draw white background (mandatory for portal forms)
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, targetW, targetH);
 
-      // Draw and scale image with cover ratio
       const imgRatio = rawImage.width / rawImage.height;
       const targetRatio = targetW / targetH;
       let renderW, renderH, offsetX = 0, offsetY = 0;
@@ -478,7 +548,6 @@
 
       ctx.drawImage(rawImage, offsetX, offsetY, renderW, renderH);
 
-      // Apply signature filter effects if active
       if (!signatureOptions.classList.contains('hidden')) {
         const imgData = ctx.getImageData(0, 0, targetW, targetH);
         const data = imgData.data;
@@ -492,7 +561,6 @@
           }
 
           if (optContrast.checked) {
-            // Push light off-whites to pure white and darken pen strokes
             let brightness = (r + g + b) / 3;
             if (brightness > 180) {
               r = 255; g = 255; b = 255;
@@ -508,7 +576,6 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
-      // Binary search loop to achieve exact file size bounds
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
@@ -519,9 +586,9 @@
         if (calculatedBytes <= maxTargetBytes) {
           bestDataUrl = currentDataUrl;
           bestBytes = calculatedBytes;
-          low = testQuality; // Try improving visual quality
+          low = testQuality;
         } else {
-          high = testQuality; // Too large, lower quality
+          high = testQuality;
         }
       }
 
@@ -532,7 +599,6 @@
 
       const finalKB = (bestBytes / 1024).toFixed(1);
 
-      // Render results
       outputImg.src = bestDataUrl;
       outputImg.classList.remove('hidden');
       placeholderText.classList.add('hidden');
@@ -549,7 +615,6 @@
       downloadBtn.download = `form_document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
       downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
 
-      // Track conversion in Google Analytics
       if (typeof gtag === 'function') {
         gtag('event', 'doc_compression_success', {
           event_category: 'Compression',
@@ -559,8 +624,8 @@
       }
     });
 
-    // Initialize default preset on load
-    applyPreset('ssc_photo');
+    // Initialize default preset
+    applyPreset('up_police_photo');
   </script>
 </body>
 </html>
