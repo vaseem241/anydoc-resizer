@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Any Doc Resizer — Resize & Compress Any Image to Exact KB Without Losing Quality</title>
-  <meta name="description" content="Free tool to resize, crop, and compress photos, signatures, and documents to exact KB limits without blur. Includes 1-click photo+signature pack and live validator.">
-  <meta name="keywords" content="resize image without blur, photo resizer 20kb to 50kb, signature compressor 10kb to 20kb, photo par date kaise dale, ssc photo signature combo">
+  <title>Any Doc Resizer — Resize & Convert Any Image or Document to Exact KB</title>
+  <meta name="description" content="Free tool to resize photos, signatures, and convert documents (Word to PDF, PDF to Word, Image to PDF) to exact KB limits without blur. 100% private browser processing.">
+  <meta name="keywords" content="resize image to exact kb, docx to pdf converter, pdf to word converter, image to pdf 200kb, photo resizer 20kb to 50kb, signature compressor">
 
   <!-- Matching Resize-Arrows Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%234f46e5'/><path d='M32 44 V32 H44 M32 32 L46 46 M68 44 V32 H56 M68 32 L54 46 M32 56 V68 H44 M32 68 L46 54 M68 56 V68 H56 M68 68 L54 54' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
@@ -21,10 +21,14 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- JSZip for 1-Click Combo Pack Download -->
+  <!-- Client-side Document & Compression Libraries (Zero Server Upload) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     tailwind.config = {
       theme: {
         extend: {
@@ -56,7 +60,7 @@
         </div>
         <div>
           <span class="text-lg font-bold text-slate-900 leading-none block">Any Doc Resizer</span>
-          <span id="txtTagline" class="text-[11px] text-slate-500">Fast, Local & Zero-Blur</span>
+          <span id="txtTagline" class="text-[11px] text-slate-500">Image & Document Utility • 100% Private</span>
         </div>
       </div>
 
@@ -65,7 +69,7 @@
         <button id="langToggleBtn" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
           हिंदी में बदलें
         </button>
-        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Resize%20any%20photo%20%26%20signature%20to%20exact%2020KB-50KB%20without%20losing%20quality%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
+        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Free%20online%20Image%20%26%20Document%20Resizer%20%2B%20Converter%20(Word%2C%20PDF%2C%20Image)%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           <span class="hidden sm:inline">WhatsApp</span>
         </a>
@@ -75,7 +79,7 @@
 
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 w-full flex-grow">
     
-    <!-- Top Ad Placement Card -->
+    <!-- Top Ad Banner Space -->
     <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center mb-6">
       <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
       <div class="min-h-[50px] flex items-center justify-center text-xs text-slate-400">
@@ -86,70 +90,68 @@
     <!-- Universal Hero Title -->
     <div class="text-center max-w-2xl mx-auto mb-6">
       <h1 id="txtHeroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-        Resize & Compress Any Image to Exact KB — Without Losing Quality
+        Resize, Compress & Convert Any Document or Image
       </h1>
       <p id="txtHeroDesc" class="mt-2 text-sm sm:text-base text-slate-600">
-        Strict 20KB–50KB sizing with <strong>zero blur or pixel distortion</strong>. Includes automated portal pass/fail checks and instant combo packs.
+        Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and total browser privacy.
       </p>
     </div>
 
-    <!-- Mode Tabs -->
+    <!-- Navigation Tabs -->
     <div class="flex justify-center mb-6">
-      <div class="inline-flex p-1 bg-slate-200/80 rounded-xl max-w-full overflow-x-auto">
-        <button id="tabSingle" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
-          Single File Resizer
+      <div class="inline-flex p-1 bg-slate-200/80 rounded-xl max-w-full overflow-x-auto gap-1">
+        <button id="tabSingle" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
+          Image Resizer
         </button>
-        <button id="tabCombo" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-          Photo + Signature Pack (Zip)
+        <button id="tabDocConverter" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          Doc Converter (Word ⇄ PDF)
         </button>
-        <button id="tabSpecs" class="tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-          Official Specs Directory
+        <button id="tabCombo" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+          Photo + Sign Pack (Zip)
+        </button>
+        <button id="tabSpecs" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+          Specs Directory
         </button>
       </div>
     </div>
 
-    <!-- SINGLE FILE TOOL SECTION -->
+    <!-- 1. IMAGE & PHOTO RESIZER (CUSTOM DIMENSIONS DEFAULT) -->
     <div id="sectionSingle" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-      <!-- Left Configuration Card -->
+      <!-- Left Settings -->
       <div class="lg:col-span-7 space-y-6">
         <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-5">
           
-          <!-- Preset Dropdown -->
+          <!-- Preset Dropdown: Defaults to Custom Dimensions -->
           <div>
-            <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Select Preset (Optional)</label>
+            <div class="flex justify-between items-center mb-1.5">
+              <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Select Preset (Optional)</label>
+              <span class="text-[11px] font-semibold text-brand-600">Set to Custom by default</span>
+            </div>
             <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
-              <optgroup label="General & Custom">
-                <option value="custom">Custom Dimensions & File Size</option>
-                <option value="passport_in">Passport Size (413 x 531 px | under 100KB)</option>
+              <optgroup label="Default & Universal">
+                <option value="custom" selected>Custom Dimensions & File Size (User Editable)</option>
+                <option value="passport_in">Passport Photo (413 x 531 px | under 100KB)</option>
                 <option value="us_visa">Visa Square 2x2 Inch (600 x 600 px | under 240KB)</option>
+                <option value="linkedin_banner">LinkedIn / Profile Avatar (400 x 400 px | under 100KB)</option>
               </optgroup>
-              <optgroup label="Police Recruitment">
+              <optgroup label="Recruitment & Exam Presets">
+                <option value="ssc_photo">SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
                 <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
-                <option value="delhi_police_photo">Delhi Police Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="delhi_police_sign">Delhi Police Signature (140 x 60 px | 10KB - 20KB)</option>
-              </optgroup>
-              <optgroup label="Defence & Armed Forces">
                 <option value="army_photo">Indian Army Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
                 <option value="army_sign">Indian Army Agniveer Signature (350 x 150 px | 10KB - 20KB)</option>
-                <option value="airforce_photo">Air Force Agniveervayu Photo (350 x 450 px | 10KB - 50KB)</option>
-              </optgroup>
-              <optgroup label="SSC & Railways">
-                <option value="ssc_photo" selected>SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
-                <option value="rrb_photo">Railway RRB Photo (320 x 240 px | 30KB - 70KB)</option>
-              </optgroup>
-              <optgroup label="Banking & UPSC">
-                <option value="ibps_photo">IBPS / SBI Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="ibps_sign">IBPS / SBI Bank Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="ibps_photo">IBPS / Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ibps_sign">IBPS / Bank PO Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="upsc_photo">UPSC CSE Photo (350 x 350 px | 20KB - 300KB)</option>
                 <option value="upsc_sign">UPSC CSE Signature (350 x 150 px | 20KB - 100KB)</option>
               </optgroup>
             </select>
           </div>
 
-          <!-- Upload Drop Zone & Webcam Trigger -->
+          <!-- Upload Drop Zone & Live Camera Button -->
           <div class="space-y-2">
             <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[140px]">
               <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
@@ -157,7 +159,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
               </div>
               <p id="txtUploadPrompt" class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
-              <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP (Local, Zero-Upload)</p>
+              <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP (100% Client-Side Local)</p>
               <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
             </div>
 
@@ -167,7 +169,7 @@
             </button>
           </div>
 
-          <!-- Camera Stream Interface -->
+          <!-- Camera Stream Box -->
           <div id="cameraContainer" class="hidden p-4 rounded-xl bg-slate-900 border border-slate-700 space-y-3">
             <video id="webcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
             <div class="flex gap-2">
@@ -176,50 +178,56 @@
             </div>
           </div>
 
-          <!-- Dimension & Target Size Inputs -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
-              <input type="number" id="inputW" value="200" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+          <!-- Custom Dimensions & Target Size Inputs (Fully User-Editable) -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-600">Image Dimensions & File Size Bounds</span>
+              <span class="text-[11px] text-slate-400">Type any custom value</span>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">Height (px)</label>
-              <input type="number" id="inputH" value="230" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">Max KB</label>
-              <input type="number" id="inputMaxKB" value="50" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">Min KB</label>
-              <input type="number" id="inputMinKB" value="20" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-1 focus:ring-brand-500 outline-none">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
+                <input type="number" id="inputW" value="300" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Height (px)</label>
+                <input type="number" id="inputH" value="300" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Max KB</label>
+                <input type="number" id="inputMaxKB" value="100" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1">Min KB</label>
+                <input type="number" id="inputMinKB" value="20" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+              </div>
             </div>
           </div>
 
-          <!-- Face Alignment & Zoom Controls -->
+          <!-- Zoom & Frame Control -->
           <div id="faceAlignContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
             <div class="flex justify-between items-center text-xs font-bold text-slate-700 uppercase tracking-wider">
-              <span>Photo Zoom & Position</span>
-              <span id="zoomVal" class="text-brand-600 font-mono">1.0x</span>
+              <span>Zoom & Framing</span>
+              <span id="zoomVal" class="text-brand-600 font-mono">1.00x</span>
             </div>
-            <input type="range" id="zoomSlider" min="0.8" max="2.0" step="0.05" value="1.0" class="w-full accent-brand-600 cursor-pointer">
-            <p class="text-[11px] text-slate-400">Adjust to ensure your face fills 70%–80% of the frame without cutting your forehead or chin.</p>
+            <input type="range" id="zoomSlider" min="0.7" max="2.2" step="0.05" value="1.0" class="w-full accent-brand-600 cursor-pointer">
+            <p class="text-[11px] text-slate-400">Scale up or down to frame passports, faces, or objects cleanly.</p>
           </div>
 
-          <!-- Candidate Name & Date of Photo (DOP) Strip Generator -->
+          <!-- Name & Date (DOP) Strip -->
           <div id="nameDateContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
             <label class="flex items-center gap-2 cursor-pointer font-bold text-xs text-slate-700 uppercase tracking-wider">
               <input type="checkbox" id="chkAddNameDate" class="rounded text-brand-600">
-              <span id="txtAddDOP">Add Name & Date of Photo (DOP) Strip</span>
+              <span id="txtAddDOP">Add Candidate Name & Date Strip (At Bottom)</span>
             </label>
             <div id="nameDateFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               <div>
-                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Candidate Name</label>
-                <input type="text" id="candidateName" placeholder="e.g. AMIT KUMAR" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Name</label>
+                <input type="text" id="candidateName" placeholder="e.g. RAHUL SHARMA" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
               </div>
               <div>
-                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Date of Taking Photo</label>
-                <input type="text" id="photoDate" value="04/10/2026" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none">
+                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Date</label>
+                <input type="text" id="photoDate" value="05/10/2026" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none">
               </div>
             </div>
           </div>
@@ -233,7 +241,7 @@
             <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
               <label class="flex items-center gap-1.5 cursor-pointer">
                 <input type="checkbox" id="optCleanPaper" class="rounded text-brand-600" checked>
-                Make Background Pure White (Remove Shadows)
+                Make Background Pure White
               </label>
               <label class="flex items-center gap-1.5 cursor-pointer">
                 <input type="checkbox" id="optDarkenInk" class="rounded text-brand-600" checked>
@@ -254,42 +262,42 @@
         <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[460px]">
           <div>
             <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Live Clarity & Validator</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Clarity & Size Verification</span>
               <span id="statusBadge" class="hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Verified</span>
             </div>
 
-            <!-- Side-by-Side Clarity Compare -->
+            <!-- Preview Box -->
             <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[220px] p-4 relative overflow-hidden">
-              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed image and side-by-side clarity verification will appear here.</p>
+              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed image and live side-by-side comparison will appear here.</p>
               
               <div id="sideBySideBox" class="hidden w-full grid grid-cols-2 gap-3 items-center">
                 <div class="text-center">
-                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Original Photo</span>
+                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Original</span>
                   <img id="origImg" class="max-h-40 mx-auto rounded border border-slate-200 object-contain shadow-xs" alt="Original">
                   <span id="origSizeLabel" class="text-[10px] text-slate-500 mt-1 block"></span>
                 </div>
                 <div class="text-center">
-                  <span class="text-[10px] font-bold uppercase text-brand-600 block mb-1">Optimized Output</span>
+                  <span class="text-[10px] font-bold uppercase text-brand-600 block mb-1">Optimized</span>
                   <img id="outputImg" class="max-h-40 mx-auto rounded border border-brand-300 ring-2 ring-brand-100 object-contain shadow-xs" alt="Compressed">
                   <span id="outSizeLabel" class="text-[10px] font-bold text-emerald-600 mt-1 block"></span>
                 </div>
               </div>
             </div>
 
-            <!-- 3-Point Portal Pass / Fail Validator -->
+            <!-- 3-Point Portal Compliance Validator -->
             <div id="validatorCard" class="hidden mt-4 bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
-              <span class="text-[11px] font-extrabold uppercase tracking-wide text-slate-500 block mb-1">Portal Compliance Check</span>
+              <span class="text-[11px] font-extrabold uppercase tracking-wide text-slate-500 block mb-1">Quality & Limit Checks</span>
               <div class="flex items-center justify-between text-xs py-1 border-b border-slate-200/60">
                 <span class="text-slate-600">Exact Dimensions:</span>
-                <span id="valDims" class="font-bold text-emerald-600 flex items-center gap-1">✅ 200 × 230 px</span>
+                <span id="valDims" class="font-bold text-emerald-600">✅ 300 × 300 px</span>
               </div>
               <div class="flex items-center justify-between text-xs py-1 border-b border-slate-200/60">
                 <span class="text-slate-600">File Size Range:</span>
-                <span id="valSize" class="font-bold text-emerald-600 flex items-center gap-1">✅ 34.2 KB (Pass)</span>
+                <span id="valSize" class="font-bold text-emerald-600">✅ Fit to bounds</span>
               </div>
               <div class="flex items-center justify-between text-xs py-1">
-                <span class="text-slate-600">File Type:</span>
-                <span id="valType" class="font-bold text-emerald-600 flex items-center gap-1">✅ JPEG / JPG (Allowed)</span>
+                <span class="text-slate-600">File Format:</span>
+                <span id="valType" class="font-bold text-emerald-600">✅ JPEG / JPG (Universal)</span>
               </div>
             </div>
           </div>
@@ -302,7 +310,6 @@
           </div>
         </div>
 
-        <!-- Secondary Ad Unit -->
         <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center">
           <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
           <div class="min-h-[80px] flex items-center justify-center text-xs text-slate-400">
@@ -313,7 +320,75 @@
 
     </div>
 
-    <!-- COMBO PACK (ZIP) SECTION -->
+    <!-- 2. NEW: DOC CONVERTER TAB (WORD ⇄ PDF ⇄ IMAGES) -->
+    <div id="sectionDocConverter" class="hidden max-w-4xl mx-auto space-y-6">
+      
+      <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">All-in-One Client-Side Document Converter</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Convert between Word, PDF, and Images right inside your browser without uploading your files to any external server.</p>
+        </div>
+
+        <!-- Conversion Mode Selection Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button type="button" onclick="selectConvertMode('wordToPdf')" id="btnModeWordToPdf" class="mode-btn p-3.5 rounded-xl border-2 border-brand-600 bg-brand-50/60 text-left transition">
+            <span class="text-xs font-bold text-brand-700 block">Word to PDF</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">.docx &rarr; .pdf document</span>
+          </button>
+          <button type="button" onclick="selectConvertMode('pdfToWord')" id="btnModePdfToWord" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
+            <span class="text-xs font-bold text-slate-800 block">PDF to Word</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">.pdf &rarr; editable .doc</span>
+          </button>
+          <button type="button" onclick="selectConvertMode('imgToPdf')" id="btnModeImgToPdf" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
+            <span class="text-xs font-bold text-slate-800 block">Images to PDF</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">Combine photos & scans</span>
+          </button>
+          <button type="button" onclick="selectConvertMode('pdfToImg')" id="btnModePdfToImg" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
+            <span class="text-xs font-bold text-slate-800 block">PDF to JPG</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">Extract PDF as images</span>
+          </button>
+        </div>
+
+        <!-- Universal Converter File Dropzone -->
+        <div id="docDropZone" class="border-2 border-dashed border-brand-400 bg-brand-50/20 hover:bg-brand-50/40 rounded-2xl p-8 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[190px]">
+          <input type="file" id="docFileInput" class="hidden">
+          <div class="w-12 h-12 mb-3 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <p id="docDropText" class="text-sm font-bold text-slate-800">Select .DOCX Word file or Drag & Drop</p>
+          <p id="docDropHint" class="text-xs text-slate-400 mt-1">Converts locally inside browser • 100% Secure</p>
+          <p id="docFileSelectedName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
+        </div>
+
+        <!-- Optional PDF Target Size Limit (for Image to PDF / PDF compressing) -->
+        <div id="pdfSizeOptions" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <span class="font-bold text-slate-700">Target PDF Size Cap (e.g. for Govt / Job Portals):</span>
+          <div class="flex gap-2">
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="radio" name="pdfTargetSize" value="200" checked class="text-brand-600"> Under 200 KB
+            </label>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="radio" name="pdfTargetSize" value="500" class="text-brand-600"> Under 500 KB
+            </label>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="radio" name="pdfTargetSize" value="original" class="text-brand-600"> High Quality
+            </label>
+          </div>
+        </div>
+
+        <!-- Convert Trigger Button & Status -->
+        <div class="space-y-3">
+          <button id="btnExecuteDocConvert" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
+            <span id="txtDocBtnLabel">Select a document to convert</span>
+          </button>
+          <div id="docConversionStatus" class="hidden text-xs text-center font-semibold text-slate-600 py-1"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 3. COMBO PACK (ZIP) SECTION -->
     <div id="sectionCombo" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm max-w-4xl mx-auto space-y-6">
       <div class="border-b border-slate-100 pb-4">
         <h2 class="text-xl font-bold text-slate-900">1-Click Exam Package (Photo + Signature)</h2>
@@ -321,14 +396,12 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Photo Slot -->
         <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
           <span class="text-xs font-bold uppercase text-slate-700 block">1. Applicant Photo (20 KB - 50 KB)</span>
           <input type="file" id="comboPhotoInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
           <p id="comboPhotoStatus" class="text-xs text-slate-400 font-medium">Select passport photograph</p>
         </div>
 
-        <!-- Signature Slot -->
         <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
           <span class="text-xs font-bold uppercase text-slate-700 block">2. Signature (10 KB - 20 KB)</span>
           <input type="file" id="comboSignInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
@@ -342,7 +415,7 @@
       </button>
     </div>
 
-    <!-- SPECS DIRECTORY -->
+    <!-- 4. SPECS DIRECTORY -->
     <div id="sectionSpecs" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
       <h2 class="text-xl font-bold text-slate-900 mb-2">Image Specifications Directory</h2>
       <p class="text-sm text-slate-500 mb-6">Standard dimensions and KB thresholds officially enforced by portals:</p>
@@ -405,21 +478,21 @@
       <div class="space-y-4">
         <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>How does this tool compress photos to 20KB without blur?</span>
+            <span>Can I customize the width, height, and target KB freely?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            Most compressors simply reduce image resolution, resulting in blurry, pixelated faces. AnyDoc Resizer preserves the exact required pixel geometry and applies binary-search quantization to achieve optimal clarity right under the portal limit.
+            Yes. By default, "Custom Dimensions & File Size" is selected. You can type any exact width, height, maximum KB, or minimum KB required by your specific portal or employer.
           </p>
         </details>
 
         <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Are my personal images uploaded to any server?</span>
+            <span>Are documents and files uploaded to your servers during conversion?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            No. AnyDoc Resizer executes 100% locally in your web browser via HTML5 Canvas. Your documents, photos, and signatures never touch any remote server.
+            No. AnyDoc Resizer converts Word, PDF, and image documents entirely in your local browser session. Your documents, resumes, or marksheet scans never touch any remote server.
           </p>
         </details>
       </div>
@@ -430,8 +503,6 @@
   <!-- ADSENSE COMPLIANT FOOTER -->
   <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 mt-12">
     <div class="max-w-4xl mx-auto px-4 space-y-4">
-      
-      <!-- Mandatory Trust & Policy Links -->
       <div class="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold text-slate-600">
         <button type="button" onclick="openModal('privacyModal')" class="hover:text-brand-600 transition">Privacy Policy</button>
         <span class="text-slate-300">|</span>
@@ -449,9 +520,7 @@
     </div>
   </footer>
 
-  <!-- ==================== ADSENSE MANDATORY LEGAL MODALS ==================== -->
-
-  <!-- 1. Privacy Policy Modal -->
+  <!-- LEGAL MODALS -->
   <div id="privacyModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
@@ -461,13 +530,9 @@
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
         <p><strong>Effective Date:</strong> October 2026</p>
         <h4 class="font-bold text-slate-800 text-sm">1. 100% Client-Side Processing (Zero Server Uploads)</h4>
-        <p>Your privacy is our absolute priority. When you use AnyDoc Resizer to crop, resize, or compress photos, signatures, or documents, <strong>no files or personal images are ever uploaded to our servers</strong>. All image processing operations (including resizing, quality adjustment, and name/date stamping) are performed locally inside your device's web browser using HTML5 Canvas technology.</p>
-        
+        <p>Your privacy is our absolute priority. When you use AnyDoc Resizer to crop, resize, or convert Word, PDF, or image files, <strong>no files or personal images are ever uploaded to our servers</strong>. All processing is performed locally inside your device's web browser using HTML5 Canvas, JSZip, and local client libraries.</p>
         <h4 class="font-bold text-slate-800 text-sm">2. Cookies & Analytics</h4>
-        <p>We use Google Analytics 4 to collect aggregated, anonymized metrics about site traffic (such as browser type, general geography, and page views) to help us improve the tool. We may also display advertisements served by Google AdSense or other third-party ad networks. Third-party vendors, including Google, use cookies to serve ads based on prior visits to this or other websites. You may opt out of personalized advertising by visiting Google's Ads Settings.</p>
-        
-        <h4 class="font-bold text-slate-800 text-sm">3. Local Storage</h4>
-        <p>We do not store your images or documents in any persistent external database. Once you refresh or close your browser tab, all image buffers are completely wiped from your device's memory.</p>
+        <p>We use Google Analytics 4 to collect aggregated, anonymized metrics about site traffic. Third-party vendors, including Google, use cookies to serve ads based on prior visits. You may opt out of personalized advertising by visiting Google's Ads Settings.</p>
       </div>
       <div class="pt-3 border-t text-right">
         <button onclick="closeModal('privacyModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
@@ -475,7 +540,6 @@
     </div>
   </div>
 
-  <!-- 2. Terms & Disclaimer Modal -->
   <div id="termsModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
@@ -484,13 +548,9 @@
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
         <h4 class="font-bold text-slate-800 text-sm">1. Acceptance of Terms</h4>
-        <p>By using AnyDoc Resizer, you agree to these Terms of Service. This utility is provided on an "as is" and "as available" basis for personal, educational, and non-commercial assistance.</p>
-        
+        <p>By using AnyDoc Resizer, you agree to these Terms of Service. This utility is provided on an "as is" basis for personal, educational, and non-commercial assistance.</p>
         <h4 class="font-bold text-slate-800 text-sm">2. Government Non-Affiliation Disclaimer</h4>
-        <p><strong>AnyDoc Resizer is an independent tool.</strong> It is NOT affiliated, endorsed, associated with, or in any way connected to the Staff Selection Commission (SSC), Union Public Service Commission (UPSC), National Testing Agency (NTA), Institute of Banking Personnel Selection (IBPS), Indian Armed Forces, or any state police recruitment board.</p>
-        
-        <h4 class="font-bold text-slate-800 text-sm">3. Candidate Responsibility</h4>
-        <p>While AnyDoc Resizer is engineered to align strictly with official recruitment guidelines, specifications and requirements may change without prior notice. Users must verify their final exported files against the latest official exam brochures before submitting their applications.</p>
+        <p>AnyDoc Resizer is an independent tool. It is NOT affiliated, endorsed, associated with, or in any way connected to the Staff Selection Commission (SSC), UPSC, NTA, IBPS, Indian Armed Forces, or any state police recruitment board.</p>
       </div>
       <div class="pt-3 border-t text-right">
         <button onclick="closeModal('termsModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
@@ -498,7 +558,6 @@
     </div>
   </div>
 
-  <!-- 3. About Us Modal -->
   <div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
@@ -506,9 +565,8 @@
         <button onclick="closeModal('aboutModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
-        <p><strong>AnyDoc Resizer</strong> was created to solve a widespread, frustrating hurdle faced by millions of candidates, students, and job seekers: rigid, unforgiving upload constraints on online application portals.</p>
-        <p>Most portals reject forms if an image is even 1 KB above the limit or slightly off in pixel dimensions. Standard image editors either introduce heavy pixelation or require users to guess slider percentages blindly.</p>
-        <p><strong>Our Architecture:</strong> AnyDoc Resizer operates on a decentralized, zero-server architecture. All processing is computed inside your browser using mathematical binary search algorithms that preserve maximum clarity right beneath strict byte boundaries.</p>
+        <p><strong>AnyDoc Resizer</strong> was created to solve rigid, frustrating upload constraints on online application portals. Most portals reject forms if an image is even 1 KB above the limit or slightly off in pixel dimensions.</p>
+        <p>Our tool executes locally inside your browser, protecting your privacy while ensuring your documents meet exact specifications on the first attempt.</p>
       </div>
       <div class="pt-3 border-t text-right">
         <button onclick="closeModal('aboutModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
@@ -516,7 +574,6 @@
     </div>
   </div>
 
-  <!-- 4. Contact & Support Modal -->
   <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-4 shadow-xl text-left">
       <div class="flex justify-between items-center border-b pb-3">
@@ -524,12 +581,11 @@
         <button onclick="closeModal('contactModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
-        <p>Have a question, feedback, or a new exam preset request? We'd love to hear from you.</p>
+        <p>Have a question or feedback? We'd love to hear from you.</p>
         <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
           <span class="text-[11px] font-bold uppercase text-slate-500 block">Email Inquiries</span>
           <a href="mailto:anydocresizer@gmail.com" class="text-brand-600 font-semibold text-sm">anydocresizer@gmail.com</a>
         </div>
-        <p class="text-slate-400 text-[11px]">We aim to reply to all legitimate support tickets and portal specification change notices within 24–48 hours.</p>
       </div>
       <div class="pt-3 border-t text-right">
         <button onclick="closeModal('contactModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
@@ -547,14 +603,42 @@
     let isHindi = false;
 
     // Modal Handlers
-    function openModal(id) {
-      document.getElementById(id).classList.remove('hidden');
-    }
-    function closeModal(id) {
-      document.getElementById(id).classList.add('hidden');
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    // Navigation Tabs
+    const tabSingle = document.getElementById('tabSingle');
+    const tabDocConverter = document.getElementById('tabDocConverter');
+    const tabCombo = document.getElementById('tabCombo');
+    const tabSpecs = document.getElementById('tabSpecs');
+    const sectionSingle = document.getElementById('sectionSingle');
+    const sectionDocConverter = document.getElementById('sectionDocConverter');
+    const sectionCombo = document.getElementById('sectionCombo');
+    const sectionSpecs = document.getElementById('sectionSpecs');
+
+    function setSection(activeTab) {
+      [tabSingle, tabDocConverter, tabCombo, tabSpecs].forEach(t => {
+        t.className = 'tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5';
+      });
+      activeTab.className = 'tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition flex items-center gap-1.5';
+
+      sectionSingle.classList.add('hidden');
+      sectionDocConverter.classList.add('hidden');
+      sectionCombo.classList.add('hidden');
+      sectionSpecs.classList.add('hidden');
+
+      if (activeTab === tabSingle) sectionSingle.classList.remove('hidden');
+      if (activeTab === tabDocConverter) sectionDocConverter.classList.remove('hidden');
+      if (activeTab === tabCombo) sectionCombo.classList.remove('hidden');
+      if (activeTab === tabSpecs) sectionSpecs.classList.remove('hidden');
     }
 
-    // DOM Elements
+    tabSingle.addEventListener('click', () => setSection(tabSingle));
+    tabDocConverter.addEventListener('click', () => setSection(tabDocConverter));
+    tabCombo.addEventListener('click', () => setSection(tabCombo));
+    tabSpecs.addEventListener('click', () => setSection(tabSpecs));
+
+    // Image Resizer DOM Elements
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
     const loadedFileName = document.getElementById('loadedFileName');
@@ -564,8 +648,6 @@
     const inputMaxKB = document.getElementById('inputMaxKB');
     const inputMinKB = document.getElementById('inputMinKB');
     const btnProcess = document.getElementById('btnProcess');
-    
-    // Preview & Compare
     const placeholderText = document.getElementById('placeholderText');
     const sideBySideBox = document.getElementById('sideBySideBox');
     const origImg = document.getElementById('origImg');
@@ -576,69 +658,33 @@
     const validatorCard = document.getElementById('validatorCard');
     const valDims = document.getElementById('valDims');
     const valSize = document.getElementById('valSize');
-    const valType = document.getElementById('valType');
     const downloadBtn = document.getElementById('downloadBtn');
-
-    // Controls
     const zoomSlider = document.getElementById('zoomSlider');
     const zoomVal = document.getElementById('zoomVal');
     const signatureOptions = document.getElementById('signatureOptions');
     const optCleanPaper = document.getElementById('optCleanPaper');
     const optDarkenInk = document.getElementById('optDarkenInk');
     const faceAlignContainer = document.getElementById('faceAlignContainer');
-
-    // Name & DOP
     const nameDateContainer = document.getElementById('nameDateContainer');
     const chkAddNameDate = document.getElementById('chkAddNameDate');
     const nameDateFields = document.getElementById('nameDateFields');
     const candidateName = document.getElementById('candidateName');
     const photoDate = document.getElementById('photoDate');
-
-    // Camera
-    const btnOpenCamera = document.getElementById('btnOpenCamera');
-    const cameraContainer = document.getElementById('cameraContainer');
-    const webcamVideo = document.getElementById('webcamVideo');
-    const btnSnapPhoto = document.getElementById('btnSnapPhoto');
-    const btnCloseCamera = document.getElementById('btnCloseCamera');
-
-    // Navigation Tabs
-    const tabSingle = document.getElementById('tabSingle');
-    const tabCombo = document.getElementById('tabCombo');
-    const tabSpecs = document.getElementById('tabSpecs');
-    const sectionSingle = document.getElementById('sectionSingle');
-    const sectionCombo = document.getElementById('sectionCombo');
-    const sectionSpecs = document.getElementById('sectionSpecs');
-
-    // Canvas
     const canvas = document.getElementById('engineCanvas');
     const ctx = canvas.getContext('2d');
-    const comboCanvas = document.getElementById('comboCanvas');
-    const comboCtx = comboCanvas.getContext('2d');
-
-    // Combo pack elements
-    const comboPhotoInput = document.getElementById('comboPhotoInput');
-    const comboSignInput = document.getElementById('comboSignInput');
-    const comboPhotoStatus = document.getElementById('comboPhotoStatus');
-    const comboSignStatus = document.getElementById('comboSignStatus');
-    const btnDownloadComboZip = document.getElementById('btnDownloadComboZip');
-    let comboPhotoBlob = null;
-    let comboSignBlob = null;
 
     // Presets DB
     const PRESETS = {
       custom: null,
       passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
       us_visa:     { w: 600, h: 600, min: 50, max: 240, sign: false },
-      up_police_photo: { w: 180, h: 225, min: 20, max: 50, sign: false },
-      up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
-      delhi_police_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
-      delhi_police_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
-      army_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
-      army_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
-      airforce_photo: { w: 350, h: 450, min: 10, max: 50, sign: false },
+      linkedin_banner: { w: 400, h: 400, min: 20, max: 100, sign: false },
       ssc_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
       ssc_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
-      rrb_photo: { w: 320, h: 240, min: 30, max: 70, sign: false },
+      up_police_photo: { w: 180, h: 225, min: 20, max: 50, sign: false },
+      up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
+      army_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
+      army_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
       ibps_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
       ibps_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
       upsc_photo: { w: 350, h: 350, min: 20, max: 300, sign: false },
@@ -646,6 +692,13 @@
     };
 
     function applyPreset(key) {
+      if (key === 'custom') {
+        // Unlock user inputs
+        signatureOptions.classList.add('hidden');
+        nameDateContainer.classList.remove('hidden');
+        faceAlignContainer.classList.remove('hidden');
+        return;
+      }
       const p = PRESETS[key];
       if (!p) return;
       inputW.value = p.w;
@@ -666,7 +719,13 @@
 
     presetSelector.addEventListener('change', (e) => applyPreset(e.target.value));
 
-    // Zoom slider
+    // Custom Input Change Listeners
+    [inputW, inputH, inputMaxKB, inputMinKB].forEach(el => {
+      el.addEventListener('input', () => {
+        if (rawImage) processImage();
+      });
+    });
+
     zoomSlider.addEventListener('input', (e) => {
       zoomVal.textContent = `${parseFloat(e.target.value).toFixed(2)}x`;
       if (rawImage) processImage();
@@ -677,33 +736,13 @@
       if (rawImage) processImage();
     });
 
-    // Language switch
-    langToggleBtn.addEventListener('click', () => {
-      isHindi = !isHindi;
-      if (isHindi) {
-        langToggleBtn.textContent = 'Switch to English';
-        txtTagline.textContent = 'तेज़, सुरक्षित और बिना धुंधलापन';
-        txtHeroTitle.textContent = 'बिना क्वालिटी घटाए किसी भी फोटो का साइज़ और KB बदलें';
-        txtHeroDesc.innerHTML = 'सरकारी फॉर्म (Police, Army, SSC) के लिए बिना धुंधला हुए सही साइज़ और <strong>20 KB – 50 KB</strong> में सेट करें।';
-        txtUploadPrompt.textContent = 'फोटो चुनें या यहाँ ड्रैग करें';
-        txtCameraBtn.textContent = 'लाइव कैमरा से फोटो लें (लाइव फोटो कैप्चर)';
-        txtAddDOP.textContent = 'फोटो पर नाम और तारीख (DOP पट्टी) जोड़ें';
-        txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए फोटो चुनें';
-        txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
-      } else {
-        langToggleBtn.textContent = 'हिंदी में बदलें';
-        txtTagline.textContent = 'Fast, Local & Zero-Blur';
-        txtHeroTitle.textContent = 'Resize & Compress Any Image to Exact KB — Without Losing Quality';
-        txtHeroDesc.innerHTML = 'Strict 20KB–50KB sizing with <strong>zero blur or pixel distortion</strong>. Includes automated portal pass/fail checks and instant combo packs.';
-        txtUploadPrompt.textContent = 'Select Image or Drag & Drop';
-        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (Live Capture)';
-        txtAddDOP.textContent = 'Add Name & Date of Photo (DOP) Strip';
-        txtProcessBtn.textContent = rawImage ? 'Format & Compress Image' : 'Upload an image to start';
-        txtDownloadBtn.textContent = 'Download Form-Ready File';
-      }
-    });
-
     // Camera Handlers
+    const btnOpenCamera = document.getElementById('btnOpenCamera');
+    const cameraContainer = document.getElementById('cameraContainer');
+    const webcamVideo = document.getElementById('webcamVideo');
+    const btnSnapPhoto = document.getElementById('btnSnapPhoto');
+    const btnCloseCamera = document.getElementById('btnCloseCamera');
+
     btnOpenCamera.addEventListener('click', async () => {
       try {
         cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
@@ -780,13 +819,12 @@
 
     btnProcess.addEventListener('click', processImage);
 
-    // Primary Processing Pipeline
     function processImage() {
       if (!rawImage) return;
 
-      const targetW = parseInt(inputW.value, 10) || 200;
-      const targetH = parseInt(inputH.value, 10) || 230;
-      const maxTargetBytes = (parseInt(inputMaxKB.value, 10) || 50) * 1024;
+      const targetW = parseInt(inputW.value, 10) || 300;
+      const targetH = parseInt(inputH.value, 10) || 300;
+      const maxTargetBytes = (parseInt(inputMaxKB.value, 10) || 100) * 1024;
       const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
       const zoom = parseFloat(zoomSlider.value) || 1.0;
 
@@ -827,7 +865,7 @@
         ctx.strokeRect(0, stripY, targetW, stripHeight);
 
         const name = (candidateName.value || 'NAME HERE').trim();
-        const dateStr = (photoDate.value || '04/10/2026').trim();
+        const dateStr = (photoDate.value || '05/10/2026').trim();
 
         ctx.fillStyle = '#000000';
         ctx.textAlign = 'center';
@@ -840,7 +878,7 @@
         ctx.fillText(`DOP: ${dateStr}`, targetW / 2, stripY + (stripHeight * 0.82));
       }
 
-      // Signature Magic Clean Enhancer
+      // Signature Magic Clean
       if (!signatureOptions.classList.contains('hidden')) {
         const imgData = ctx.getImageData(0, 0, targetW, targetH);
         const data = imgData.data;
@@ -863,7 +901,7 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
-      // Binary Search Compression
+      // Binary Search Target Compression
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
@@ -887,37 +925,234 @@
 
       const finalKB = (bestBytes / 1024).toFixed(1);
 
-      // Render Outputs
       outputImg.src = bestDataUrl;
       outSizeLabel.textContent = `${finalKB} KB`;
       placeholderText.classList.add('hidden');
       sideBySideBox.classList.remove('hidden');
 
-      // Update 3-Point Validator
       const isSizeValid = (bestBytes <= maxTargetBytes && bestBytes >= minTargetBytes);
       valDims.innerHTML = `✅ ${targetW} × ${targetH} px`;
-      valSize.innerHTML = isSizeValid ? `✅ ${finalKB} KB (Strict Fit)` : `⚠️ ${finalKB} KB`;
-      valType.innerHTML = `✅ JPEG / JPG (Universal)`;
+      valSize.innerHTML = isSizeValid ? `✅ ${finalKB} KB (Target Fit)` : `⚠️ ${finalKB} KB`;
       validatorCard.classList.remove('hidden');
 
-      statusBadge.textContent = isSizeValid ? 'Verified: Portal Ready' : 'Processed';
+      statusBadge.textContent = isSizeValid ? 'Verified: Ready' : 'Processed';
       statusBadge.className = isSizeValid ? 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800' : 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
       statusBadge.classList.remove('hidden');
 
       downloadBtn.href = bestDataUrl;
-      downloadBtn.download = `form_document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
+      downloadBtn.download = `document_${targetW}x${targetH}_${Math.round(finalKB)}kb.jpg`;
       downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
+    }
 
-      if (typeof gtag === 'function') {
-        gtag('event', 'doc_compression_success', {
-          event_category: 'Compression',
-          event_label: presetSelector.value,
-          value: parseInt(finalKB, 10)
-        });
+    // ==========================================
+    // ALL-IN-ONE DOC CONVERTER CLIENT LOGIC
+    // ==========================================
+    let currentConvertMode = 'wordToPdf';
+    let selectedDocFile = null;
+
+    const docDropZone = document.getElementById('docDropZone');
+    const docFileInput = document.getElementById('docFileInput');
+    const docDropText = document.getElementById('docDropText');
+    const docDropHint = document.getElementById('docDropHint');
+    const docFileSelectedName = document.getElementById('docFileSelectedName');
+    const pdfSizeOptions = document.getElementById('pdfSizeOptions');
+    const btnExecuteDocConvert = document.getElementById('btnExecuteDocConvert');
+    const txtDocBtnLabel = document.getElementById('txtDocBtnLabel');
+    const docConversionStatus = document.getElementById('docConversionStatus');
+
+    function selectConvertMode(mode) {
+      currentConvertMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(b => {
+        b.className = 'mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition';
+        b.querySelector('span:first-child').className = 'text-xs font-bold text-slate-800 block';
+      });
+
+      const activeBtn = document.getElementById(`btnMode${mode.charAt(0).toUpperCase() + mode.slice(1)}`);
+      if (activeBtn) {
+        activeBtn.className = 'mode-btn p-3.5 rounded-xl border-2 border-brand-600 bg-brand-50/60 text-left transition';
+        activeBtn.querySelector('span:first-child').className = 'text-xs font-bold text-brand-700 block';
+      }
+
+      selectedDocFile = null;
+      docFileSelectedName.classList.add('hidden');
+      btnExecuteDocConvert.disabled = true;
+      docConversionStatus.classList.add('hidden');
+
+      if (mode === 'wordToPdf') {
+        docFileInput.accept = '.docx';
+        docDropText.textContent = 'Select Word (.docx) Document or Drag & Drop';
+        docDropHint.textContent = 'Converts .docx to clean printable PDF inside your browser';
+        pdfSizeOptions.classList.add('hidden');
+        txtDocBtnLabel.textContent = 'Select .DOCX to Convert';
+      } else if (mode === 'pdfToWord') {
+        docFileInput.accept = '.pdf';
+        docDropText.textContent = 'Select PDF Document or Drag & Drop';
+        docDropHint.textContent = 'Extracts layout and text into an editable Word .doc file';
+        pdfSizeOptions.classList.add('hidden');
+        txtDocBtnLabel.textContent = 'Select PDF to Convert';
+      } else if (mode === 'imgToPdf') {
+        docFileInput.accept = 'image/*';
+        docFileInput.multiple = true;
+        docDropText.textContent = 'Select Photo(s) / Certificate Scans';
+        docDropHint.textContent = 'Combines single or multiple images into a compact PDF';
+        pdfSizeOptions.classList.remove('hidden');
+        txtDocBtnLabel.textContent = 'Select Images to Create PDF';
+      } else if (mode === 'pdfToImg') {
+        docFileInput.accept = '.pdf';
+        docFileInput.multiple = false;
+        docDropText.textContent = 'Select PDF Document';
+        docDropHint.textContent = 'Extracts PDF pages as high-quality JPG image files';
+        pdfSizeOptions.classList.add('hidden');
+        txtDocBtnLabel.textContent = 'Select PDF to Extract Images';
       }
     }
 
-    // COMBO PACK (ZIP) LOGIC
+    docDropZone.addEventListener('click', () => docFileInput.click());
+    docDropZone.addEventListener('dragover', (e) => { e.preventDefault(); docDropZone.classList.add('border-brand-600', 'bg-brand-50/50'); });
+    docDropZone.addEventListener('dragleave', () => docDropZone.classList.remove('border-brand-600', 'bg-brand-50/50'));
+    docDropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      docDropZone.classList.remove('border-brand-600', 'bg-brand-50/50');
+      if (e.dataTransfer.files.length) handleDocFileSelected(e.dataTransfer.files);
+    });
+
+    docFileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleDocFileSelected(e.target.files);
+    });
+
+    function handleDocFileSelected(files) {
+      selectedDocFile = files;
+      if (files.length === 1) {
+        docFileSelectedName.textContent = `Selected: ${files[0].name} (${Math.round(files[0].size/1024)} KB)`;
+      } else {
+        docFileSelectedName.textContent = `Selected: ${files.length} images for PDF packaging`;
+      }
+      docFileSelectedName.classList.remove('hidden');
+      btnExecuteDocConvert.disabled = false;
+      txtDocBtnLabel.textContent = `Convert & Download (${files[0].name.slice(0, 20)}...)`;
+    }
+
+    // Execute Document Conversion
+    btnExecuteDocConvert.addEventListener('click', async () => {
+      if (!selectedDocFile || !selectedDocFile.length) return;
+
+      docConversionStatus.textContent = 'Processing locally in browser... please wait.';
+      docConversionStatus.classList.remove('hidden');
+      btnExecuteDocConvert.disabled = true;
+
+      try {
+        if (currentConvertMode === 'wordToPdf') {
+          // Word (.docx) to PDF via Mammoth.js + jsPDF
+          const arrayBuffer = await selectedDocFile[0].arrayBuffer();
+          const mammothResult = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+          const tempContainer = document.createElement('div');
+          tempContainer.style.width = '680px';
+          tempContainer.style.padding = '20px';
+          tempContainer.style.background = '#FFFFFF';
+          tempContainer.style.color = '#000000';
+          tempContainer.innerHTML = mammothResult.value;
+          document.body.appendChild(tempContainer);
+
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF('p', 'pt', 'a4');
+          await pdf.html(tempContainer, {
+            callback: function(doc) {
+              doc.save(selectedDocFile[0].name.replace(/\.[^/.]+$/, "") + "_converted.pdf");
+              document.body.removeChild(tempContainer);
+              docConversionStatus.textContent = '✅ Conversion Complete! PDF Downloaded.';
+              btnExecuteDocConvert.disabled = false;
+            },
+            x: 20,
+            y: 20,
+            width: 555,
+            windowWidth: 700
+          });
+
+        } else if (currentConvertMode === 'pdfToWord') {
+          // PDF to Word (.doc) via PDF.js text extraction
+          const fileData = new Uint8Array(await selectedDocFile[0].arrayBuffer());
+          const loadingTask = pdfjsLib.getDocument({ data: fileData });
+          const pdfDoc = await loadingTask.promise;
+          let docContent = '';
+
+          for (let i = 1; i <= pdfDoc.numPages; i++) {
+            const page = await pdfDoc.getPage(i);
+            const textContent = await page.getTextContent();
+            const textItems = textContent.items.map(item => item.str).join(' ');
+            docContent += `<p style="margin-bottom:12px; font-family: Calibri, sans-serif; font-size:11pt;">${textItems}</p>`;
+          }
+
+          const wordHTML = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Document</title></head><body>${docContent}</body></html>`;
+          const blob = new Blob([wordHTML], { type: 'application/msword' });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = selectedDocFile[0].name.replace(/\.[^/.]+$/, "") + "_converted.doc";
+          link.click();
+          docConversionStatus.textContent = '✅ Conversion Complete! Editable Word (.doc) Downloaded.';
+          btnExecuteDocConvert.disabled = false;
+
+        } else if (currentConvertMode === 'imgToPdf') {
+          // Images to single PDF with strict target compression
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF('p', 'mm', 'a4');
+          const targetCap = document.querySelector('input[name="pdfTargetSize"]:checked').value;
+          const quality = targetCap === '200' ? 0.6 : (targetCap === '500' ? 0.8 : 0.95);
+
+          for (let i = 0; i < selectedDocFile.length; i++) {
+            const imgData = await new Promise(resolve => {
+              const r = new FileReader();
+              r.onload = ev => resolve(ev.target.result);
+              r.readAsDataURL(selectedDocFile[i]);
+            });
+
+            if (i > 0) pdf.addPage();
+            pdf.addImage(imgData, 'JPEG', 10, 10, 190, 277, undefined, 'FAST');
+          }
+
+          pdf.save("Application_Document.pdf");
+          docConversionStatus.textContent = '✅ Conversion Complete! PDF Package Downloaded.';
+          btnExecuteDocConvert.disabled = false;
+
+        } else if (currentConvertMode === 'pdfToImg') {
+          // PDF to JPG
+          const fileData = new Uint8Array(await selectedDocFile[0].arrayBuffer());
+          const loadingTask = pdfjsLib.getDocument({ data: fileData });
+          const pdfDoc = await loadingTask.promise;
+          const page = await pdfDoc.getPage(1);
+          const viewport = page.getViewport({ scale: 1.5 });
+
+          const renderCanvas = document.createElement('canvas');
+          renderCanvas.width = viewport.width;
+          renderCanvas.height = viewport.height;
+          const renderContext = { canvasContext: renderCanvas.getContext('2d'), viewport: viewport };
+
+          await page.render(renderContext).promise;
+          const link = document.createElement('a');
+          link.href = renderCanvas.toDataURL('image/jpeg', 0.9);
+          link.download = selectedDocFile[0].name.replace(/\.[^/.]+$/, "") + "_page1.jpg";
+          link.click();
+          docConversionStatus.textContent = '✅ PDF Page 1 extracted as JPG image!';
+          btnExecuteDocConvert.disabled = false;
+        }
+
+      } catch (err) {
+        console.error(err);
+        docConversionStatus.textContent = '⚠️ Conversion encountered an issue. Please verify file format.';
+        btnExecuteDocConvert.disabled = false;
+      }
+    });
+
+    // Combo Pack (Zip) Logic
+    const comboPhotoInput = document.getElementById('comboPhotoInput');
+    const comboSignInput = document.getElementById('comboSignInput');
+    const comboPhotoStatus = document.getElementById('comboPhotoStatus');
+    const comboSignStatus = document.getElementById('comboSignStatus');
+    const btnDownloadComboZip = document.getElementById('btnDownloadComboZip');
+    const comboCanvas = document.getElementById('comboCanvas');
+    const comboCtx = comboCanvas.getContext('2d');
+    let comboPhotoBlob = null;
+    let comboSignBlob = null;
+
     function compressToBlob(imageObj, w, h, targetMaxKB, isSignature = false) {
       comboCanvas.width = w;
       comboCanvas.height = h;
@@ -957,54 +1192,41 @@
 
     comboPhotoInput.addEventListener('change', (e) => {
       if (!e.target.files.length) return;
-      const file = e.target.files[0];
       const r = new FileReader();
-      r.onload = (ev) => {
+      r.onload = ev => {
         const img = new Image();
         img.onload = () => {
           comboPhotoBlob = compressToBlob(img, 200, 230, 45, false);
           comboPhotoStatus.textContent = `✅ Ready: 200x230 px (~35 KB)`;
           comboPhotoStatus.className = 'text-xs text-emerald-600 font-bold';
-          checkComboReady();
+          if (comboPhotoBlob && comboSignBlob) btnDownloadComboZip.disabled = false;
         };
         img.src = ev.target.result;
       };
-      r.readAsDataURL(file);
+      r.readAsDataURL(e.target.files[0]);
     });
 
     comboSignInput.addEventListener('change', (e) => {
       if (!e.target.files.length) return;
-      const file = e.target.files[0];
       const r = new FileReader();
-      r.onload = (ev) => {
+      r.onload = ev => {
         const img = new Image();
         img.onload = () => {
           comboSignBlob = compressToBlob(img, 140, 60, 18, true);
           comboSignStatus.textContent = `✅ Ready: 140x60 px (~14 KB)`;
           comboSignStatus.className = 'text-xs text-emerald-600 font-bold';
-          checkComboReady();
+          if (comboPhotoBlob && comboSignBlob) btnDownloadComboZip.disabled = false;
         };
         img.src = ev.target.result;
       };
-      r.readAsDataURL(file);
+      r.readAsDataURL(e.target.files[0]);
     });
-
-    function checkComboReady() {
-      if (comboPhotoBlob && comboSignBlob) {
-        btnDownloadComboZip.disabled = false;
-      }
-    }
 
     btnDownloadComboZip.addEventListener('click', () => {
       if (!comboPhotoBlob || !comboSignBlob) return;
       const zip = new JSZip();
-
-      const photoData = comboPhotoBlob.split(',')[1];
-      const signData = comboSignBlob.split(',')[1];
-
-      zip.file("Application_Photo_20KB_50KB.jpg", photoData, {base64: true});
-      zip.file("Application_Signature_10KB_20KB.jpg", signData, {base64: true});
-
+      zip.file("Application_Photo_20KB_50KB.jpg", comboPhotoBlob.split(',')[1], {base64: true});
+      zip.file("Application_Signature_10KB_20KB.jpg", comboSignBlob.split(',')[1], {base64: true});
       zip.generateAsync({type:"blob"}).then(function(content) {
         const link = document.createElement('a');
         link.href = URL.createObjectURL(content);
@@ -1013,26 +1235,47 @@
       });
     });
 
-    // Navigation Tabs handler
-    function setSection(tab) {
-      [tabSingle, tabCombo, tabSpecs].forEach(t => t.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition');
-      tab.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition';
+    // Language Toggle
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    const txtTagline = document.getElementById('txtTagline');
+    const txtHeroTitle = document.getElementById('txtHeroTitle');
+    const txtHeroDesc = document.getElementById('txtHeroDesc');
+    const lblSelectPreset = document.getElementById('lblSelectPreset');
+    const txtUploadPrompt = document.getElementById('txtUploadPrompt');
+    const txtCameraBtn = document.getElementById('txtCameraBtn');
+    const txtAddDOP = document.getElementById('txtAddDOP');
+    const txtProcessBtn = document.getElementById('txtProcessBtn');
+    const txtDownloadBtn = document.getElementById('txtDownloadBtn');
 
-      sectionSingle.classList.add('hidden');
-      sectionCombo.classList.add('hidden');
-      sectionSpecs.classList.add('hidden');
+    langToggleBtn.addEventListener('click', () => {
+      isHindi = !isHindi;
+      if (isHindi) {
+        langToggleBtn.textContent = 'Switch to English';
+        txtTagline.textContent = 'इमेज और डॉक्यूमेंट यूटिलिटी • 100% सुरक्षित';
+        txtHeroTitle.textContent = 'किसी भी इमेज और डॉक्यूमेंट का साइज़ और फॉर्मेट बदलें';
+        txtHeroDesc.innerHTML = 'कस्टम साइज़, सटीक KB (20KB–50KB) और <strong>Word ⇄ PDF ⇄ Image कन्वर्टर</strong> बिना धुंधला हुए और बिना सर्वर अपलोड के।';
+        lblSelectPreset.textContent = 'प्रीसेट चुनें (वैकल्पिक)';
+        txtUploadPrompt.textContent = 'फोटो चुनें या यहाँ ड्रैग करें';
+        txtCameraBtn.textContent = 'लाइव कैमरा से फोटो लें (लाइव फोटो कैप्चर)';
+        txtAddDOP.textContent = 'फोटो पर नाम और तारीख (DOP पट्टी) जोड़ें';
+        txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए फोटो चुनें';
+        txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
+      } else {
+        langToggleBtn.textContent = 'हिंदी में बदलें';
+        txtTagline.textContent = 'Image & Document Utility • 100% Private';
+        txtHeroTitle.textContent = 'Resize, Compress & Convert Any Document or Image';
+        txtHeroDesc.innerHTML = 'Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and total browser privacy.';
+        lblSelectPreset.textContent = 'Select Preset (Optional)';
+        txtUploadPrompt.textContent = 'Select Image or Drag & Drop';
+        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (Live Capture)';
+        txtAddDOP.textContent = 'Add Candidate Name & Date Strip (At Bottom)';
+        txtProcessBtn.textContent = rawImage ? 'Format & Compress Image' : 'Upload an image to start';
+        txtDownloadBtn.textContent = 'Download Form-Ready File';
+      }
+    });
 
-      if (tab === tabSingle) sectionSingle.classList.remove('hidden');
-      if (tab === tabCombo) sectionCombo.classList.remove('hidden');
-      if (tab === tabSpecs) sectionSpecs.classList.remove('hidden');
-    }
-
-    tabSingle.addEventListener('click', () => setSection(tabSingle));
-    tabCombo.addEventListener('click', () => setSection(tabCombo));
-    tabSpecs.addEventListener('click', () => setSection(tabSpecs));
-
-    // Initialize Default
-    applyPreset('ssc_photo');
+    // Initialize Default State
+    applyPreset('custom');
   </script>
 </body>
 </html>
