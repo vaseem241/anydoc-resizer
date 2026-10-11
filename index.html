@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Any Doc Resizer — Resize, Compress & Convert Any Image or Document</title>
-  <meta name="description" content="Free tool to resize photos, signatures, and convert documents (Word to PDF, PDF to Word, Image to PDF) to exact KB limits without blur. 100% private browser processing.">
+  <title id="metaTitle">Any Doc Resizer — Resize, Compress & Convert Any Image or Document</title>
+  <meta id="metaDesc" name="description" content="Free tool to resize photos, signatures, and convert documents (Word to PDF, PDF to Word, Image to PDF) to exact KB limits without blur. 100% private browser processing.">
   <meta name="keywords" content="resize image to exact kb, docx to pdf converter, pdf to word converter, image to pdf 200kb, photo resizer 20kb to 50kb, signature compressor">
 
   <!-- Canonical URL for SEO -->
-  <link rel="canonical" href="https://vaseem241.github.io/anydoc-resizer/">
+  <link id="canonicalUrl" rel="canonical" href="https://vaseem241.github.io/anydoc-resizer/">
 
   <!-- Social Sharing Previews (WhatsApp, LinkedIn, Facebook) -->
-  <meta property="og:title" content="AnyDoc Resizer — Resize, Compress & Convert Any Image or Document">
-  <meta property="og:description" content="Free, 100% private tool to resize photos, signatures & convert Word to PDF to exact KB. No blur, zero uploads.">
-  <meta property="og:url" content="https://vaseem241.github.io/anydoc-resizer/">
+  <meta id="ogTitle" property="og:title" content="AnyDoc Resizer — Resize, Compress & Convert Any Image or Document">
+  <meta id="ogDesc" property="og:description" content="Free, 100% private tool to resize photos, signatures & convert Word to PDF to exact KB. No blur, zero uploads.">
+  <meta id="ogUrl" property="og:url" content="https://vaseem241.github.io/anydoc-resizer/">
   <meta property="og:type" content="website">
 
   <!-- Twitter / X Card Previews -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="AnyDoc Resizer — Resize, Compress & Convert Any Image or Document">
-  <meta name="twitter:description" content="Free, 100% private tool to resize photos, signatures & convert Word to PDF to exact KB. No blur, zero uploads.">
+  <meta id="twTitle" name="twitter:title" content="AnyDoc Resizer — Resize, Compress & Convert Any Image or Document">
+  <meta id="twDesc" name="twitter:description" content="Free, 100% private tool to resize photos, signatures & convert Word to PDF to exact KB. No blur, zero uploads.">
 
   <!-- Matching Resize-Arrows Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%234f46e5'/><path d='M32 44 V32 H44 M32 32 L46 46 M68 44 V32 H56 M68 32 L54 46 M32 56 V68 H44 M32 68 L46 54 M68 56 V68 H56 M68 68 L54 54' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
@@ -70,7 +70,7 @@
   <!-- Header -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-2.5 sm:space-x-3">
+      <a href="./" class="flex items-center space-x-2.5 sm:space-x-3">
         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
           <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
@@ -80,7 +80,7 @@
           <span class="text-base sm:text-lg font-bold text-slate-900 leading-none block">Any Doc Resizer</span>
           <span id="txtTagline" class="text-[10px] sm:text-[11px] text-slate-500">100% Private Browser Utility</span>
         </div>
-      </div>
+      </a>
 
       <div class="flex items-center gap-1.5 sm:gap-2">
         <button id="langToggleBtn" class="px-2 py-1 text-[11px] sm:text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <!-- Hero Title & Subtitle -->
+    <!-- Hero Title & Subtitle (Dynamically Updated by pSEO Engine) -->
     <div class="text-center max-w-2xl mx-auto mb-4 sm:mb-6 px-1">
       <h1 id="txtHeroTitle" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Resize, Compress & Convert Any Document or Image
@@ -113,11 +113,11 @@
         Zero-blur progressive downsampling, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with direct email & PDF sharing.
       </p>
 
-      <!-- Clean Feature Pills (Screenshot 2 Enhancement) -->
+      <!-- Feature Badges -->
       <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mt-3 sm:mt-4">
         <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-50 border border-indigo-200/80 text-brand-700 shadow-2xs">
           <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-          Exact KB Limits
+          <span id="badge1">Exact KB Limits</span>
         </span>
         <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-50 border border-indigo-200/80 text-brand-700 shadow-2xs">
           <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -134,7 +134,7 @@
       </div>
     </div>
 
-    <!-- Polished Navigation Tabs (Screenshot 1 Enhancement) -->
+    <!-- Navigation Tabs -->
     <div class="flex justify-center mb-5 sm:mb-6">
       <div class="inline-flex p-1.5 bg-slate-200/80 backdrop-blur-xs rounded-2xl overflow-x-auto no-scrollbar max-w-full gap-1 border border-slate-300/60 shadow-xs">
         
@@ -166,28 +166,28 @@
       <div class="lg:col-span-7 space-y-4 sm:space-y-6">
         <div class="bg-white p-4 sm:p-7 rounded-2xl border border-slate-200 shadow-xs space-y-4 sm:space-y-5">
           
-          <!-- Preset Dropdown: Defaults to Custom Dimensions -->
+          <!-- Preset Dropdown: Controlled by pSEO Engine -->
           <div>
             <div class="flex justify-between items-center mb-1">
               <label id="lblSelectPreset" class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">Preset Configuration</label>
-              <span class="text-[10px] sm:text-[11px] font-semibold text-brand-600">Custom by default</span>
+              <span id="lblPresetStatus" class="text-[10px] sm:text-[11px] font-semibold text-brand-600">Custom by default</span>
             </div>
             <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 sm:p-2.5 text-xs sm:text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
               <optgroup label="Default & Universal">
                 <option value="custom" selected>Custom Dimensions & File Size (User Editable)</option>
-                <option value="passport_in">Indian Passport Photo (413 x 531 px | under 100KB)</option>
+                <option value="passport_in">Indian Passport Photo (413 x 531 px | 10KB - 100KB)</option>
                 <option value="us_visa">US Visa 2x2 Inch (600 x 600 px | under 240KB)</option>
                 <option value="schengen_visa">Schengen Visa (35 x 45 mm / 413 x 531 px | &lt;200KB)</option>
                 <option value="pan_card">PAN Card Photo (213 x 213 px | under 30KB)</option>
                 <option value="linkedin_banner">LinkedIn / Profile Avatar (400 x 400 px | under 100KB)</option>
               </optgroup>
               <optgroup label="Competitive Exams & Portals">
-                <option value="ssc_photo">SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="upsc_photo">UPSC CSE Photo (350 x 350 px | 20KB - 300KB)</option>
                 <option value="upsc_sign">UPSC CSE Signature (350 x 150 px | 20KB - 100KB)</option>
+                <option value="ssc_photo">SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="ibps_photo">IBPS / SBI Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="ibps_sign">IBPS / SBI Bank PO Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="ibps_sign">IBPS / SBI Clerk Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
                 <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
                 <option value="delhi_police_photo">Delhi Police Photo (200 x 230 px | 20KB - 50KB)</option>
@@ -451,7 +451,7 @@
 
     </div>
 
-    <!-- 3. PHOTO + SIGN PACK (ZIP) SECTION WITH LIVE QUALITY VERIFICATION -->
+    <!-- 3. PHOTO + SIGN PACK (ZIP) SECTION -->
     <div id="sectionCombo" class="hidden bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-xs max-w-4xl mx-auto space-y-4 sm:space-y-6">
       <div class="border-b border-slate-100 pb-3">
         <h2 class="text-lg sm:text-xl font-bold text-slate-900">Photo + Signature Pack (Zip)</h2>
@@ -468,7 +468,6 @@
               <span id="comboPhotoBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">Pending</span>
             </div>
 
-            <!-- Upload, Drive & Camera -->
             <div class="space-y-2">
               <input type="file" id="comboPhotoInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
               
@@ -484,7 +483,6 @@
               </div>
             </div>
 
-            <!-- Custom Dimension Inputs for Photo -->
             <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200">
               <div>
                 <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Width (px)</label>
@@ -500,7 +498,6 @@
               </div>
             </div>
 
-            <!-- Live Quality Verification Box Photo -->
             <div id="comboPhotoVerifyBox" class="hidden bg-white p-2.5 rounded-lg border border-slate-200 space-y-2">
               <div class="flex items-center gap-3">
                 <img id="comboPhotoPreviewImg" class="w-16 h-20 object-contain border border-slate-200 rounded" alt="Photo Preview">
@@ -524,7 +521,6 @@
               <span id="comboSignBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">Pending</span>
             </div>
 
-            <!-- Upload, Drive & Camera -->
             <div class="space-y-2">
               <input type="file" id="comboSignInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
               
@@ -540,7 +536,6 @@
               </div>
             </div>
 
-            <!-- Custom Dimension Inputs for Signature -->
             <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200">
               <div>
                 <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Width (px)</label>
@@ -556,7 +551,6 @@
               </div>
             </div>
 
-            <!-- Live Quality Verification Box Signature -->
             <div id="comboSignVerifyBox" class="hidden bg-white p-2.5 rounded-lg border border-slate-200 space-y-2">
               <div class="flex items-center gap-3">
                 <img id="comboSignPreviewImg" class="w-20 h-10 object-contain border border-slate-200 rounded" alt="Sign Preview">
@@ -574,7 +568,6 @@
 
       </div>
 
-      <!-- Live Webcam Stream Box Combo -->
       <div id="comboCameraModal" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-700 space-y-2.5">
         <video id="comboWebcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
         <div class="flex gap-2">
@@ -583,7 +576,6 @@
         </div>
       </div>
 
-      <!-- Action Buttons Combo Pack -->
       <div class="space-y-2 pt-2">
         <button id="btnDownloadComboZip" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
           <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
@@ -603,7 +595,7 @@
       </div>
     </div>
 
-    <!-- 4. SPECS DIRECTORY (COLLAPSIBLE DROPDOWN ABOVE FAQs) -->
+    <!-- 4. SPECS DIRECTORY -->
     <section class="mt-8 sm:mt-12">
       <details class="group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs transition duration-200 [&_summary::-webkit-details-marker]:hidden">
         <summary class="flex justify-between items-center p-4 sm:p-6 cursor-pointer hover:bg-slate-50/80 transition">
@@ -729,16 +721,33 @@
       </details>
     </section>
 
-    <!-- 5. FAQ SECTION -->
+    <!-- 5. PROGRAMMATIC SEO DIRECTORY (CRUCIAL FOR GOOGLE CRAWLERS) -->
+    <section class="mt-8 sm:mt-12 bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 shadow-2xs">
+      <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">Popular Target Portal Resizers</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-xs">
+        <a href="?tool=upsc-photo-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">🎯 UPSC Photo Resizer</a>
+        <a href="?tool=us-visa-photo-checker" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">🇺🇸 US Visa Photo Checker</a>
+        <a href="?tool=sbi-clerk-signature-compressor" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">🏦 SBI Clerk Signature</a>
+        <a href="?tool=schengen-photo-spec-converter" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">🇪🇺 Schengen Photo Specs</a>
+        <a href="?tool=ssc-photo-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">📋 SSC CGL Photo Resizer</a>
+        <a href="?tool=ssc-signature-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">✍️ SSC Signature Resizer</a>
+        <a href="?tool=indian-passport-photo-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">🇮🇳 Passport Seva Photo</a>
+        <a href="?tool=pan-card-photo-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">💳 PAN Card Photo (213px)</a>
+        <a href="?tool=neet-jee-photo-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">📚 NTA NEET / JEE Photo</a>
+        <a href="?tool=army-agniveer-photo-resizer" class="p-2 rounded-lg bg-slate-50 hover:bg-brand-50 hover:text-brand-700 transition border border-slate-200/80 font-medium text-slate-700 block truncate">🎖️ Army Agniveer Photo</a>
+      </div>
+    </section>
+
+    <!-- 6. FAQ SECTION (DYNAMICALLY ADAPTS CONTENT) -->
     <section class="mt-8 sm:mt-12 bg-white rounded-2xl border border-slate-200 p-4 sm:p-8">
-      <h2 class="text-lg sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Frequently Asked Questions</h2>
-      <div class="space-y-3 sm:space-y-4">
+      <h2 id="faqHeading" class="text-lg sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Frequently Asked Questions</h2>
+      <div id="faqContainer" class="space-y-3 sm:space-y-4">
         <details class="group border border-slate-200 rounded-xl p-3.5 sm:p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-xs sm:text-sm text-slate-800 cursor-pointer">
-            <span>Why do online portals reject uploaded photos?</span>
+            <span id="faqQ1">Why do online portals reject uploaded photos?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
-          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <p id="faqA1" class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
             Most portals automatically scan file size (KB) and dimensions (width × height) before saving. If an image is even 1 KB above the maximum allowed limit or slightly stretched, the submission gets rejected instantly.
           </p>
         </details>
@@ -864,6 +873,130 @@
   <canvas id="comboCanvas" class="hidden"></canvas>
 
   <script>
+    // ==========================================
+    // PROGRAMMATIC SEO (pSEO) CONFIGURATION MAP
+    // ==========================================
+    const PSEO_CONFIGS = {
+      'upsc-photo-resizer': {
+        title: "UPSC Photo Resizer (350x350 px | 20KB - 300KB) — Free Online Tool",
+        desc: "Resize and compress your photograph for UPSC CSE, NDA, and CDS online forms to exact 350x350 px and under 300KB with zero blur. 100% private.",
+        h1: "UPSC Photo Resizer (350 × 350 px, Under 300 KB)",
+        subtitle: "Strictly aligns with UPSC OTR & Examination upload criteria. Zero server uploads.",
+        presetKey: "upsc_photo",
+        badge: "UPSC OTR Ready"
+      },
+      'us-visa-photo-checker': {
+        title: "US Visa Photo Checker & Resizer (600x600 px | Under 240KB) — DS-160",
+        desc: "Convert your photo to official 2x2 inch (600x600 pixels) US Visa dimensions under 240KB. Clear facial proportion and zero-blur compression.",
+        h1: "US Visa Photo Resizer & Checker (DS-160)",
+        subtitle: "Formatted to exact 600 × 600 px and strictly under 240 KB for US Visa appointment booking.",
+        presetKey: "us_visa",
+        badge: "US Embassy & DS-160 Fit"
+      },
+      'sbi-clerk-signature-compressor': {
+        title: "SBI Clerk Signature Compressor (10KB - 20KB | 140x60 px) — Free Tool",
+        desc: "Compress your scanned signature for SBI Clerk & PO application forms strictly between 10KB and 20KB with pure white background cleanup.",
+        h1: "SBI Clerk Signature Compressor (10 KB – 20 KB)",
+        subtitle: "Pure white background enhancement and dark ink sharpening for SBI & IBPS recruitment.",
+        presetKey: "ibps_sign",
+        badge: "SBI Portal Verified"
+      },
+      'schengen-photo-spec-converter': {
+        title: "Schengen Visa Photo Spec Converter (35x45 mm | Under 200KB)",
+        desc: "Format and resize passport photos to European Schengen Visa specifications (35x45mm / 413x531 px) under 200KB with zero pixelation.",
+        h1: "Schengen Visa Photo Spec Converter",
+        subtitle: "European Embassy biometric standard: 35 × 45 mm, 70-80% face coverage, under 200 KB.",
+        presetKey: "schengen_visa",
+        badge: "Schengen Compliant"
+      },
+      'ssc-photo-resizer': {
+        title: "SSC Photo Resizer (200x230 px | 20KB - 50KB) — CGL, CHSL, MTS, GD",
+        desc: "Resize photo for SSC CGL, CHSL, and GD forms to exact 200x230 px and 20KB to 50KB. Includes candidate name and date of photo (DOP) strip.",
+        h1: "SSC Photo Resizer (20 KB – 50 KB)",
+        subtitle: "Includes optional Candidate Name & Date of Photo (DOP) bottom banner. Zero blur.",
+        presetKey: "ssc_photo",
+        badge: "SSC CGL / CHSL Approved"
+      },
+      'ssc-signature-resizer': {
+        title: "SSC Signature Resizer & Compressor (140x60 px | 10KB - 20KB)",
+        desc: "Format and compress signatures for SSC application forms strictly between 10KB and 20KB and 140x60 pixels. Shadow removal included.",
+        h1: "SSC Signature Resizer (10 KB – 20 KB, 140 × 60 px)",
+        subtitle: "Automatic paper shadow cleanup to pure white with darkened pen ink.",
+        presetKey: "ssc_sign",
+        badge: "SSC Signature Spec"
+      },
+      'indian-passport-photo-resizer': {
+        title: "Indian Passport Photo Resizer (3.5x4.5 cm | 10KB - 100KB) — Passport Seva",
+        desc: "Resize photo for Indian Passport Seva portal to exact 413x531 px (3.5x4.5 cm) and under 100KB with perfect facial proportions.",
+        h1: "Indian Passport Photo Resizer (Passport Seva)",
+        subtitle: "Strictly conforms to Ministry of External Affairs 3.5 × 4.5 cm passport standard.",
+        presetKey: "passport_in",
+        badge: "Passport Seva Ready"
+      },
+      'pan-card-photo-resizer': {
+        title: "PAN Card Photo Resizer (213x213 px | Under 30KB) — NSDL / UTIITSL",
+        desc: "Resize photo to 213x213 pixels and under 30KB for NSDL and UTIITSL PAN Card online applications.",
+        h1: "PAN Card Photo Resizer (213 × 213 px, &lt; 30 KB)",
+        subtitle: "Form-fit for NSDL and UTIITSL PAN Card portal document uploads.",
+        presetKey: "pan_card",
+        badge: "NSDL / UTIITSL Fit"
+      },
+      'neet-jee-photo-resizer': {
+        title: "NTA NEET & JEE Photo Resizer (10KB - 200KB) — Postcard & Passport",
+        desc: "Resize photos for NTA NEET and JEE Main online forms to exact 200x230 px and 10KB - 200KB. 80% face coverage preserved.",
+        h1: "NEET & JEE Main Photo Resizer",
+        subtitle: "Conforms to National Testing Agency guidelines with clear ear and facial exposure.",
+        presetKey: "nta_photo",
+        badge: "NTA NEET / JEE Ready"
+      },
+      'army-agniveer-photo-resizer': {
+        title: "Army Agniveer Photo Resizer (350x450 px | 10KB - 50KB) — Join Indian Army",
+        desc: "Resize photos for Indian Army Agniveer rally online forms to exact 350x450 px and under 50KB with zero blur.",
+        h1: "Indian Army Agniveer Photo Resizer",
+        subtitle: "Form-fit for Join Indian Army recruitment rallies: 350 × 450 px, 10–50 KB.",
+        presetKey: "army_photo",
+        badge: "Agniveer Rally Fit"
+      }
+    };
+
+    let activePSEOTool = null;
+
+    function applyProgrammaticSEO() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const toolParam = urlParams.get('tool') || window.location.hash.replace('#', '');
+
+      if (toolParam && PSEO_CONFIGS[toolParam]) {
+        activePSEOTool = toolParam;
+        const cfg = PSEO_CONFIGS[toolParam];
+
+        // 1. Update Document Title & Meta Tags
+        document.title = cfg.title;
+        document.getElementById('metaTitle').textContent = cfg.title;
+        document.getElementById('metaDesc').setAttribute('content', cfg.desc);
+        document.getElementById('ogTitle').setAttribute('content', cfg.title);
+        document.getElementById('ogDesc').setAttribute('content', cfg.desc);
+        document.getElementById('twTitle').setAttribute('content', cfg.title);
+        document.getElementById('twDesc').setAttribute('content', cfg.desc);
+
+        const currentCanonical = `https://vaseem241.github.io/anydoc-resizer/?tool=${toolParam}`;
+        document.getElementById('canonicalUrl').setAttribute('href', currentCanonical);
+        document.getElementById('ogUrl').setAttribute('content', currentCanonical);
+
+        // 2. Update Hero & Badge Elements
+        document.getElementById('txtHeroTitle').innerHTML = cfg.h1;
+        document.getElementById('txtHeroDesc').innerHTML = cfg.subtitle;
+        document.getElementById('badge1').textContent = cfg.badge;
+
+        // 3. Auto-Select Matching Preset and Parameters
+        const presetEl = document.getElementById('presetSelector');
+        if (presetEl) {
+          presetEl.value = cfg.presetKey;
+          applyPreset(cfg.presetKey);
+          document.getElementById('lblPresetStatus').textContent = `Auto-Selected: ${cfg.badge}`;
+        }
+      }
+    }
+
     let rawImage = null;
     let originalFileName = "document.jpg";
     let originalFileSizeKB = 0;
@@ -875,7 +1008,7 @@
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
-    // Navigation Tabs Handler (With Icon & Focus Sync)
+    // Navigation Tabs Handler
     const tabSingle = document.getElementById('tabSingle');
     const tabDocConverter = document.getElementById('tabDocConverter');
     const tabCombo = document.getElementById('tabCombo');
@@ -884,12 +1017,10 @@
     const sectionCombo = document.getElementById('sectionCombo');
 
     function setSection(activeTab) {
-      // Inactive Tab Style
       [tabSingle, tabDocConverter, tabCombo].forEach(t => {
         t.className = 'tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/60 transition flex items-center gap-2 whitespace-nowrap';
       });
 
-      // Active Tab Style
       activeTab.className = 'tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-900 shadow-xs border border-slate-200/60 transition flex items-center gap-2 whitespace-nowrap';
 
       sectionSingle.classList.add('hidden');
@@ -1290,9 +1421,7 @@
             });
             return;
           }
-        } catch (e) {
-          // fallback to mailto
-        }
+        } catch (e) {}
       }
 
       const subject = encodeURIComponent(`Application Document: ${originalFileName}`);
@@ -1459,7 +1588,7 @@
             pdf.addImage(imgData, 'JPEG', 10, 10, 190, 277, undefined, 'FAST');
           }
 
-          pdf.save(selectedDocFile[0].name.replace(/\.[^/.]+$/, "") + ".pdf");
+          pdf.save("Application_Document.pdf");
           docConversionStatus.textContent = '✅ Conversion Complete! PDF Package Downloaded.';
           btnExecuteDocConvert.disabled = false;
 
@@ -1798,8 +1927,13 @@
       } else {
         langToggleBtn.textContent = 'हिंदी में';
         txtTagline.textContent = '100% Private Browser Utility';
-        txtHeroTitle.textContent = 'Resize, Compress & Convert Any Document or Image';
-        txtHeroDesc.innerHTML = 'Zero-blur progressive downsampling, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with direct email & PDF sharing.';
+        if (activePSEOTool && PSEO_CONFIGS[activePSEOTool]) {
+          txtHeroTitle.innerHTML = PSEO_CONFIGS[activePSEOTool].h1;
+          txtHeroDesc.innerHTML = PSEO_CONFIGS[activePSEOTool].subtitle;
+        } else {
+          txtHeroTitle.textContent = 'Resize, Compress & Convert Any Document or Image';
+          txtHeroDesc.innerHTML = 'Zero-blur progressive downsampling, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with direct email & PDF sharing.';
+        }
         lblSelectPreset.textContent = 'Preset Configuration';
         txtUploadPrompt.textContent = 'Tap to Select Image or Drag & Drop';
         txtAddDOP.textContent = 'Add Name & Date Strip (Bottom of Photo)';
@@ -1808,8 +1942,9 @@
       }
     });
 
-    // Initialize Default State
+    // Initialize Default State & Apply Programmatic SEO
     applyPreset('custom');
+    applyProgrammaticSEO();
   </script>
 </body>
 </html>
