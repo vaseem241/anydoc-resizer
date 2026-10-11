@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Any Doc Resizer — Resize & Convert Any Image or Document to Exact KB</title>
+  <title>Any Doc Resizer — Resize, Compress & Convert Any Image or Document</title>
   <meta name="description" content="Free tool to resize photos, signatures, and convert documents (Word to PDF, PDF to Word, Image to PDF) to exact KB limits without blur. 100% private browser processing.">
   <meta name="keywords" content="resize image to exact kb, docx to pdf converter, pdf to word converter, image to pdf 200kb, photo resizer 20kb to 50kb, signature compressor">
 
@@ -21,7 +21,7 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Client-side Document & Compression Libraries (Zero Server Upload) -->
+  <!-- Client-side Document & Compression Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -46,30 +46,33 @@
       }
     }
   </script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
 
-  <!-- Navigation / Header -->
+  <!-- Header -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-2.5 sm:space-x-3">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-sm flex-shrink-0">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
           </svg>
         </div>
         <div>
-          <span class="text-lg font-bold text-slate-900 leading-none block">Any Doc Resizer</span>
-          <span id="txtTagline" class="text-[11px] text-slate-500">Image & Document Utility • 100% Private</span>
+          <span class="text-base sm:text-lg font-bold text-slate-900 leading-none block">Any Doc Resizer</span>
+          <span id="txtTagline" class="text-[10px] sm:text-[11px] text-slate-500">100% Private Browser Utility</span>
         </div>
       </div>
 
-      <!-- Controls: Language Toggle & WhatsApp Share -->
-      <div class="flex items-center gap-2">
-        <button id="langToggleBtn" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
-          हिंदी में बदलें
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button id="langToggleBtn" class="px-2 py-1 text-[11px] sm:text-xs font-bold rounded-lg border border-slate-300 hover:bg-slate-100 transition text-slate-700">
+          हिंदी में
         </button>
-        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Free%20online%20Image%20%26%20Document%20Resizer%20%2B%20Converter%20(Word%2C%20PDF%2C%20Image)%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
+        <a id="whatsappShareBtn" href="https://api.whatsapp.com/send?text=Free%20online%20Image%20%26%20Document%20Resizer%20%2B%20Converter%20(Word%2C%20PDF%2C%20Image)%3A%20https%3A%2F%2Fvaseem241.github.io%2Fanydoc-resizer%2F" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm transition">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           <span class="hidden sm:inline">WhatsApp</span>
         </a>
@@ -77,298 +80,296 @@
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 w-full flex-grow">
+  <main class="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-6 w-full flex-grow">
     
-    <!-- Top Ad Banner Space -->
-    <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center mb-6">
-      <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
-      <div class="min-h-[50px] flex items-center justify-center text-xs text-slate-400">
+    <!-- Top Ad Placement Card -->
+    <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-2.5 text-center mb-4 sm:mb-6">
+      <p class="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
+      <div class="min-h-[45px] sm:min-h-[50px] flex items-center justify-center text-[11px] sm:text-xs text-slate-400">
         <span>Ad Space (Google AdSense Responsive Unit)</span>
       </div>
     </div>
 
-    <!-- Universal Hero Title -->
-    <div class="text-center max-w-2xl mx-auto mb-6">
-      <h1 id="txtHeroTitle" class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+    <!-- Hero Title -->
+    <div class="text-center max-w-2xl mx-auto mb-4 sm:mb-6 px-1">
+      <h1 id="txtHeroTitle" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Resize, Compress & Convert Any Document or Image
       </h1>
-      <p id="txtHeroDesc" class="mt-2 text-sm sm:text-base text-slate-600">
-        Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and total browser privacy.
+      <p id="txtHeroDesc" class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600 leading-normal">
+        Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and complete browser privacy.
       </p>
     </div>
 
-    <!-- Navigation Tabs -->
-    <div class="flex justify-center mb-6">
-      <div class="inline-flex p-1 bg-slate-200/80 rounded-xl max-w-full overflow-x-auto gap-1">
-        <button id="tabSingle" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition">
+    <!-- Clean, Mobile-Scrollable Tabs (Specs moved below to page body) -->
+    <div class="flex justify-center mb-5 sm:mb-6">
+      <div class="inline-flex p-1 bg-slate-200/80 rounded-xl overflow-x-auto no-scrollbar max-w-full gap-1 shadow-inner">
+        <button id="tabSingle" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition whitespace-nowrap">
           Image Resizer
         </button>
-        <button id="tabDocConverter" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+        <button id="tabDocConverter" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
           Doc Converter (Word ⇄ PDF)
         </button>
-        <button id="tabCombo" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
+        <button id="tabCombo" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition whitespace-nowrap">
           Photo + Sign Pack (Zip)
-        </button>
-        <button id="tabSpecs" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition">
-          Specs Directory
         </button>
       </div>
     </div>
 
-    <!-- 1. IMAGE & PHOTO RESIZER (CUSTOM DIMENSIONS DEFAULT) -->
-    <div id="sectionSingle" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- 1. IMAGE & PHOTO RESIZER -->
+    <div id="sectionSingle" class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
 
       <!-- Left Settings -->
-      <div class="lg:col-span-7 space-y-6">
-        <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+      <div class="lg:col-span-7 space-y-4 sm:space-y-6">
+        <div class="bg-white p-4 sm:p-7 rounded-2xl border border-slate-200 shadow-xs space-y-4 sm:space-y-5">
           
           <!-- Preset Dropdown: Defaults to Custom Dimensions -->
           <div>
-            <div class="flex justify-between items-center mb-1.5">
-              <label id="lblSelectPreset" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Select Preset (Optional)</label>
-              <span class="text-[11px] font-semibold text-brand-600">Set to Custom by default</span>
+            <div class="flex justify-between items-center mb-1">
+              <label id="lblSelectPreset" class="block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">Preset Configuration</label>
+              <span class="text-[10px] sm:text-[11px] font-semibold text-brand-600">Custom by default</span>
             </div>
-            <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+            <select id="presetSelector" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 sm:p-2.5 text-xs sm:text-sm font-medium text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
               <optgroup label="Default & Universal">
                 <option value="custom" selected>Custom Dimensions & File Size (User Editable)</option>
-                <option value="passport_in">Passport Photo (413 x 531 px | under 100KB)</option>
-                <option value="us_visa">Visa Square 2x2 Inch (600 x 600 px | under 240KB)</option>
+                <option value="passport_in">Indian Passport Photo (413 x 531 px | under 100KB)</option>
+                <option value="us_visa">US Visa 2x2 Inch (600 x 600 px | under 240KB)</option>
+                <option value="schengen_visa">Schengen Visa (35 x 45 mm / 413 x 531 px | &lt;200KB)</option>
+                <option value="pan_card">PAN Card Photo (213 x 213 px | under 30KB)</option>
                 <option value="linkedin_banner">LinkedIn / Profile Avatar (400 x 400 px | under 100KB)</option>
               </optgroup>
-              <optgroup label="Recruitment & Exam Presets">
+              <optgroup label="Competitive Exams & Portals">
                 <option value="ssc_photo">SSC CGL / CHSL / MTS Photo (200 x 230 px | 20KB - 50KB)</option>
                 <option value="ssc_sign">SSC Scanned Signature (140 x 60 px | 10KB - 20KB)</option>
-                <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
-                <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
-                <option value="army_photo">Indian Army Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
-                <option value="army_sign">Indian Army Agniveer Signature (350 x 150 px | 10KB - 20KB)</option>
-                <option value="ibps_photo">IBPS / Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
-                <option value="ibps_sign">IBPS / Bank PO Signature (140 x 60 px | 10KB - 20KB)</option>
                 <option value="upsc_photo">UPSC CSE Photo (350 x 350 px | 20KB - 300KB)</option>
                 <option value="upsc_sign">UPSC CSE Signature (350 x 150 px | 20KB - 100KB)</option>
+                <option value="ibps_photo">IBPS / SBI Bank PO Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="ibps_sign">IBPS / SBI Bank PO Signature (140 x 60 px | 10KB - 20KB)</option>
+                <option value="up_police_photo">UP Police Photo (180 x 225 px | 20KB - 50KB)</option>
+                <option value="up_police_sign">UP Police Signature (140 x 60 px | 5KB - 20KB)</option>
+                <option value="delhi_police_photo">Delhi Police Photo (200 x 230 px | 20KB - 50KB)</option>
+                <option value="army_photo">Indian Army Agniveer Photo (350 x 450 px | 10KB - 50KB)</option>
+                <option value="army_sign">Indian Army Agniveer Signature (350 x 150 px | 10KB - 20KB)</option>
+                <option value="nta_photo">NTA NEET / JEE Photo (200 x 230 px | 10KB - 200KB)</option>
               </optgroup>
             </select>
           </div>
 
-          <!-- Upload Drop Zone & Live Camera Button -->
+          <!-- Upload Drop Zone & Live Camera -->
           <div class="space-y-2">
-            <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/60 rounded-xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[140px]">
+            <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/70 rounded-xl p-4 sm:p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[120px] sm:min-h-[140px]">
               <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
-              <div class="w-10 h-10 mb-2 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 mb-1.5 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
               </div>
-              <p id="txtUploadPrompt" class="text-sm font-semibold text-slate-800">Select Image or Drag & Drop</p>
-              <p class="text-xs text-slate-400 mt-1">Supports JPG, PNG, WEBP (100% Client-Side Local)</p>
-              <p id="loadedFileName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
+              <p id="txtUploadPrompt" class="text-xs sm:text-sm font-semibold text-slate-800">Tap to Select Image or Drag & Drop</p>
+              <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">JPG, PNG, WEBP (Processed 100% on device)</p>
+              <p id="loadedFileName" class="text-[11px] font-bold text-emerald-600 mt-1.5 hidden"></p>
             </div>
 
-            <button id="btnOpenCamera" type="button" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
-              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
-              <span id="txtCameraBtn">Take Live Webcam / Phone Photo (Live Capture)</span>
+            <button id="btnOpenCamera" type="button" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 text-slate-700 text-[11px] sm:text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
+              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
+              <span id="txtCameraBtn">Take Live Webcam / Phone Photo</span>
             </button>
           </div>
 
           <!-- Camera Stream Box -->
-          <div id="cameraContainer" class="hidden p-4 rounded-xl bg-slate-900 border border-slate-700 space-y-3">
-            <video id="webcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
+          <div id="cameraContainer" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-700 space-y-2.5">
+            <video id="webcamVideo" autoplay playsinline class="w-full max-h-48 rounded-lg bg-black object-cover"></video>
             <div class="flex gap-2">
               <button id="btnSnapPhoto" type="button" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-lg text-xs transition">Capture Photo</button>
-              <button id="btnCloseCamera" type="button" class="px-4 bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 rounded-lg text-xs transition">Cancel</button>
+              <button id="btnCloseCamera" type="button" class="px-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 rounded-lg text-xs transition">Cancel</button>
             </div>
           </div>
 
-          <!-- Custom Dimensions & Target Size Inputs (Fully User-Editable) -->
+          <!-- Dimensions & File Size Bounds (Responsive 2x2 grid on mobile) -->
           <div>
-            <div class="flex justify-between items-center mb-1">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-600">Image Dimensions & File Size Bounds</span>
-              <span class="text-[11px] text-slate-400">Type any custom value</span>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-slate-600 block mb-1.5">Dimensions & Target KB Range</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Width (px)</label>
-                <input type="number" id="inputW" value="300" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Width (px)</label>
+                <input type="number" id="inputW" value="300" class="w-full border border-slate-300 rounded-lg p-2 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 outline-none">
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Height (px)</label>
-                <input type="number" id="inputH" value="300" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Height (px)</label>
+                <input type="number" id="inputH" value="300" class="w-full border border-slate-300 rounded-lg p-2 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 outline-none">
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Max KB</label>
-                <input type="number" id="inputMaxKB" value="100" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Max KB</label>
+                <input type="number" id="inputMaxKB" value="100" class="w-full border border-slate-300 rounded-lg p-2 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 outline-none">
               </div>
               <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Min KB</label>
-                <input type="number" id="inputMinKB" value="20" class="w-full border border-slate-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Min KB</label>
+                <input type="number" id="inputMinKB" value="20" class="w-full border border-slate-300 rounded-lg p-2 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 outline-none">
               </div>
             </div>
           </div>
 
           <!-- Zoom & Frame Control -->
-          <div id="faceAlignContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
-            <div class="flex justify-between items-center text-xs font-bold text-slate-700 uppercase tracking-wider">
-              <span>Zoom & Framing</span>
+          <div id="faceAlignContainer" class="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <div class="flex justify-between items-center text-[11px] sm:text-xs font-bold text-slate-700">
+              <span>Zoom & Center Alignment</span>
               <span id="zoomVal" class="text-brand-600 font-mono">1.00x</span>
             </div>
             <input type="range" id="zoomSlider" min="0.7" max="2.2" step="0.05" value="1.0" class="w-full accent-brand-600 cursor-pointer">
-            <p class="text-[11px] text-slate-400">Scale up or down to frame passports, faces, or objects cleanly.</p>
+            <p class="text-[10px] text-slate-400">Adjust zoom to frame face and shoulders comfortably.</p>
           </div>
 
           <!-- Name & Date (DOP) Strip -->
-          <div id="nameDateContainer" class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-            <label class="flex items-center gap-2 cursor-pointer font-bold text-xs text-slate-700 uppercase tracking-wider">
+          <div id="nameDateContainer" class="p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <label class="flex items-center gap-2 cursor-pointer font-bold text-[11px] sm:text-xs text-slate-700">
               <input type="checkbox" id="chkAddNameDate" class="rounded text-brand-600">
-              <span id="txtAddDOP">Add Candidate Name & Date Strip (At Bottom)</span>
+              <span id="txtAddDOP">Add Name & Date Strip (Bottom of Photo)</span>
             </label>
-            <div id="nameDateFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div id="nameDateFields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
               <div>
-                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Name</label>
-                <input type="text" id="candidateName" placeholder="e.g. RAHUL SHARMA" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
+                <label class="block text-[10px] font-semibold text-slate-500 mb-0.5">Candidate Name</label>
+                <input type="text" id="candidateName" placeholder="e.g. AMIT KUMAR" class="w-full border border-slate-300 rounded-lg p-1.5 text-xs focus:ring-1 focus:ring-brand-500 outline-none uppercase">
               </div>
               <div>
-                <label class="block text-[11px] font-semibold text-slate-600 mb-1">Date</label>
-                <input type="text" id="photoDate" value="05/10/2026" class="w-full border border-slate-300 rounded-lg p-2 text-xs focus:ring-1 focus:ring-brand-500 outline-none">
+                <label class="block text-[10px] font-semibold text-slate-500 mb-0.5">Date of Taking Photo</label>
+                <input type="text" id="photoDate" value="11/10/2026" class="w-full border border-slate-300 rounded-lg p-1.5 text-xs focus:ring-1 focus:ring-brand-500 outline-none">
               </div>
             </div>
           </div>
 
           <!-- Signature Clean Magic Tool -->
-          <div id="signatureOptions" class="hidden p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 space-y-3">
+          <div id="signatureOptions" class="hidden p-3 sm:p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-indigo-900 uppercase tracking-wider">Signature Magic Clean</span>
-              <span class="text-[10px] bg-indigo-600 text-white px-2 py-0.5 rounded font-bold">1-Touch Clean</span>
+              <span class="text-[10px] bg-indigo-600 text-white px-2 py-0.5 rounded font-bold">1-Touch</span>
             </div>
-            <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
+            <div class="flex flex-col sm:flex-row gap-2 text-xs font-semibold text-slate-700">
               <label class="flex items-center gap-1.5 cursor-pointer">
                 <input type="checkbox" id="optCleanPaper" class="rounded text-brand-600" checked>
                 Make Background Pure White
               </label>
               <label class="flex items-center gap-1.5 cursor-pointer">
                 <input type="checkbox" id="optDarkenInk" class="rounded text-brand-600" checked>
-                Darken Blue/Black Pen Ink
+                Darken Pen Ink
               </label>
             </div>
           </div>
 
           <!-- Process Button -->
-          <button id="btnProcess" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
+          <button id="btnProcess" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
             <span id="txtProcessBtn">Upload an image to start</span>
           </button>
         </div>
       </div>
 
       <!-- Right Output & Validator Section -->
-      <div class="lg:col-span-5 space-y-6">
-        <div class="bg-white p-5 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-[460px]">
+      <div class="lg:col-span-5 space-y-4 sm:space-y-6">
+        <div class="bg-white p-4 sm:p-7 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between min-h-[380px] sm:min-h-[460px]">
           <div>
-            <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Clarity & Size Verification</span>
-              <span id="statusBadge" class="hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Verified</span>
+            <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 mb-3 sm:mb-4">
+              <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">Live Quality & Verification</span>
+              <span id="statusBadge" class="hidden text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Verified</span>
             </div>
 
             <!-- Preview Box -->
-            <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[220px] p-4 relative overflow-hidden">
-              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed image and live side-by-side comparison will appear here.</p>
+            <div id="previewContainer" class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl min-h-[190px] sm:min-h-[220px] p-3 sm:p-4 relative overflow-hidden">
+              <p id="placeholderText" class="text-xs text-slate-400 text-center font-medium">Your processed image and side-by-side comparison will appear here.</p>
               
-              <div id="sideBySideBox" class="hidden w-full grid grid-cols-2 gap-3 items-center">
+              <div id="sideBySideBox" class="hidden w-full grid grid-cols-2 gap-2 sm:gap-3 items-center">
                 <div class="text-center">
-                  <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Original</span>
-                  <img id="origImg" class="max-h-40 mx-auto rounded border border-slate-200 object-contain shadow-xs" alt="Original">
+                  <span class="text-[9px] sm:text-[10px] font-bold uppercase text-slate-400 block mb-1">Original</span>
+                  <img id="origImg" class="max-h-32 sm:max-h-40 mx-auto rounded border border-slate-200 object-contain" alt="Original">
                   <span id="origSizeLabel" class="text-[10px] text-slate-500 mt-1 block"></span>
                 </div>
                 <div class="text-center">
-                  <span class="text-[10px] font-bold uppercase text-brand-600 block mb-1">Optimized</span>
-                  <img id="outputImg" class="max-h-40 mx-auto rounded border border-brand-300 ring-2 ring-brand-100 object-contain shadow-xs" alt="Compressed">
+                  <span class="text-[9px] sm:text-[10px] font-bold uppercase text-brand-600 block mb-1">Optimized</span>
+                  <img id="outputImg" class="max-h-32 sm:max-h-40 mx-auto rounded border border-brand-300 ring-2 ring-brand-100 object-contain" alt="Compressed">
                   <span id="outSizeLabel" class="text-[10px] font-bold text-emerald-600 mt-1 block"></span>
                 </div>
               </div>
             </div>
 
             <!-- 3-Point Portal Compliance Validator -->
-            <div id="validatorCard" class="hidden mt-4 bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
-              <span class="text-[11px] font-extrabold uppercase tracking-wide text-slate-500 block mb-1">Quality & Limit Checks</span>
-              <div class="flex items-center justify-between text-xs py-1 border-b border-slate-200/60">
-                <span class="text-slate-600">Exact Dimensions:</span>
+            <div id="validatorCard" class="hidden mt-3 sm:mt-4 bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1.5 text-xs">
+              <span class="text-[10px] font-extrabold uppercase tracking-wide text-slate-500 block mb-1">Compliance Check</span>
+              <div class="flex items-center justify-between py-0.5 border-b border-slate-200/60">
+                <span class="text-slate-600">Dimensions:</span>
                 <span id="valDims" class="font-bold text-emerald-600">✅ 300 × 300 px</span>
               </div>
-              <div class="flex items-center justify-between text-xs py-1 border-b border-slate-200/60">
+              <div class="flex items-center justify-between py-0.5 border-b border-slate-200/60">
                 <span class="text-slate-600">File Size Range:</span>
                 <span id="valSize" class="font-bold text-emerald-600">✅ Fit to bounds</span>
               </div>
-              <div class="flex items-center justify-between text-xs py-1">
+              <div class="flex items-center justify-between py-0.5">
                 <span class="text-slate-600">File Format:</span>
-                <span id="valType" class="font-bold text-emerald-600">✅ JPEG / JPG (Universal)</span>
+                <span class="font-bold text-emerald-600">✅ JPEG / JPG</span>
               </div>
             </div>
           </div>
 
-          <div class="mt-5">
-            <a id="downloadBtn" download="form_ready_document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2">
+          <div class="mt-4 sm:mt-5">
+            <a id="downloadBtn" download="form_ready_document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
               <span id="txtDownloadBtn">Download Form-Ready File</span>
             </a>
           </div>
         </div>
 
-        <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-3 text-center">
-          <p class="text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
-          <div class="min-h-[80px] flex items-center justify-center text-xs text-slate-400">
-            <span>Ad Space (Google AdSense Square/Rectangle Unit)</span>
+        <div class="w-full bg-white border border-dashed border-slate-300 rounded-xl p-2.5 text-center">
+          <p class="text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-slate-400">Sponsored Advertisement</p>
+          <div class="min-h-[70px] sm:min-h-[80px] flex items-center justify-center text-xs text-slate-400">
+            <span>Ad Space (Google AdSense Square Unit)</span>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- 2. NEW: DOC CONVERTER TAB (WORD ⇄ PDF ⇄ IMAGES) -->
-    <div id="sectionDocConverter" class="hidden max-w-4xl mx-auto space-y-6">
+    <!-- 2. DOC CONVERTER TAB (WORD ⇄ PDF ⇄ IMAGES) -->
+    <div id="sectionDocConverter" class="hidden max-w-4xl mx-auto space-y-4 sm:space-y-6">
       
-      <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+      <div class="bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-xs space-y-4 sm:space-y-6">
         <div>
-          <h2 class="text-xl sm:text-2xl font-bold text-slate-900">All-in-One Client-Side Document Converter</h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">Convert between Word, PDF, and Images right inside your browser without uploading your files to any external server.</p>
+          <h2 class="text-lg sm:text-2xl font-bold text-slate-900">Client-Side Document Converter</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Convert between Word, PDF, and Images right in your browser with zero server uploads.</p>
         </div>
 
-        <!-- Conversion Mode Selection Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <button type="button" onclick="selectConvertMode('wordToPdf')" id="btnModeWordToPdf" class="mode-btn p-3.5 rounded-xl border-2 border-brand-600 bg-brand-50/60 text-left transition">
+        <!-- Mode Grid: 2 columns on mobile, 4 on desktop -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+          <button type="button" onclick="selectConvertMode('wordToPdf')" id="btnModeWordToPdf" class="mode-btn p-3 rounded-xl border-2 border-brand-600 bg-brand-50/60 text-left transition">
             <span class="text-xs font-bold text-brand-700 block">Word to PDF</span>
-            <span class="text-[10px] text-slate-500 block mt-0.5">.docx &rarr; .pdf document</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">.docx &rarr; .pdf</span>
           </button>
-          <button type="button" onclick="selectConvertMode('pdfToWord')" id="btnModePdfToWord" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
+          <button type="button" onclick="selectConvertMode('pdfToWord')" id="btnModePdfToWord" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
             <span class="text-xs font-bold text-slate-800 block">PDF to Word</span>
-            <span class="text-[10px] text-slate-500 block mt-0.5">.pdf &rarr; editable .doc</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">.pdf &rarr; .doc</span>
           </button>
-          <button type="button" onclick="selectConvertMode('imgToPdf')" id="btnModeImgToPdf" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
+          <button type="button" onclick="selectConvertMode('imgToPdf')" id="btnModeImgToPdf" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
             <span class="text-xs font-bold text-slate-800 block">Images to PDF</span>
-            <span class="text-[10px] text-slate-500 block mt-0.5">Combine photos & scans</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">Merge photos & IDs</span>
           </button>
-          <button type="button" onclick="selectConvertMode('pdfToImg')" id="btnModePdfToImg" class="mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
+          <button type="button" onclick="selectConvertMode('pdfToImg')" id="btnModePdfToImg" class="mode-btn p-3 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition">
             <span class="text-xs font-bold text-slate-800 block">PDF to JPG</span>
-            <span class="text-[10px] text-slate-500 block mt-0.5">Extract PDF as images</span>
+            <span class="text-[10px] text-slate-500 block mt-0.5">PDF &rarr; Image files</span>
           </button>
         </div>
 
-        <!-- Universal Converter File Dropzone -->
-        <div id="docDropZone" class="border-2 border-dashed border-brand-400 bg-brand-50/20 hover:bg-brand-50/40 rounded-2xl p-8 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[190px]">
+        <!-- Dropzone -->
+        <div id="docDropZone" class="border-2 border-dashed border-brand-400 bg-brand-50/20 hover:bg-brand-50/40 rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[150px] sm:min-h-[180px]">
           <input type="file" id="docFileInput" class="hidden">
-          <div class="w-12 h-12 mb-3 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 mb-2 sm:mb-3 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           </div>
-          <p id="docDropText" class="text-sm font-bold text-slate-800">Select .DOCX Word file or Drag & Drop</p>
-          <p id="docDropHint" class="text-xs text-slate-400 mt-1">Converts locally inside browser • 100% Secure</p>
+          <p id="docDropText" class="text-xs sm:text-sm font-bold text-slate-800">Select Word (.docx) File</p>
+          <p id="docDropHint" class="text-[10px] sm:text-xs text-slate-400 mt-0.5">Processed 100% locally inside your browser</p>
           <p id="docFileSelectedName" class="text-xs font-bold text-emerald-600 mt-2 hidden"></p>
         </div>
 
-        <!-- Optional PDF Target Size Limit (for Image to PDF / PDF compressing) -->
-        <div id="pdfSizeOptions" class="hidden p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <span class="font-bold text-slate-700">Target PDF Size Cap (e.g. for Govt / Job Portals):</span>
-          <div class="flex gap-2">
+        <!-- PDF Target Size Cap -->
+        <div id="pdfSizeOptions" class="hidden p-3 sm:p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+          <span class="font-bold text-slate-700">Target PDF Size Cap:</span>
+          <div class="flex gap-3">
             <label class="flex items-center gap-1 cursor-pointer">
-              <input type="radio" name="pdfTargetSize" value="200" checked class="text-brand-600"> Under 200 KB
+              <input type="radio" name="pdfTargetSize" value="200" checked class="text-brand-600"> &lt; 200 KB
             </label>
             <label class="flex items-center gap-1 cursor-pointer">
-              <input type="radio" name="pdfTargetSize" value="500" class="text-brand-600"> Under 500 KB
+              <input type="radio" name="pdfTargetSize" value="500" class="text-brand-600"> &lt; 500 KB
             </label>
             <label class="flex items-center gap-1 cursor-pointer">
               <input type="radio" name="pdfTargetSize" value="original" class="text-brand-600"> High Quality
@@ -377,8 +378,8 @@
         </div>
 
         <!-- Convert Trigger Button & Status -->
-        <div class="space-y-3">
-          <button id="btnExecuteDocConvert" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
+        <div class="space-y-2.5">
+          <button id="btnExecuteDocConvert" disabled class="w-full bg-brand-600 hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
             <span id="txtDocBtnLabel">Select a document to convert</span>
           </button>
           <div id="docConversionStatus" class="hidden text-xs text-center font-semibold text-slate-600 py-1"></div>
@@ -388,111 +389,199 @@
 
     </div>
 
-    <!-- 3. COMBO PACK (ZIP) SECTION -->
-    <div id="sectionCombo" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm max-w-4xl mx-auto space-y-6">
-      <div class="border-b border-slate-100 pb-4">
-        <h2 class="text-xl font-bold text-slate-900">1-Click Exam Package (Photo + Signature)</h2>
-        <p class="text-sm text-slate-500">Upload both files together. The tool formats both to their respective specifications and packages them into a single clean ZIP file.</p>
+    <!-- 3. COMBO PACK (ZIP) SECTION (BUG-FREE, HIGH QUALITY ENGINE) -->
+    <div id="sectionCombo" class="hidden bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-xs max-w-4xl mx-auto space-y-4 sm:space-y-6">
+      <div class="border-b border-slate-100 pb-3">
+        <h2 class="text-lg sm:text-xl font-bold text-slate-900">Photo + Signature Pack (Zip)</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Upload both files. High-definition compression ensures clear, readable output formatted strictly within official upload bounds.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
-          <span class="text-xs font-bold uppercase text-slate-700 block">1. Applicant Photo (20 KB - 50 KB)</span>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Photo Slot -->
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-2.5">
+          <span class="text-xs font-bold uppercase text-slate-700 block">1. Applicant Photo (20 KB – 50 KB)</span>
           <input type="file" id="comboPhotoInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
-          <p id="comboPhotoStatus" class="text-xs text-slate-400 font-medium">Select passport photograph</p>
+          <p id="comboPhotoStatus" class="text-xs text-slate-400 font-medium">Select passport photo</p>
         </div>
 
-        <div class="p-5 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-3">
-          <span class="text-xs font-bold uppercase text-slate-700 block">2. Signature (10 KB - 20 KB)</span>
+        <!-- Signature Slot -->
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-center space-y-2.5">
+          <span class="text-xs font-bold uppercase text-slate-700 block">2. Signature (10 KB – 20 KB)</span>
           <input type="file" id="comboSignInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
           <p id="comboSignStatus" class="text-xs text-slate-400 font-medium">Select scanned signature</p>
         </div>
       </div>
 
-      <button id="btnDownloadComboZip" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        <span>Download Complete Exam Pack (.ZIP)</span>
+      <button id="btnDownloadComboZip" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
+        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        <span>Download Clear Exam Pack (.ZIP)</span>
       </button>
     </div>
 
-    <!-- 4. SPECS DIRECTORY -->
-    <div id="sectionSpecs" class="hidden bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
-      <h2 class="text-xl font-bold text-slate-900 mb-2">Image Specifications Directory</h2>
-      <p class="text-sm text-slate-500 mb-6">Standard dimensions and KB thresholds officially enforced by portals:</p>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-sm text-slate-600">
-          <thead class="text-xs uppercase bg-slate-50 text-slate-700 border-b border-slate-200">
-            <tr>
-              <th class="py-3 px-4">Portal / Purpose</th>
-              <th class="py-3 px-4">Document Type</th>
-              <th class="py-3 px-4">Required Dimensions</th>
-              <th class="py-3 px-4">Required File Size</th>
-              <th class="py-3 px-4">Format</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100">
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">SSC (CGL, CHSL, GD, MTS)</td>
-              <td class="py-3.5 px-4">Photo & Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">200×230 / 140×60 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
-              <td class="py-3.5 px-4">Passport Photo & Sign</td>
-              <td class="py-3.5 px-4 font-mono text-xs">180×225 / 140×60 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 5–20 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">Indian Army (Agniveer GD/Tech)</td>
-              <td class="py-3.5 px-4">Photograph & Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">350×450 / 350×150 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">10–50 KB / 10–20 KB</td>
-              <td class="py-3.5 px-4">JPEG / JPG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">IBPS / SBI Banking Exams</td>
-              <td class="py-3.5 px-4">Applicant Photo & Sign</td>
-              <td class="py-3.5 px-4 font-mono text-xs">200×230 / 140×60 px</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
-              <td class="py-3.5 px-4">JPG / JPEG</td>
-            </tr>
-            <tr>
-              <td class="py-3.5 px-4 font-semibold text-slate-800">UPSC OTR / CSE</td>
-              <td class="py-3.5 px-4">Photo & Signature</td>
-              <td class="py-3.5 px-4 font-mono text-xs">350 × 350 px (Square)</td>
-              <td class="py-3.5 px-4 font-semibold text-indigo-600">20 KB – 300 KB</td>
-              <td class="py-3.5 px-4">JPG</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- 4. SPECS DIRECTORY (MOVED DIRECTLY ABOVE FAQs AS A UNIVERSAL DIRECTORY) -->
+    <section class="mt-8 sm:mt-12 bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+        <div>
+          <h2 class="text-lg sm:text-2xl font-bold text-slate-900">Official Portal Specs Directory</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">One-stop reference for all competitive exams, passport, and international visa requirements.</p>
+        </div>
+        <div>
+          <input type="text" id="specsSearchInput" placeholder="Search exam, visa or country..." class="w-full sm:w-64 border border-slate-300 rounded-lg px-3 py-1.5 text-xs focus:ring-2 focus:ring-brand-500 outline-none">
+        </div>
       </div>
-    </div>
 
-    <!-- FAQ Section -->
-    <section class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
-      <h2 class="text-xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-      <div class="space-y-4">
-        <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Can I customize the width, height, and target KB freely?</span>
+      <div class="overflow-x-auto mt-4 -mx-4 sm:mx-0">
+        <div class="inline-block min-w-full align-middle px-4 sm:px-0">
+          <table class="min-w-full text-left text-xs sm:text-sm text-slate-600">
+            <thead class="text-[10px] sm:text-xs uppercase bg-slate-50 text-slate-700 border-b border-slate-200">
+              <tr>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">Category / Portal</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">Document Type</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">Dimensions</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">Required File Size</th>
+                <th class="py-2.5 sm:py-3 px-3 sm:px-4 font-bold">Format</th>
+              </tr>
+            </thead>
+            <tbody id="specsTableBody" class="divide-y divide-slate-100 text-xs sm:text-sm">
+              <!-- International Visas -->
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">US Visa (DS-160 / DropBox)</td>
+                <td class="py-3 px-3 sm:px-4">Square Photo (2x2 Inch)</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">600 × 600 px (Min 1200 max)</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">&le; 240 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">Schengen Visa (Europe)</td>
+                <td class="py-3 px-3 sm:px-4">Biometric Photograph</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">35 × 45 mm (413 × 531 px)</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">&le; 200 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">UK Visa & Immigration</td>
+                <td class="py-3 px-3 sm:px-4">Digital Visa Photograph</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">35 × 45 mm (413 × 531 px)</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">&le; 200 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">Canada Visa (IRCC)</td>
+                <td class="py-3 px-3 sm:px-4">Application Photo</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">420 × 540 px (Min)</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">60 KB – 240 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <!-- Passports & Citizen IDs -->
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">Indian Passport (Passport Seva)</td>
+                <td class="py-3 px-3 sm:px-4">Applicant Photo</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">413 × 531 px (3.5 × 4.5 cm)</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">10 KB – 100 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">PAN Card (UTIITSL / NSDL)</td>
+                <td class="py-3 px-3 sm:px-4">Photo & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">213 × 213 px / 400 × 200 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">&le; 30 KB each</td>
+                <td class="py-3 px-3 sm:px-4">JPEG</td>
+              </tr>
+              <!-- National Entrance Exams -->
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">NTA NEET / JEE Main</td>
+                <td class="py-3 px-3 sm:px-4">Passport Photo & Postcard</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">200 × 230 px / 4 × 6 inch</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">10 KB – 200 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPG / JPEG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">GATE / IIT JAM</td>
+                <td class="py-3 px-3 sm:px-4">Photo & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">240 × 320 px / 160 × 560 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">20 KB – 200 KB / 5–200 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <!-- Central & State Govt Recruitment -->
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">SSC (CGL, CHSL, GD, MTS)</td>
+                <td class="py-3 px-3 sm:px-4">Photo & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">200 × 230 px / 140 × 60 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">UPSC (CSE / NDA / CDS)</td>
+                <td class="py-3 px-3 sm:px-4">Photo & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">350 × 350 px / 350 × 150 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">20–300 KB / 20–100 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">IBPS / SBI Banking Exams</td>
+                <td class="py-3 px-3 sm:px-4">Photo & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">200 × 230 px / 140 × 60 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPG / JPEG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">UP Police Constable / SI</td>
+                <td class="py-3 px-3 sm:px-4">Passport Photo & Sign</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">180 × 225 px / 140 × 60 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">20–50 KB / 5–20 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">Delhi Police Recruitment</td>
+                <td class="py-3 px-3 sm:px-4">Photo & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">200 × 230 px / 140 × 60 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">20–50 KB / 10–20 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+              <tr class="specs-row">
+                <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">Indian Army (Agniveer Rally)</td>
+                <td class="py-3 px-3 sm:px-4">Photograph & Signature</td>
+                <td class="py-3 px-3 sm:px-4 font-mono text-xs">350 × 450 px / 350 × 150 px</td>
+                <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">10–50 KB / 10–20 KB</td>
+                <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FAQ SECTION -->
+    <section class="mt-8 sm:mt-12 bg-white rounded-2xl border border-slate-200 p-4 sm:p-8">
+      <h2 class="text-lg sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-3 sm:space-y-4">
+        <details class="group border border-slate-200 rounded-xl p-3.5 sm:p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-semibold text-xs sm:text-sm text-slate-800 cursor-pointer">
+            <span>Why do online portals reject uploaded photos?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            Yes. By default, "Custom Dimensions & File Size" is selected. You can type any exact width, height, maximum KB, or minimum KB required by your specific portal or employer.
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Most portals automatically scan file size (KB) and dimensions (width × height) before saving. If an image is even 1 KB above the maximum allowed limit or slightly stretched, the submission gets rejected instantly.
           </p>
         </details>
 
-        <details class="group border border-slate-200 rounded-xl p-4 [&_summary::-webkit-details-marker]:hidden">
-          <summary class="flex justify-between items-center font-semibold text-slate-800 cursor-pointer">
-            <span>Are documents and files uploaded to your servers during conversion?</span>
+        <details class="group border border-slate-200 rounded-xl p-3.5 sm:p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-semibold text-xs sm:text-sm text-slate-800 cursor-pointer">
+            <span>How does this tool compress photos to 20KB without blur?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
-          <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-            No. AnyDoc Resizer converts Word, PDF, and image documents entirely in your local browser session. Your documents, resumes, or marksheet scans never touch any remote server.
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Standard compressors simply lower the image resolution, resulting in blurry, pixelated faces. AnyDoc Resizer preserves the exact required pixel geometry and uses iterative binary-search quantization to achieve optimal sharpness right under the portal limit.
+          </p>
+        </details>
+
+        <details class="group border border-slate-200 rounded-xl p-3.5 sm:p-4 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-semibold text-xs sm:text-sm text-slate-800 cursor-pointer">
+            <span>Are my personal images uploaded to any server?</span>
+            <span class="transition group-open:rotate-180 text-slate-400">▼</span>
+          </summary>
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            No. AnyDoc Resizer processes all images and documents entirely within your local browser session via HTML5 Canvas and client-side web workers. Your documents and photos never touch any external server.
           </p>
         </details>
       </div>
@@ -501,9 +590,9 @@
   </main>
 
   <!-- ADSENSE COMPLIANT FOOTER -->
-  <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 mt-12">
-    <div class="max-w-4xl mx-auto px-4 space-y-4">
-      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold text-slate-600">
+  <footer class="bg-white border-t border-slate-200 py-6 sm:py-8 text-center text-xs text-slate-500 mt-8 sm:mt-12">
+    <div class="max-w-4xl mx-auto px-4 space-y-3 sm:space-y-4">
+      <div class="flex flex-wrap justify-center gap-3 sm:gap-6 font-semibold text-slate-600 text-xs">
         <button type="button" onclick="openModal('privacyModal')" class="hover:text-brand-600 transition">Privacy Policy</button>
         <span class="text-slate-300">|</span>
         <button type="button" onclick="openModal('termsModal')" class="hover:text-brand-600 transition">Terms & Disclaimer</button>
@@ -514,23 +603,23 @@
       </div>
 
       <p>&copy; 2026 Any Doc Resizer. Designed for fast, private document & image formatting.</p>
-      <p class="text-[11px] text-slate-400">
-        Disclaimer: AnyDoc Resizer is an independent browser-based utility tool and is NOT affiliated with, authorized, or endorsed by SSC, UPSC, NTA, IBPS, or any government portal.
+      <p class="text-[10px] sm:text-[11px] text-slate-400">
+        Disclaimer: AnyDoc Resizer is an independent browser-based utility and is NOT affiliated with, authorized, or endorsed by SSC, UPSC, NTA, IBPS, or any government portal.
       </p>
     </div>
   </footer>
 
   <!-- LEGAL MODALS -->
   <div id="privacyModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-5 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
-        <h3 class="text-lg font-bold text-slate-900">Privacy Policy</h3>
+        <h3 class="text-base sm:text-lg font-bold text-slate-900">Privacy Policy</h3>
         <button onclick="closeModal('privacyModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
         <p><strong>Effective Date:</strong> October 2026</p>
         <h4 class="font-bold text-slate-800 text-sm">1. 100% Client-Side Processing (Zero Server Uploads)</h4>
-        <p>Your privacy is our absolute priority. When you use AnyDoc Resizer to crop, resize, or convert Word, PDF, or image files, <strong>no files or personal images are ever uploaded to our servers</strong>. All processing is performed locally inside your device's web browser using HTML5 Canvas, JSZip, and local client libraries.</p>
+        <p>Your privacy is our priority. When you use AnyDoc Resizer to crop, resize, or convert Word, PDF, or image files, <strong>no files or personal images are uploaded to any server</strong>. All processing is performed locally inside your device's web browser using HTML5 Canvas, JSZip, and local client libraries.</p>
         <h4 class="font-bold text-slate-800 text-sm">2. Cookies & Analytics</h4>
         <p>We use Google Analytics 4 to collect aggregated, anonymized metrics about site traffic. Third-party vendors, including Google, use cookies to serve ads based on prior visits. You may opt out of personalized advertising by visiting Google's Ads Settings.</p>
       </div>
@@ -541,16 +630,16 @@
   </div>
 
   <div id="termsModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-5 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
-        <h3 class="text-lg font-bold text-slate-900">Terms of Service & Non-Affiliation Disclaimer</h3>
+        <h3 class="text-base sm:text-lg font-bold text-slate-900">Terms of Service & Non-Affiliation Disclaimer</h3>
         <button onclick="closeModal('termsModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
         <h4 class="font-bold text-slate-800 text-sm">1. Acceptance of Terms</h4>
         <p>By using AnyDoc Resizer, you agree to these Terms of Service. This utility is provided on an "as is" basis for personal, educational, and non-commercial assistance.</p>
         <h4 class="font-bold text-slate-800 text-sm">2. Government Non-Affiliation Disclaimer</h4>
-        <p>AnyDoc Resizer is an independent tool. It is NOT affiliated, endorsed, associated with, or in any way connected to the Staff Selection Commission (SSC), UPSC, NTA, IBPS, Indian Armed Forces, or any state police recruitment board.</p>
+        <p>AnyDoc Resizer is an independent tool. It is NOT affiliated, endorsed, associated with, or connected to the Staff Selection Commission (SSC), UPSC, NTA, IBPS, Indian Armed Forces, or any state police recruitment board.</p>
       </div>
       <div class="pt-3 border-t text-right">
         <button onclick="closeModal('termsModal')" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-semibold">Close</button>
@@ -559,13 +648,13 @@
   </div>
 
   <div id="aboutModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-5 sm:p-8 space-y-4 shadow-xl text-left max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-3">
-        <h3 class="text-lg font-bold text-slate-900">About AnyDoc Resizer</h3>
+        <h3 class="text-base sm:text-lg font-bold text-slate-900">About AnyDoc Resizer</h3>
         <button onclick="closeModal('aboutModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
-        <p><strong>AnyDoc Resizer</strong> was created to solve rigid, frustrating upload constraints on online application portals. Most portals reject forms if an image is even 1 KB above the limit or slightly off in pixel dimensions.</p>
+        <p><strong>AnyDoc Resizer</strong> was created to solve rigid upload constraints on online application portals. Most portals reject forms if an image is even 1 KB above the limit or slightly off in pixel dimensions.</p>
         <p>Our tool executes locally inside your browser, protecting your privacy while ensuring your documents meet exact specifications on the first attempt.</p>
       </div>
       <div class="pt-3 border-t text-right">
@@ -575,9 +664,9 @@
   </div>
 
   <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-4 shadow-xl text-left">
+    <div class="bg-white rounded-2xl max-w-md w-full p-5 sm:p-8 space-y-4 shadow-xl text-left">
       <div class="flex justify-between items-center border-b pb-3">
-        <h3 class="text-lg font-bold text-slate-900">Contact & Support</h3>
+        <h3 class="text-base sm:text-lg font-bold text-slate-900">Contact & Support</h3>
         <button onclick="closeModal('contactModal')" class="text-slate-400 hover:text-slate-700 text-lg font-bold">&times;</button>
       </div>
       <div class="space-y-3 text-xs leading-relaxed text-slate-600">
@@ -610,33 +699,38 @@
     const tabSingle = document.getElementById('tabSingle');
     const tabDocConverter = document.getElementById('tabDocConverter');
     const tabCombo = document.getElementById('tabCombo');
-    const tabSpecs = document.getElementById('tabSpecs');
     const sectionSingle = document.getElementById('sectionSingle');
     const sectionDocConverter = document.getElementById('sectionDocConverter');
     const sectionCombo = document.getElementById('sectionCombo');
-    const sectionSpecs = document.getElementById('sectionSpecs');
 
     function setSection(activeTab) {
-      [tabSingle, tabDocConverter, tabCombo, tabSpecs].forEach(t => {
-        t.className = 'tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5';
+      [tabSingle, tabDocConverter, tabCombo].forEach(t => {
+        t.className = 'tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 whitespace-nowrap';
       });
-      activeTab.className = 'tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition flex items-center gap-1.5';
+      activeTab.className = 'tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition flex items-center gap-1.5 whitespace-nowrap';
 
       sectionSingle.classList.add('hidden');
       sectionDocConverter.classList.add('hidden');
       sectionCombo.classList.add('hidden');
-      sectionSpecs.classList.add('hidden');
 
       if (activeTab === tabSingle) sectionSingle.classList.remove('hidden');
       if (activeTab === tabDocConverter) sectionDocConverter.classList.remove('hidden');
       if (activeTab === tabCombo) sectionCombo.classList.remove('hidden');
-      if (activeTab === tabSpecs) sectionSpecs.classList.remove('hidden');
     }
 
     tabSingle.addEventListener('click', () => setSection(tabSingle));
     tabDocConverter.addEventListener('click', () => setSection(tabDocConverter));
     tabCombo.addEventListener('click', () => setSection(tabCombo));
-    tabSpecs.addEventListener('click', () => setSection(tabSpecs));
+
+    // Specs Directory Live Search
+    const specsSearchInput = document.getElementById('specsSearchInput');
+    specsSearchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('.specs-row').forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
 
     // Image Resizer DOM Elements
     const dropZone = document.getElementById('dropZone');
@@ -673,27 +767,29 @@
     const canvas = document.getElementById('engineCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Presets DB
     const PRESETS = {
       custom: null,
-      passport_in: { w: 413, h: 531, min: 20, max: 100, sign: false },
+      passport_in: { w: 413, h: 531, min: 10, max: 100, sign: false },
       us_visa:     { w: 600, h: 600, min: 50, max: 240, sign: false },
+      schengen_visa: { w: 413, h: 531, min: 20, max: 200, sign: false },
+      pan_card:    { w: 213, h: 213, min: 10, max: 30, sign: false },
       linkedin_banner: { w: 400, h: 400, min: 20, max: 100, sign: false },
-      ssc_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
-      ssc_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
+      ssc_photo:   { w: 200, h: 230, min: 20, max: 50, sign: false },
+      ssc_sign:    { w: 140, h: 60,  min: 10, max: 20, sign: true },
+      upsc_photo:  { w: 350, h: 350, min: 20, max: 300, sign: false },
+      upsc_sign:   { w: 350, h: 150, min: 20, max: 100, sign: true },
+      ibps_photo:  { w: 200, h: 230, min: 20, max: 50, sign: false },
+      ibps_sign:   { w: 140, h: 60,  min: 10, max: 20, sign: true },
       up_police_photo: { w: 180, h: 225, min: 20, max: 50, sign: false },
       up_police_sign:  { w: 140, h: 60,  min: 5,  max: 20, sign: true },
-      army_photo:     { w: 350, h: 450, min: 10, max: 50, sign: false },
-      army_sign:      { w: 350, h: 150, min: 10, max: 20, sign: true },
-      ibps_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
-      ibps_sign:  { w: 140, h: 60,  min: 10, max: 20, sign: true },
-      upsc_photo: { w: 350, h: 350, min: 20, max: 300, sign: false },
-      upsc_sign:  { w: 350, h: 150, min: 20, max: 100, sign: true }
+      delhi_police_photo: { w: 200, h: 230, min: 20, max: 50, sign: false },
+      army_photo:  { w: 350, h: 450, min: 10, max: 50, sign: false },
+      army_sign:   { w: 350, h: 150, min: 10, max: 20, sign: true },
+      nta_photo:   { w: 200, h: 230, min: 10, max: 200, sign: false }
     };
 
     function applyPreset(key) {
       if (key === 'custom') {
-        // Unlock user inputs
         signatureOptions.classList.add('hidden');
         nameDateContainer.classList.remove('hidden');
         faceAlignContainer.classList.remove('hidden');
@@ -719,11 +815,8 @@
 
     presetSelector.addEventListener('change', (e) => applyPreset(e.target.value));
 
-    // Custom Input Change Listeners
     [inputW, inputH, inputMaxKB, inputMinKB].forEach(el => {
-      el.addEventListener('input', () => {
-        if (rawImage) processImage();
-      });
+      el.addEventListener('input', () => { if (rawImage) processImage(); });
     });
 
     zoomSlider.addEventListener('input', (e) => {
@@ -763,6 +856,8 @@
       snapCanvas.width = webcamVideo.videoWidth || 640;
       snapCanvas.height = webcamVideo.videoHeight || 480;
       const snapCtx = snapCanvas.getContext('2d');
+      snapCtx.imageSmoothingEnabled = true;
+      snapCtx.imageSmoothingQuality = 'high';
       snapCtx.drawImage(webcamVideo, 0, 0, snapCanvas.width, snapCanvas.height);
 
       const capturedImg = new Image();
@@ -782,7 +877,6 @@
       capturedImg.src = snapCanvas.toDataURL('image/jpeg');
     });
 
-    // File input handlers
     dropZone.addEventListener('click', () => fileInput.click());
     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-brand-500', 'bg-brand-50/40'); });
     dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-brand-500', 'bg-brand-50/40'));
@@ -831,6 +925,8 @@
       canvas.width = targetW;
       canvas.height = targetH;
 
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, targetW, targetH);
 
@@ -865,7 +961,7 @@
         ctx.strokeRect(0, stripY, targetW, stripHeight);
 
         const name = (candidateName.value || 'NAME HERE').trim();
-        const dateStr = (photoDate.value || '05/10/2026').trim();
+        const dateStr = (photoDate.value || '11/10/2026').trim();
 
         ctx.fillStyle = '#000000';
         ctx.textAlign = 'center';
@@ -901,7 +997,6 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
-      // Binary Search Target Compression
       let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
@@ -936,7 +1031,7 @@
       validatorCard.classList.remove('hidden');
 
       statusBadge.textContent = isSizeValid ? 'Verified: Ready' : 'Processed';
-      statusBadge.className = isSizeValid ? 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800' : 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
+      statusBadge.className = isSizeValid ? 'text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800' : 'text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
       statusBadge.classList.remove('hidden');
 
       downloadBtn.href = bestDataUrl;
@@ -963,13 +1058,13 @@
     function selectConvertMode(mode) {
       currentConvertMode = mode;
       document.querySelectorAll('.mode-btn').forEach(b => {
-        b.className = 'mode-btn p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition';
+        b.className = 'mode-btn p-3 rounded-xl border border-slate-200 bg-white hover:border-slate-300 text-left transition';
         b.querySelector('span:first-child').className = 'text-xs font-bold text-slate-800 block';
       });
 
       const activeBtn = document.getElementById(`btnMode${mode.charAt(0).toUpperCase() + mode.slice(1)}`);
       if (activeBtn) {
-        activeBtn.className = 'mode-btn p-3.5 rounded-xl border-2 border-brand-600 bg-brand-50/60 text-left transition';
+        activeBtn.className = 'mode-btn p-3 rounded-xl border-2 border-brand-600 bg-brand-50/60 text-left transition';
         activeBtn.querySelector('span:first-child').className = 'text-xs font-bold text-brand-700 block';
       }
 
@@ -980,13 +1075,13 @@
 
       if (mode === 'wordToPdf') {
         docFileInput.accept = '.docx';
-        docDropText.textContent = 'Select Word (.docx) Document or Drag & Drop';
+        docDropText.textContent = 'Select Word (.docx) Document';
         docDropHint.textContent = 'Converts .docx to clean printable PDF inside your browser';
         pdfSizeOptions.classList.add('hidden');
         txtDocBtnLabel.textContent = 'Select .DOCX to Convert';
       } else if (mode === 'pdfToWord') {
         docFileInput.accept = '.pdf';
-        docDropText.textContent = 'Select PDF Document or Drag & Drop';
+        docDropText.textContent = 'Select PDF Document';
         docDropHint.textContent = 'Extracts layout and text into an editable Word .doc file';
         pdfSizeOptions.classList.add('hidden');
         txtDocBtnLabel.textContent = 'Select PDF to Convert';
@@ -1029,10 +1124,9 @@
       }
       docFileSelectedName.classList.remove('hidden');
       btnExecuteDocConvert.disabled = false;
-      txtDocBtnLabel.textContent = `Convert & Download (${files[0].name.slice(0, 20)}...)`;
+      txtDocBtnLabel.textContent = `Convert & Download (${files[0].name.slice(0, 18)}...)`;
     }
 
-    // Execute Document Conversion
     btnExecuteDocConvert.addEventListener('click', async () => {
       if (!selectedDocFile || !selectedDocFile.length) return;
 
@@ -1042,7 +1136,6 @@
 
       try {
         if (currentConvertMode === 'wordToPdf') {
-          // Word (.docx) to PDF via Mammoth.js + jsPDF
           const arrayBuffer = await selectedDocFile[0].arrayBuffer();
           const mammothResult = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
           const tempContainer = document.createElement('div');
@@ -1069,7 +1162,6 @@
           });
 
         } else if (currentConvertMode === 'pdfToWord') {
-          // PDF to Word (.doc) via PDF.js text extraction
           const fileData = new Uint8Array(await selectedDocFile[0].arrayBuffer());
           const loadingTask = pdfjsLib.getDocument({ data: fileData });
           const pdfDoc = await loadingTask.promise;
@@ -1092,7 +1184,6 @@
           btnExecuteDocConvert.disabled = false;
 
         } else if (currentConvertMode === 'imgToPdf') {
-          // Images to single PDF with strict target compression
           const { jsPDF } = window.jspdf;
           const pdf = new jsPDF('p', 'mm', 'a4');
           const targetCap = document.querySelector('input[name="pdfTargetSize"]:checked').value;
@@ -1114,7 +1205,6 @@
           btnExecuteDocConvert.disabled = false;
 
         } else if (currentConvertMode === 'pdfToImg') {
-          // PDF to JPG
           const fileData = new Uint8Array(await selectedDocFile[0].arrayBuffer());
           const loadingTask = pdfjsLib.getDocument({ data: fileData });
           const pdfDoc = await loadingTask.promise;
@@ -1142,7 +1232,9 @@
       }
     });
 
-    // Combo Pack (Zip) Logic
+    // ==========================================
+    // BUG FIX: HIGH-QUALITY COMBO PACK (ZIP) PIPELINE
+    // ==========================================
     const comboPhotoInput = document.getElementById('comboPhotoInput');
     const comboSignInput = document.getElementById('comboSignInput');
     const comboPhotoStatus = document.getElementById('comboPhotoStatus');
@@ -1153,41 +1245,69 @@
     let comboPhotoBlob = null;
     let comboSignBlob = null;
 
-    function compressToBlob(imageObj, w, h, targetMaxKB, isSignature = false) {
-      comboCanvas.width = w;
-      comboCanvas.height = h;
+    function compressToHighQualityBlob(imageObj, targetW, targetH, targetMaxKB, isSignature = false) {
+      // Upscale canvas buffer resolution to ensure sharp strokes
+      const scaleMultiplier = isSignature ? 2 : 1.5;
+      const renderW = Math.round(targetW * scaleMultiplier);
+      const renderH = Math.round(targetH * scaleMultiplier);
+
+      comboCanvas.width = renderW;
+      comboCanvas.height = renderH;
+
+      comboCtx.imageSmoothingEnabled = true;
+      comboCtx.imageSmoothingQuality = 'high';
       comboCtx.fillStyle = '#FFFFFF';
-      comboCtx.fillRect(0, 0, w, h);
+      comboCtx.fillRect(0, 0, renderW, renderH);
 
       const imgRatio = imageObj.width / imageObj.height;
-      const targetRatio = w / h;
-      let rw, rh;
-      if (imgRatio > targetRatio) { rh = h; rw = h * imgRatio; }
-      else { rw = w; rh = w / imgRatio; }
+      const canvasRatio = renderW / renderH;
+      let drawW, drawH;
 
-      comboCtx.drawImage(imageObj, -(rw - w) / 2, -(rh - h) / 2, rw, rh);
+      if (imgRatio > canvasRatio) {
+        drawH = renderH;
+        drawW = renderH * imgRatio;
+      } else {
+        drawW = renderW;
+        drawH = renderW / imgRatio;
+      }
 
+      comboCtx.drawImage(imageObj, -(drawW - renderW) / 2, -(drawH - renderH) / 2, drawW, drawH);
+
+      // Gentle shadow removal to maintain legible ink curves
       if (isSignature) {
-        const idata = comboCtx.getImageData(0, 0, w, h);
+        const idata = comboCtx.getImageData(0, 0, renderW, renderH);
         const d = idata.data;
         for (let i = 0; i < d.length; i += 4) {
-          let bright = d[i]*0.299 + d[i+1]*0.587 + d[i+2]*0.114;
-          if (bright > 175) { d[i] = 255; d[i+1] = 255; d[i+2] = 255; }
-          else { d[i] = Math.max(0, d[i]-40); d[i+1] = Math.max(0, d[i]-40); d[i+2] = Math.max(0, d[i]-40); }
+          let bright = d[i] * 0.299 + d[i+1] * 0.587 + d[i+2] * 0.114;
+          if (bright > 185) {
+            d[i] = 255; d[i+1] = 255; d[i+2] = 255;
+          } else {
+            d[i] = Math.max(0, d[i] - 30);
+            d[i+1] = Math.max(0, d[i] - 30);
+            d[i+2] = Math.max(0, d[i] - 30);
+          }
         }
         comboCtx.putImageData(idata, 0, 0);
       }
 
+      // Binary Search targeting closest threshold beneath targetMaxKB
       const maxBytes = targetMaxKB * 1024;
-      let low = 0.05, high = 1.0, best = null;
-      for (let s = 0; s < 7; s++) {
+      let low = 0.40, high = 0.98, bestData = null;
+
+      for (let s = 0; s < 8; s++) {
         let q = (low + high) / 2;
         let dataUrl = comboCanvas.toDataURL('image/jpeg', q);
-        let bytes = Math.round((dataUrl.length - 23) * 3 / 4);
-        if (bytes <= maxBytes) { best = dataUrl; low = q; }
-        else { high = q; }
+        let bytes = Math.round((dataUrl.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
+
+        if (bytes <= maxBytes) {
+          bestData = dataUrl;
+          low = q;
+        } else {
+          high = q;
+        }
       }
-      return best || comboCanvas.toDataURL('image/jpeg', 0.1);
+
+      return bestData || comboCanvas.toDataURL('image/jpeg', 0.65);
     }
 
     comboPhotoInput.addEventListener('change', (e) => {
@@ -1196,8 +1316,8 @@
       r.onload = ev => {
         const img = new Image();
         img.onload = () => {
-          comboPhotoBlob = compressToBlob(img, 200, 230, 45, false);
-          comboPhotoStatus.textContent = `✅ Ready: 200x230 px (~35 KB)`;
+          comboPhotoBlob = compressToHighQualityBlob(img, 200, 230, 48, false);
+          comboPhotoStatus.textContent = `✅ Ready: High Clarity (~35–45 KB)`;
           comboPhotoStatus.className = 'text-xs text-emerald-600 font-bold';
           if (comboPhotoBlob && comboSignBlob) btnDownloadComboZip.disabled = false;
         };
@@ -1212,8 +1332,8 @@
       r.onload = ev => {
         const img = new Image();
         img.onload = () => {
-          comboSignBlob = compressToBlob(img, 140, 60, 18, true);
-          comboSignStatus.textContent = `✅ Ready: 140x60 px (~14 KB)`;
+          comboSignBlob = compressToHighQualityBlob(img, 200, 90, 18, true);
+          comboSignStatus.textContent = `✅ Ready: Sharp Contrast (~12–18 KB)`;
           comboSignStatus.className = 'text-xs text-emerald-600 font-bold';
           if (comboPhotoBlob && comboSignBlob) btnDownloadComboZip.disabled = false;
         };
@@ -1225,8 +1345,10 @@
     btnDownloadComboZip.addEventListener('click', () => {
       if (!comboPhotoBlob || !comboSignBlob) return;
       const zip = new JSZip();
+
       zip.file("Application_Photo_20KB_50KB.jpg", comboPhotoBlob.split(',')[1], {base64: true});
       zip.file("Application_Signature_10KB_20KB.jpg", comboSignBlob.split(',')[1], {base64: true});
+
       zip.generateAsync({type:"blob"}).then(function(content) {
         const link = document.createElement('a');
         link.href = URL.createObjectURL(content);
@@ -1261,14 +1383,14 @@
         txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए फोटो चुनें';
         txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
       } else {
-        langToggleBtn.textContent = 'हिंदी में बदलें';
-        txtTagline.textContent = 'Image & Document Utility • 100% Private';
+        langToggleBtn.textContent = 'हिंदी में';
+        txtTagline.textContent = '100% Private Browser Utility';
         txtHeroTitle.textContent = 'Resize, Compress & Convert Any Document or Image';
-        txtHeroDesc.innerHTML = 'Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and total browser privacy.';
-        lblSelectPreset.textContent = 'Select Preset (Optional)';
-        txtUploadPrompt.textContent = 'Select Image or Drag & Drop';
-        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo (Live Capture)';
-        txtAddDOP.textContent = 'Add Candidate Name & Date Strip (At Bottom)';
+        txtHeroDesc.innerHTML = 'Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and complete browser privacy.';
+        lblSelectPreset.textContent = 'Preset Configuration';
+        txtUploadPrompt.textContent = 'Tap to Select Image or Drag & Drop';
+        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo';
+        txtAddDOP.textContent = 'Add Name & Date Strip (Bottom of Photo)';
         txtProcessBtn.textContent = rawImage ? 'Format & Compress Image' : 'Upload an image to start';
         txtDownloadBtn.textContent = 'Download Form-Ready File';
       }
