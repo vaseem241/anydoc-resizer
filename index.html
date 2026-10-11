@@ -6,7 +6,8 @@
   <title>Any Doc Resizer — Resize, Compress & Convert Any Image or Document</title>
   <meta name="description" content="Free tool to resize photos, signatures, and convert documents (Word to PDF, PDF to Word, Image to PDF) to exact KB limits without blur. 100% private browser processing.">
   <meta name="keywords" content="resize image to exact kb, docx to pdf converter, pdf to word converter, image to pdf 200kb, photo resizer 20kb to 50kb, signature compressor">
-<!-- Canonical URL for SEO -->
+
+  <!-- Canonical URL for SEO -->
   <link rel="canonical" href="https://vaseem241.github.io/anydoc-resizer/">
 
   <!-- Social Sharing Previews (WhatsApp, LinkedIn, Facebook) -->
@@ -19,7 +20,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="AnyDoc Resizer — Resize, Compress & Convert Any Image or Document">
   <meta name="twitter:description" content="Free, 100% private tool to resize photos, signatures & convert Word to PDF to exact KB. No blur, zero uploads.">
-  
+
   <!-- Matching Resize-Arrows Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%234f46e5'/><path d='M32 44 V32 H44 M32 32 L46 46 M68 44 V32 H56 M68 32 L54 46 M32 56 V68 H44 M32 68 L46 54 M68 56 V68 H56 M68 68 L54 54' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>">
 
@@ -103,7 +104,7 @@
       </div>
     </div>
 
-    <!-- Hero Title -->
+    <!-- Hero Title & Subtitle -->
     <div class="text-center max-w-2xl mx-auto mb-4 sm:mb-6 px-1">
       <h1 id="txtHeroTitle" class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Resize, Compress & Convert Any Document or Image
@@ -111,20 +112,49 @@
       <p id="txtHeroDesc" class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600 leading-normal">
         Zero-blur progressive downsampling, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with direct email & PDF sharing.
       </p>
+
+      <!-- Clean Feature Pills (Screenshot 2 Enhancement) -->
+      <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mt-3 sm:mt-4">
+        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-50 border border-indigo-200/80 text-brand-700 shadow-2xs">
+          <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          Exact KB Limits
+        </span>
+        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-50 border border-indigo-200/80 text-brand-700 shadow-2xs">
+          <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          Zero Blur Engine
+        </span>
+        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-50 border border-indigo-200/80 text-brand-700 shadow-2xs">
+          <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          100% Private (No Uploads)
+        </span>
+        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-indigo-50 border border-indigo-200/80 text-brand-700 shadow-2xs">
+          <svg class="w-3 h-3 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          Instant Download
+        </span>
+      </div>
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Polished Navigation Tabs (Screenshot 1 Enhancement) -->
     <div class="flex justify-center mb-5 sm:mb-6">
-      <div class="inline-flex p-1 bg-slate-200/80 rounded-xl overflow-x-auto no-scrollbar max-w-full gap-1 shadow-inner">
-        <button id="tabSingle" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition whitespace-nowrap">
-          Image Resizer
+      <div class="inline-flex p-1.5 bg-slate-200/80 backdrop-blur-xs rounded-2xl overflow-x-auto no-scrollbar max-w-full gap-1 border border-slate-300/60 shadow-xs">
+        
+        <button id="tabSingle" class="tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-900 shadow-xs border border-slate-200/60 transition flex items-center gap-2 whitespace-nowrap">
+          <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          <span>Image Resizer</span>
         </button>
-        <button id="tabDocConverter" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
-          Doc Converter (Word ⇄ PDF)
+
+        <button id="tabDocConverter" class="tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/60 transition flex items-center gap-2 whitespace-nowrap">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Doc Converter (Word ⇄ PDF)</span>
         </button>
-        <button id="tabCombo" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition whitespace-nowrap">
-          Photo + Sign Pack (Zip)
+
+        <button id="tabCombo" class="tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/60 transition flex items-center gap-2 whitespace-nowrap">
+          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+          </svg>
+          <span>Photo + Sign Pack (Zip)</span>
         </button>
       </div>
     </div>
@@ -181,13 +211,11 @@
             </div>
 
             <div class="grid grid-cols-2 gap-2">
-              <!-- Cloud Drive Picker Button -->
               <button id="btnOpenCloudDrive" type="button" class="py-2 px-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
                 <svg class="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
                 <span>Google Drive / Cloud</span>
               </button>
 
-              <!-- Live Camera Button -->
               <button id="btnOpenCamera" type="button" class="py-2 px-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
                 <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
                 <span>Take Live Photo</span>
@@ -847,7 +875,7 @@
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
-    // Navigation Tabs
+    // Navigation Tabs Handler (With Icon & Focus Sync)
     const tabSingle = document.getElementById('tabSingle');
     const tabDocConverter = document.getElementById('tabDocConverter');
     const tabCombo = document.getElementById('tabCombo');
@@ -856,10 +884,13 @@
     const sectionCombo = document.getElementById('sectionCombo');
 
     function setSection(activeTab) {
+      // Inactive Tab Style
       [tabSingle, tabDocConverter, tabCombo].forEach(t => {
-        t.className = 'tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 whitespace-nowrap';
+        t.className = 'tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/60 transition flex items-center gap-2 whitespace-nowrap';
       });
-      activeTab.className = 'tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition flex items-center gap-1.5 whitespace-nowrap';
+
+      // Active Tab Style
+      activeTab.className = 'tab-btn px-3.5 sm:px-5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-900 shadow-xs border border-slate-200/60 transition flex items-center gap-2 whitespace-nowrap';
 
       sectionSingle.classList.add('hidden');
       sectionDocConverter.classList.add('hidden');
@@ -884,10 +915,7 @@
       });
     });
 
-    // ==========================================
-    // PROGRESSIVE MIPMAP DOWNSAMPLE ALGORITHM
-    // Eliminates harsh aliasing and pixel blur
-    // ==========================================
+    // Progressive Mipmap Downscale
     function progressiveDownscale(sourceImg, targetW, targetH) {
       let curW = sourceImg.width;
       let curH = sourceImg.height;
@@ -900,7 +928,6 @@
       tempCtx.imageSmoothingQuality = 'high';
       tempCtx.drawImage(sourceImg, 0, 0);
 
-      // Downsample in gentle 50% steps until close to target
       while (curW * 0.5 > targetW && curH * 0.5 > targetH) {
         let nextW = Math.round(curW * 0.5);
         let nextH = Math.round(curH * 0.5);
@@ -1019,13 +1046,11 @@
       if (rawImage) processImage();
     });
 
-    // Cloud Drive native picker trigger
     btnOpenCloudDrive.addEventListener('click', () => {
       fileInput.setAttribute('accept', 'image/jpeg,image/png,image/webp');
       fileInput.click();
     });
 
-    // Camera Handlers Single
     const btnOpenCamera = document.getElementById('btnOpenCamera');
     const cameraContainer = document.getElementById('cameraContainer');
     const webcamVideo = document.getElementById('webcamVideo');
@@ -1120,7 +1145,6 @@
       const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
       const zoom = parseFloat(zoomSlider.value) || 1.0;
 
-      // Downsample smoothly to eliminate pixelation
       const preparedCanvas = progressiveDownscale(rawImage, targetW * zoom, targetH * zoom);
 
       canvas.width = targetW;
@@ -1150,7 +1174,6 @@
 
       ctx.drawImage(preparedCanvas, offsetX, offsetY, renderW, renderH);
 
-      // Name & Date (DOP) Strip
       if (chkAddNameDate.checked && signatureOptions.classList.contains('hidden')) {
         const stripHeight = Math.round(targetH * 0.22);
         const stripY = targetH - stripHeight;
@@ -1175,7 +1198,6 @@
         ctx.fillText(`DOP: ${dateStr}`, targetW / 2, stripY + (stripHeight * 0.82));
       }
 
-      // Signature Magic Clean
       if (!signatureOptions.classList.contains('hidden')) {
         const imgData = ctx.getImageData(0, 0, targetW, targetH);
         const data = imgData.data;
@@ -1236,7 +1258,6 @@
       statusBadge.className = isSizeValid ? 'text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800' : 'text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
       statusBadge.classList.remove('hidden');
 
-      // Download link
       downloadBtn.href = bestDataUrl;
       downloadBtn.download = originalFileName;
       downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
@@ -1245,7 +1266,6 @@
       btnShareEmail.disabled = false;
     }
 
-    // Direct PDF & Email Sharing Handlers
     btnExportPDF.addEventListener('click', () => {
       if (!currentProcessedDataUrl) return;
       const { jsPDF } = window.jspdf;
@@ -1257,7 +1277,6 @@
     btnShareEmail.addEventListener('click', async () => {
       if (!currentProcessedDataUrl) return;
 
-      // Use Web Share API if supported on mobile
       if (navigator.share && navigator.canShare) {
         try {
           const res = await fetch(currentProcessedDataUrl);
@@ -1276,15 +1295,12 @@
         }
       }
 
-      // Universal Mailto Fallback
       const subject = encodeURIComponent(`Application Document: ${originalFileName}`);
       const body = encodeURIComponent(`Hello,\n\nPlease find attached the verified image document (${originalFileName}) formatted to required dimensions and file size bounds via AnyDoc Resizer.\n\nWebsite: https://vaseem241.github.io/anydoc-resizer/`);
       window.location.href = `mailto:?subject=${subject}&body=${body}`;
     });
 
-    // ==========================================
-    // ALL-IN-ONE DOC CONVERTER CLIENT LOGIC
-    // ==========================================
+    // Document Converter Logic
     let currentConvertMode = 'wordToPdf';
     let selectedDocFile = null;
 
@@ -1475,10 +1491,7 @@
       }
     });
 
-    // ==========================================
-    // PHOTO + SIGNATURE COMBO PACK PIPELINE
-    // WITH LIVE QUALITY & COMPLIANCE BADGES
-    // ==========================================
+    // Combo Pack Pipeline
     const comboPhotoInput = document.getElementById('comboPhotoInput');
     const comboSignInput = document.getElementById('comboSignInput');
     const btnComboPhotoCloud = document.getElementById('btnComboPhotoCloud');
@@ -1502,7 +1515,6 @@
     const comboCanvas = document.getElementById('comboCanvas');
     const comboCtx = comboCanvas.getContext('2d');
 
-    // Combo custom inputs
     const comboPhotoW = document.getElementById('comboPhotoW');
     const comboPhotoH = document.getElementById('comboPhotoH');
     const comboPhotoMaxKB = document.getElementById('comboPhotoMaxKB');
@@ -1521,7 +1533,6 @@
     btnComboSignCloud.addEventListener('click', () => comboSignInput.click());
 
     function compressToHighQualityBlob(imageObj, targetW, targetH, targetMaxKB, isSignature = false) {
-      // Step 1: Smooth progressive mipmap downscale
       const preparedCanvas = progressiveDownscale(imageObj, targetW, targetH);
 
       comboCanvas.width = targetW;
@@ -1668,7 +1679,6 @@
       r.readAsDataURL(file);
     });
 
-    // Combo Camera functionality
     const btnComboPhotoCamera = document.getElementById('btnComboPhotoCamera');
     const btnComboSignCamera = document.getElementById('btnComboSignCamera');
     const comboCameraModal = document.getElementById('comboCameraModal');
@@ -1688,7 +1698,7 @@
         comboWebcamVideo.srcObject = comboCameraStream;
         comboCameraModal.classList.remove('hidden');
       } catch (err) {
-        alert('Could not access camera. Please allow camera permissions.');
+        alert('Could not access camera. Please allow permissions.');
       }
     }
 
@@ -1728,7 +1738,6 @@
       capturedImg.src = snapCanvas.toDataURL('image/jpeg');
     });
 
-    // ZIP Pack Download
     btnDownloadComboZip.addEventListener('click', () => {
       if (!comboPhotoFinalData || !comboSignFinalData) return;
       const zip = new JSZip();
@@ -1743,7 +1752,6 @@
       });
     });
 
-    // Combined PDF creation for Combo Pack
     btnComboToPdf.addEventListener('click', () => {
       if (!comboPhotoFinalData || !comboSignFinalData) return;
       const { jsPDF } = window.jspdf;
@@ -1758,7 +1766,6 @@
       pdf.save("Application_Kit.pdf");
     });
 
-    // Combined Email Sharing for Combo Pack
     btnComboShareEmail.addEventListener('click', () => {
       const subject = encodeURIComponent("Applicant Photo and Signature Kit");
       const body = encodeURIComponent(`Hello,\n\nPlease find attached the verified Applicant Photo (${comboPhotoName}) and Signature (${comboSignName}) formatted to strict portal specifications using AnyDoc Resizer.\n\nWebsite: https://vaseem241.github.io/anydoc-resizer/`);
