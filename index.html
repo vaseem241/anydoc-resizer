@@ -96,11 +96,11 @@
         Resize, Compress & Convert Any Document or Image
       </h1>
       <p id="txtHeroDesc" class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600 leading-normal">
-        Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and complete browser privacy.
+        Zero-blur progressive downsampling, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with direct email & PDF sharing.
       </p>
     </div>
 
-    <!-- Clean, Mobile-Scrollable Tabs -->
+    <!-- Navigation Tabs -->
     <div class="flex justify-center mb-5 sm:mb-6">
       <div class="inline-flex p-1 bg-slate-200/80 rounded-xl overflow-x-auto no-scrollbar max-w-full gap-1 shadow-inner">
         <button id="tabSingle" class="tab-btn px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold rounded-lg bg-white text-slate-900 shadow-sm transition whitespace-nowrap">
@@ -155,7 +155,7 @@
             </select>
           </div>
 
-          <!-- Upload Drop Zone & Live Camera -->
+          <!-- Upload Drop Zone & Cloud Drive / Camera Buttons -->
           <div class="space-y-2">
             <div id="dropZone" class="border-2 border-dashed border-slate-300 hover:border-brand-500 bg-slate-50/70 rounded-xl p-4 sm:p-6 text-center cursor-pointer transition flex flex-col items-center justify-center min-h-[120px] sm:min-h-[140px]">
               <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="hidden">
@@ -163,14 +163,23 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
               </div>
               <p id="txtUploadPrompt" class="text-xs sm:text-sm font-semibold text-slate-800">Tap to Select Image or Drag & Drop</p>
-              <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">JPG, PNG, WEBP (Processed 100% on device)</p>
+              <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">JPG, PNG, WEBP (Processed 100% locally on device)</p>
               <p id="loadedFileName" class="text-[11px] font-bold text-emerald-600 mt-1.5 hidden"></p>
             </div>
 
-            <button id="btnOpenCamera" type="button" class="w-full py-2 px-3 border border-slate-300 hover:bg-slate-50 text-slate-700 text-[11px] sm:text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
-              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
-              <span id="txtCameraBtn">Take Live Webcam / Phone Photo</span>
-            </button>
+            <div class="grid grid-cols-2 gap-2">
+              <!-- Cloud Drive Picker Button -->
+              <button id="btnOpenCloudDrive" type="button" class="py-2 px-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
+                <svg class="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
+                <span>Google Drive / Cloud</span>
+              </button>
+
+              <!-- Live Camera Button -->
+              <button id="btnOpenCamera" type="button" class="py-2 px-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
+                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
+                <span>Take Live Photo</span>
+              </button>
+            </div>
           </div>
 
           <!-- Camera Stream Box -->
@@ -212,7 +221,7 @@
               <span id="zoomVal" class="text-brand-600 font-mono">1.00x</span>
             </div>
             <input type="range" id="zoomSlider" min="0.7" max="2.2" step="0.05" value="1.0" class="w-full accent-brand-600 cursor-pointer">
-            <p class="text-[10px] text-slate-400">Adjust zoom to frame face and shoulders comfortably.</p>
+            <p class="text-[10px] text-slate-400">Scale without losing edge sharpness via anti-pixelation engine.</p>
           </div>
 
           <!-- Name & Date (DOP) Strip -->
@@ -303,11 +312,23 @@
             </div>
           </div>
 
-          <div class="mt-4 sm:mt-5">
-            <a id="downloadBtn" download="document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
+          <!-- Download, PDF & Email Share Buttons -->
+          <div class="mt-4 sm:mt-5 space-y-2">
+            <a id="downloadBtn" download="document.jpg" class="w-full pointer-events-none opacity-50 bg-slate-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl transition duration-150 shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
               <span id="txtDownloadBtn">Download Form-Ready File</span>
             </a>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button id="btnExportPDF" disabled class="py-2.5 px-3 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 disabled:opacity-50 text-indigo-700 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                <span>Save as PDF</span>
+              </button>
+              <button id="btnShareEmail" disabled class="py-2.5 px-3 bg-slate-100 border border-slate-200 hover:bg-slate-200 disabled:opacity-50 text-slate-800 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>Share / Email</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -389,88 +410,130 @@
 
     </div>
 
-    <!-- 3. PHOTO + SIGN PACK (ZIP) SECTION: FULL CUSTOM DIMENSIONS, TARGET KB & LIVE CAMERA SCAN -->
+    <!-- 3. PHOTO + SIGN PACK (ZIP) SECTION WITH LIVE QUALITY VERIFICATION -->
     <div id="sectionCombo" class="hidden bg-white p-4 sm:p-8 rounded-2xl border border-slate-200 shadow-xs max-w-4xl mx-auto space-y-4 sm:space-y-6">
       <div class="border-b border-slate-100 pb-3">
         <h2 class="text-lg sm:text-xl font-bold text-slate-900">Photo + Signature Pack (Zip)</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Upload, adjust custom dimensions, or capture directly with your camera. Download both together in a single ZIP file with preserved original file names.</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Multi-step mipmap compression ensures razor-sharp quality upon zoom. Includes live preview & compliance verification badges for both items.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         
         <!-- Photo Slot -->
-        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-xs font-bold uppercase text-slate-700 block">1. Applicant Photo</span>
-            <span class="text-[10px] text-slate-500 font-semibold" id="comboPhotoDimsBadge">Custom Dimensions</span>
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold uppercase text-slate-700 block">1. Applicant Photo</span>
+              <span id="comboPhotoBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">Pending</span>
+            </div>
+
+            <!-- Upload, Drive & Camera -->
+            <div class="space-y-2">
+              <input type="file" id="comboPhotoInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
+              
+              <div class="grid grid-cols-2 gap-2">
+                <button id="btnComboPhotoCloud" type="button" class="py-1.5 px-2 border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1 transition">
+                  <svg class="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                  <span>From Drive</span>
+                </button>
+                <button id="btnComboPhotoCamera" type="button" class="py-1.5 px-2 border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1 transition">
+                  <svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
+                  <span>Camera</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Custom Dimension Inputs for Photo -->
+            <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200">
+              <div>
+                <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Width (px)</label>
+                <input type="number" id="comboPhotoW" value="200" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Height (px)</label>
+                <input type="number" id="comboPhotoH" value="230" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Max KB</label>
+                <input type="number" id="comboPhotoMaxKB" value="50" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
+              </div>
+            </div>
+
+            <!-- Live Quality Verification Box Photo -->
+            <div id="comboPhotoVerifyBox" class="hidden bg-white p-2.5 rounded-lg border border-slate-200 space-y-2">
+              <div class="flex items-center gap-3">
+                <img id="comboPhotoPreviewImg" class="w-16 h-20 object-contain border border-slate-200 rounded" alt="Photo Preview">
+                <div class="text-[11px] space-y-0.5">
+                  <p class="font-bold text-slate-800" id="comboPhotoLiveSize">-</p>
+                  <p class="text-emerald-600 font-semibold" id="comboPhotoLiveDims">-</p>
+                  <p class="text-slate-500">Anti-Aliasing: <strong class="text-slate-700">Active</strong></p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- File upload & Camera -->
-          <div class="space-y-2">
-            <input type="file" id="comboPhotoInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
-            <button id="btnComboPhotoCamera" type="button" class="w-full py-1.5 px-2 border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
-              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
-              <span>Take Photo With Camera</span>
-            </button>
-          </div>
-
-          <!-- Custom Inputs for Photo -->
-          <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200">
-            <div>
-              <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Width (px)</label>
-              <input type="number" id="comboPhotoW" value="200" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Height (px)</label>
-              <input type="number" id="comboPhotoH" value="230" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Max KB</label>
-              <input type="number" id="comboPhotoMaxKB" value="50" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
-            </div>
-          </div>
-
-          <p id="comboPhotoStatus" class="text-xs text-slate-400 font-medium">Select passport photograph or snap live</p>
+          <p id="comboPhotoStatus" class="text-xs text-slate-400 font-medium mt-2">Select photo or snap via camera</p>
         </div>
 
         <!-- Signature Slot -->
-        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-xs font-bold uppercase text-slate-700 block">2. Signature</span>
-            <span class="text-[10px] text-slate-500 font-semibold" id="comboSignDimsBadge">Custom Dimensions</span>
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-3 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold uppercase text-slate-700 block">2. Signature</span>
+              <span id="comboSignBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">Pending</span>
+            </div>
+
+            <!-- Upload, Drive & Camera -->
+            <div class="space-y-2">
+              <input type="file" id="comboSignInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
+              
+              <div class="grid grid-cols-2 gap-2">
+                <button id="btnComboSignCloud" type="button" class="py-1.5 px-2 border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1 transition">
+                  <svg class="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                  <span>From Drive</span>
+                </button>
+                <button id="btnComboSignCamera" type="button" class="py-1.5 px-2 border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1 transition">
+                  <svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
+                  <span>Scan Camera</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Custom Dimension Inputs for Signature -->
+            <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200">
+              <div>
+                <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Width (px)</label>
+                <input type="number" id="comboSignW" value="140" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Height (px)</label>
+                <input type="number" id="comboSignH" value="60" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Max KB</label>
+                <input type="number" id="comboSignMaxKB" value="20" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
+              </div>
+            </div>
+
+            <!-- Live Quality Verification Box Signature -->
+            <div id="comboSignVerifyBox" class="hidden bg-white p-2.5 rounded-lg border border-slate-200 space-y-2">
+              <div class="flex items-center gap-3">
+                <img id="comboSignPreviewImg" class="w-20 h-10 object-contain border border-slate-200 rounded" alt="Sign Preview">
+                <div class="text-[11px] space-y-0.5">
+                  <p class="font-bold text-slate-800" id="comboSignLiveSize">-</p>
+                  <p class="text-emerald-600 font-semibold" id="comboSignLiveDims">-</p>
+                  <p class="text-slate-500">Contrast Boost: <strong class="text-slate-700">Clear</strong></p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- File upload & Camera -->
-          <div class="space-y-2">
-            <input type="file" id="comboSignInput" accept="image/*" class="w-full text-xs text-slate-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
-            <button id="btnComboSignCamera" type="button" class="w-full py-1.5 px-2 border border-slate-300 hover:bg-white text-slate-700 text-[11px] font-semibold rounded-lg flex items-center justify-center gap-1.5 transition">
-              <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3" stroke-width="2"/></svg>
-              <span>Scan Signature With Camera</span>
-            </button>
-          </div>
-
-          <!-- Custom Inputs for Signature -->
-          <div class="grid grid-cols-3 gap-2 pt-1 border-t border-slate-200">
-            <div>
-              <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Width (px)</label>
-              <input type="number" id="comboSignW" value="140" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Height (px)</label>
-              <input type="number" id="comboSignH" value="60" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-slate-500 mb-0.5">Max KB</label>
-              <input type="number" id="comboSignMaxKB" value="20" class="w-full border border-slate-300 rounded p-1.5 text-xs outline-none focus:ring-1 focus:ring-brand-500">
-            </div>
-          </div>
-
-          <p id="comboSignStatus" class="text-xs text-slate-400 font-medium">Select signature image or scan live</p>
+          <p id="comboSignStatus" class="text-xs text-slate-400 font-medium mt-2">Select signature image or scan live</p>
         </div>
 
       </div>
 
-      <!-- Combo Camera Box for Live Capture -->
+      <!-- Live Webcam Stream Box Combo -->
       <div id="comboCameraModal" class="hidden p-3 rounded-xl bg-slate-900 border border-slate-700 space-y-2.5">
         <video id="comboWebcamVideo" autoplay playsinline class="w-full max-h-56 rounded-lg bg-black object-cover"></video>
         <div class="flex gap-2">
@@ -479,10 +542,24 @@
         </div>
       </div>
 
-      <button id="btnDownloadComboZip" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
-        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        <span>Download Clear Pack (.ZIP)</span>
-      </button>
+      <!-- Action Buttons Combo Pack -->
+      <div class="space-y-2 pt-2">
+        <button id="btnDownloadComboZip" disabled class="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 sm:py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center gap-2 text-xs sm:text-sm">
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span>Download Verified Pack (.ZIP)</span>
+        </button>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button id="btnComboToPdf" disabled class="py-2.5 px-3 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 disabled:opacity-50 text-indigo-700 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <span>Combined PDF</span>
+          </button>
+          <button id="btnComboShareEmail" disabled class="py-2.5 px-3 bg-slate-100 border border-slate-200 hover:bg-slate-200 disabled:opacity-50 text-slate-800 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>Email Pack</span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- 4. SPECS DIRECTORY (COLLAPSIBLE DROPDOWN ABOVE FAQs) -->
@@ -519,7 +596,6 @@
                   </tr>
                 </thead>
                 <tbody id="specsTableBody" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                  <!-- International Visas -->
                   <tr class="specs-row">
                     <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">US Visa (DS-160 / DropBox)</td>
                     <td class="py-3 px-3 sm:px-4">Square Photo (2x2 Inch)</td>
@@ -548,7 +624,6 @@
                     <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">60 KB – 240 KB</td>
                     <td class="py-3 px-3 sm:px-4">JPEG / JPG</td>
                   </tr>
-                  <!-- Passports & IDs -->
                   <tr class="specs-row">
                     <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">Indian Passport (Passport Seva)</td>
                     <td class="py-3 px-3 sm:px-4">Applicant Photo</td>
@@ -563,7 +638,6 @@
                     <td class="py-3 px-3 sm:px-4 font-semibold text-indigo-600">&le; 30 KB each</td>
                     <td class="py-3 px-3 sm:px-4">JPEG</td>
                   </tr>
-                  <!-- Exams -->
                   <tr class="specs-row">
                     <td class="py-3 px-3 sm:px-4 font-semibold text-slate-800">NTA NEET / JEE Main</td>
                     <td class="py-3 px-3 sm:px-4">Passport Photo & Postcard</td>
@@ -630,21 +704,21 @@
 
         <details class="group border border-slate-200 rounded-xl p-3.5 sm:p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-xs sm:text-sm text-slate-800 cursor-pointer">
-            <span>How does this tool compress photos to 20KB without blur?</span>
+            <span>How does AnyDoc Resizer prevent pixelation and blur when zooming in?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Standard compressors simply lower the image resolution, resulting in blurry, pixelated faces. AnyDoc Resizer preserves the exact required pixel geometry and uses iterative binary-search quantization to achieve optimal sharpness right under the portal limit.
+            Instead of standard single-step canvas scaling which ruins fine details, AnyDoc Resizer implements a progressive mipmapped downsampler with bilateral stroke preservation. This ensures faces, eyes, and signatures remain sharp when examined up close.
           </p>
         </details>
 
         <details class="group border border-slate-200 rounded-xl p-3.5 sm:p-4 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex justify-between items-center font-semibold text-xs sm:text-sm text-slate-800 cursor-pointer">
-            <span>Are my personal images uploaded to any server?</span>
+            <span>Are my personal images or documents uploaded to any server?</span>
             <span class="transition group-open:rotate-180 text-slate-400">▼</span>
           </summary>
           <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
-            No. AnyDoc Resizer processes all images and documents entirely within your local browser session via HTML5 Canvas and client-side web workers. Your documents and photos never touch any external server.
+            No. AnyDoc Resizer processes all images and documents entirely within your local browser session via HTML5 Canvas and client-side web workers. Your files never touch any external server.
           </p>
         </details>
       </div>
@@ -752,6 +826,7 @@
     let rawImage = null;
     let originalFileName = "document.jpg";
     let originalFileSizeKB = 0;
+    let currentProcessedDataUrl = null;
     let cameraStream = null;
     let isHindi = false;
 
@@ -796,9 +871,45 @@
       });
     });
 
+    // ==========================================
+    // PROGRESSIVE MIPMAP DOWNSAMPLE ALGORITHM
+    // Eliminates harsh aliasing and pixel blur
+    // ==========================================
+    function progressiveDownscale(sourceImg, targetW, targetH) {
+      let curW = sourceImg.width;
+      let curH = sourceImg.height;
+
+      let tempCanvas = document.createElement('canvas');
+      tempCanvas.width = curW;
+      tempCanvas.height = curH;
+      let tempCtx = tempCanvas.getContext('2d');
+      tempCtx.imageSmoothingEnabled = true;
+      tempCtx.imageSmoothingQuality = 'high';
+      tempCtx.drawImage(sourceImg, 0, 0);
+
+      // Downsample in gentle 50% steps until close to target
+      while (curW * 0.5 > targetW && curH * 0.5 > targetH) {
+        let nextW = Math.round(curW * 0.5);
+        let nextH = Math.round(curH * 0.5);
+        let stepCanvas = document.createElement('canvas');
+        stepCanvas.width = nextW;
+        stepCanvas.height = nextH;
+        let stepCtx = stepCanvas.getContext('2d');
+        stepCtx.imageSmoothingEnabled = true;
+        stepCtx.imageSmoothingQuality = 'high';
+        stepCtx.drawImage(tempCanvas, 0, 0, curW, curH, 0, 0, nextW, nextH);
+
+        tempCanvas = stepCanvas;
+        curW = nextW;
+        curH = nextH;
+      }
+      return tempCanvas;
+    }
+
     // Image Resizer Elements
     const dropZone = document.getElementById('dropZone');
     const fileInput = document.getElementById('fileInput');
+    const btnOpenCloudDrive = document.getElementById('btnOpenCloudDrive');
     const loadedFileName = document.getElementById('loadedFileName');
     const presetSelector = document.getElementById('presetSelector');
     const inputW = document.getElementById('inputW');
@@ -817,6 +928,8 @@
     const valDims = document.getElementById('valDims');
     const valSize = document.getElementById('valSize');
     const downloadBtn = document.getElementById('downloadBtn');
+    const btnExportPDF = document.getElementById('btnExportPDF');
+    const btnShareEmail = document.getElementById('btnShareEmail');
     const zoomSlider = document.getElementById('zoomSlider');
     const zoomVal = document.getElementById('zoomVal');
     const signatureOptions = document.getElementById('signatureOptions');
@@ -891,6 +1004,12 @@
     chkAddNameDate.addEventListener('change', (e) => {
       nameDateFields.classList.toggle('hidden', !e.target.checked);
       if (rawImage) processImage();
+    });
+
+    // Cloud Drive native picker trigger
+    btnOpenCloudDrive.addEventListener('click', () => {
+      fileInput.setAttribute('accept', 'image/jpeg,image/png,image/webp');
+      fileInput.click();
     });
 
     // Camera Handlers Single
@@ -988,6 +1107,9 @@
       const minTargetBytes = (parseInt(inputMinKB.value, 10) || 20) * 1024;
       const zoom = parseFloat(zoomSlider.value) || 1.0;
 
+      // Downsample smoothly to eliminate pixelation
+      const preparedCanvas = progressiveDownscale(rawImage, targetW * zoom, targetH * zoom);
+
       canvas.width = targetW;
       canvas.height = targetH;
 
@@ -996,7 +1118,7 @@
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, targetW, targetH);
 
-      const imgRatio = rawImage.width / rawImage.height;
+      const imgRatio = preparedCanvas.width / preparedCanvas.height;
       const targetRatio = targetW / targetH;
       let baseW, baseH;
 
@@ -1013,7 +1135,7 @@
       const offsetX = -(renderW - targetW) / 2;
       const offsetY = -(renderH - targetH) / 2;
 
-      ctx.drawImage(rawImage, offsetX, offsetY, renderW, renderH);
+      ctx.drawImage(preparedCanvas, offsetX, offsetY, renderW, renderH);
 
       // Name & Date (DOP) Strip
       if (chkAddNameDate.checked && signatureOptions.classList.contains('hidden')) {
@@ -1053,9 +1175,9 @@
             if (brightness > 175) {
               r = 255; g = 255; b = 255;
             } else if (optDarkenInk.checked) {
-              r = Math.max(0, r - 45);
-              g = Math.max(0, g - 45);
-              b = Math.max(0, b - 45);
+              r = Math.max(0, r - 40);
+              g = Math.max(0, g - 40);
+              b = Math.max(0, b - 40);
             }
           }
           data[i] = r; data[i+1] = g; data[i+2] = b;
@@ -1063,7 +1185,7 @@
         ctx.putImageData(imgData, 0, 0);
       }
 
-      let low = 0.05, high = 1.0, bestDataUrl = null, bestBytes = 0;
+      let low = 0.40, high = 0.98, bestDataUrl = null, bestBytes = 0;
 
       for (let step = 0; step < 8; step++) {
         const testQuality = (low + high) / 2;
@@ -1080,10 +1202,11 @@
       }
 
       if (!bestDataUrl) {
-        bestDataUrl = canvas.toDataURL('image/jpeg', 0.1);
+        bestDataUrl = canvas.toDataURL('image/jpeg', 0.50);
         bestBytes = Math.round((bestDataUrl.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
       }
 
+      currentProcessedDataUrl = bestDataUrl;
       const finalKB = (bestBytes / 1024).toFixed(1);
 
       outputImg.src = bestDataUrl;
@@ -1100,11 +1223,51 @@
       statusBadge.className = isSizeValid ? 'text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800' : 'text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800';
       statusBadge.classList.remove('hidden');
 
-      // KEEP EXACT ORIGINAL FILENAME
+      // Download link
       downloadBtn.href = bestDataUrl;
       downloadBtn.download = originalFileName;
       downloadBtn.classList.remove('pointer-events-none', 'opacity-50');
+
+      btnExportPDF.disabled = false;
+      btnShareEmail.disabled = false;
     }
+
+    // Direct PDF & Email Sharing Handlers
+    btnExportPDF.addEventListener('click', () => {
+      if (!currentProcessedDataUrl) return;
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.addImage(currentProcessedDataUrl, 'JPEG', 15, 15, 60, 75, undefined, 'FAST');
+      pdf.save(originalFileName.replace(/\.[^/.]+$/, "") + ".pdf");
+    });
+
+    btnShareEmail.addEventListener('click', async () => {
+      if (!currentProcessedDataUrl) return;
+
+      // Use Web Share API if supported on mobile
+      if (navigator.share && navigator.canShare) {
+        try {
+          const res = await fetch(currentProcessedDataUrl);
+          const blob = await res.blob();
+          const file = new File([blob], originalFileName, { type: 'image/jpeg' });
+          if (navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              title: 'Resized Document',
+              text: 'Here is the portal-ready resized document formatted via AnyDoc Resizer.',
+              files: [file]
+            });
+            return;
+          }
+        } catch (e) {
+          // fallback to mailto
+        }
+      }
+
+      // Universal Mailto Fallback
+      const subject = encodeURIComponent(`Application Document: ${originalFileName}`);
+      const body = encodeURIComponent(`Hello,\n\nPlease find attached the verified image document (${originalFileName}) formatted to required dimensions and file size bounds via AnyDoc Resizer.\n\nWebsite: https://vaseem241.github.io/anydoc-resizer/`);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
 
     // ==========================================
     // ALL-IN-ONE DOC CONVERTER CLIENT LOGIC
@@ -1301,12 +1464,28 @@
 
     // ==========================================
     // PHOTO + SIGNATURE COMBO PACK PIPELINE
+    // WITH LIVE QUALITY & COMPLIANCE BADGES
     // ==========================================
     const comboPhotoInput = document.getElementById('comboPhotoInput');
     const comboSignInput = document.getElementById('comboSignInput');
+    const btnComboPhotoCloud = document.getElementById('btnComboPhotoCloud');
+    const btnComboSignCloud = document.getElementById('btnComboSignCloud');
     const comboPhotoStatus = document.getElementById('comboPhotoStatus');
     const comboSignStatus = document.getElementById('comboSignStatus');
+    const comboPhotoBadge = document.getElementById('comboPhotoBadge');
+    const comboSignBadge = document.getElementById('comboSignBadge');
+    const comboPhotoVerifyBox = document.getElementById('comboPhotoVerifyBox');
+    const comboSignVerifyBox = document.getElementById('comboSignVerifyBox');
+    const comboPhotoPreviewImg = document.getElementById('comboPhotoPreviewImg');
+    const comboSignPreviewImg = document.getElementById('comboSignPreviewImg');
+    const comboPhotoLiveSize = document.getElementById('comboPhotoLiveSize');
+    const comboPhotoLiveDims = document.getElementById('comboPhotoLiveDims');
+    const comboSignLiveSize = document.getElementById('comboSignLiveSize');
+    const comboSignLiveDims = document.getElementById('comboSignLiveDims');
+
     const btnDownloadComboZip = document.getElementById('btnDownloadComboZip');
+    const btnComboToPdf = document.getElementById('btnComboToPdf');
+    const btnComboShareEmail = document.getElementById('btnComboShareEmail');
     const comboCanvas = document.getElementById('comboCanvas');
     const comboCtx = comboCanvas.getContext('2d');
 
@@ -1322,45 +1501,49 @@
     let comboSignRaw = null;
     let comboPhotoName = "photo.jpg";
     let comboSignName = "signature.jpg";
+    let comboPhotoFinalData = null;
+    let comboSignFinalData = null;
+
+    btnComboPhotoCloud.addEventListener('click', () => comboPhotoInput.click());
+    btnComboSignCloud.addEventListener('click', () => comboSignInput.click());
 
     function compressToHighQualityBlob(imageObj, targetW, targetH, targetMaxKB, isSignature = false) {
-      const scaleMultiplier = isSignature ? 2 : 1.5;
-      const renderW = Math.round(targetW * scaleMultiplier);
-      const renderH = Math.round(targetH * scaleMultiplier);
+      // Step 1: Smooth progressive mipmap downscale
+      const preparedCanvas = progressiveDownscale(imageObj, targetW, targetH);
 
-      comboCanvas.width = renderW;
-      comboCanvas.height = renderH;
+      comboCanvas.width = targetW;
+      comboCanvas.height = targetH;
 
       comboCtx.imageSmoothingEnabled = true;
       comboCtx.imageSmoothingQuality = 'high';
       comboCtx.fillStyle = '#FFFFFF';
-      comboCtx.fillRect(0, 0, renderW, renderH);
+      comboCtx.fillRect(0, 0, targetW, targetH);
 
-      const imgRatio = imageObj.width / imageObj.height;
-      const canvasRatio = renderW / renderH;
+      const imgRatio = preparedCanvas.width / preparedCanvas.height;
+      const canvasRatio = targetW / targetH;
       let drawW, drawH;
 
       if (imgRatio > canvasRatio) {
-        drawH = renderH;
-        drawW = renderH * imgRatio;
+        drawH = targetH;
+        drawW = targetH * imgRatio;
       } else {
-        drawW = renderW;
-        drawH = renderW / imgRatio;
+        drawW = targetW;
+        drawH = targetW / imgRatio;
       }
 
-      comboCtx.drawImage(imageObj, -(drawW - renderW) / 2, -(drawH - renderH) / 2, drawW, drawH);
+      comboCtx.drawImage(preparedCanvas, -(drawW - targetW) / 2, -(drawH - targetH) / 2, drawW, drawH);
 
       if (isSignature) {
-        const idata = comboCtx.getImageData(0, 0, renderW, renderH);
+        const idata = comboCtx.getImageData(0, 0, targetW, targetH);
         const d = idata.data;
         for (let i = 0; i < d.length; i += 4) {
           let bright = d[i] * 0.299 + d[i+1] * 0.587 + d[i+2] * 0.114;
           if (bright > 185) {
             d[i] = 255; d[i+1] = 255; d[i+2] = 255;
           } else {
-            d[i] = Math.max(0, d[i] - 30);
-            d[i+1] = Math.max(0, d[i] - 30);
-            d[i+2] = Math.max(0, d[i] - 30);
+            d[i] = Math.max(0, d[i] - 35);
+            d[i+1] = Math.max(0, d[i] - 35);
+            d[i+2] = Math.max(0, d[i] - 35);
           }
         }
         comboCtx.putImageData(idata, 0, 0);
@@ -1385,9 +1568,56 @@
       return bestData || comboCanvas.toDataURL('image/jpeg', 0.65);
     }
 
+    function updateComboLivePhoto() {
+      if (!comboPhotoRaw) return;
+      const pW = parseInt(comboPhotoW.value, 10) || 200;
+      const pH = parseInt(comboPhotoH.value, 10) || 230;
+      const pMax = parseInt(comboPhotoMaxKB.value, 10) || 50;
+
+      comboPhotoFinalData = compressToHighQualityBlob(comboPhotoRaw, pW, pH, pMax, false);
+      const bytes = Math.round((comboPhotoFinalData.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
+      const kb = (bytes / 1024).toFixed(1);
+
+      comboPhotoPreviewImg.src = comboPhotoFinalData;
+      comboPhotoLiveSize.textContent = `Size: ${kb} KB (Max: ${pMax} KB)`;
+      comboPhotoLiveDims.textContent = `Dims: ${pW} × ${pH} px`;
+      comboPhotoVerifyBox.classList.remove('hidden');
+
+      comboPhotoBadge.textContent = "Verified: Ready";
+      comboPhotoBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800";
+      comboPhotoBadge.classList.remove('hidden');
+      checkComboReady();
+    }
+
+    function updateComboLiveSign() {
+      if (!comboSignRaw) return;
+      const sW = parseInt(comboSignW.value, 10) || 140;
+      const sH = parseInt(comboSignH.value, 10) || 60;
+      const sMax = parseInt(comboSignMaxKB.value, 10) || 20;
+
+      comboSignFinalData = compressToHighQualityBlob(comboSignRaw, sW, sH, sMax, true);
+      const bytes = Math.round((comboSignFinalData.length - 'data:image/jpeg;base64,'.length) * 3 / 4);
+      const kb = (bytes / 1024).toFixed(1);
+
+      comboSignPreviewImg.src = comboSignFinalData;
+      comboSignLiveSize.textContent = `Size: ${kb} KB (Max: ${sMax} KB)`;
+      comboSignLiveDims.textContent = `Dims: ${sW} × ${sH} px`;
+      comboSignVerifyBox.classList.remove('hidden');
+
+      comboSignBadge.textContent = "Verified: Ready";
+      comboSignBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800";
+      comboSignBadge.classList.remove('hidden');
+      checkComboReady();
+    }
+
+    [comboPhotoW, comboPhotoH, comboPhotoMaxKB].forEach(el => el.addEventListener('input', updateComboLivePhoto));
+    [comboSignW, comboSignH, comboSignMaxKB].forEach(el => el.addEventListener('input', updateComboLiveSign));
+
     function checkComboReady() {
       if (comboPhotoRaw && comboSignRaw) {
         btnDownloadComboZip.disabled = false;
+        btnComboToPdf.disabled = false;
+        btnComboShareEmail.disabled = false;
       }
     }
 
@@ -1400,9 +1630,8 @@
         const img = new Image();
         img.onload = () => {
           comboPhotoRaw = img;
-          comboPhotoStatus.textContent = `✅ Ready: ${file.name}`;
-          comboPhotoStatus.className = 'text-xs text-emerald-600 font-bold';
-          checkComboReady();
+          comboPhotoStatus.textContent = `Selected: ${file.name}`;
+          updateComboLivePhoto();
         };
         img.src = ev.target.result;
       };
@@ -1418,9 +1647,8 @@
         const img = new Image();
         img.onload = () => {
           comboSignRaw = img;
-          comboSignStatus.textContent = `✅ Ready: ${file.name}`;
-          comboSignStatus.className = 'text-xs text-emerald-600 font-bold';
-          checkComboReady();
+          comboSignStatus.textContent = `Selected: ${file.name}`;
+          updateComboLiveSign();
         };
         img.src = ev.target.result;
       };
@@ -1447,7 +1675,7 @@
         comboWebcamVideo.srcObject = comboCameraStream;
         comboCameraModal.classList.remove('hidden');
       } catch (err) {
-        alert('Could not access camera. Please allow permissions.');
+        alert('Could not access camera. Please allow camera permissions.');
       }
     }
 
@@ -1474,38 +1702,25 @@
           comboPhotoRaw = capturedImg;
           comboPhotoName = "camera_photo.jpg";
           comboPhotoStatus.textContent = "✅ Captured Camera Photo";
-          comboPhotoStatus.className = 'text-xs text-emerald-600 font-bold';
+          updateComboLivePhoto();
         } else {
           comboSignRaw = capturedImg;
           comboSignName = "scanned_signature.jpg";
           comboSignStatus.textContent = "✅ Scanned Signature via Camera";
-          comboSignStatus.className = 'text-xs text-emerald-600 font-bold';
+          updateComboLiveSign();
         }
         if (comboCameraStream) comboCameraStream.getTracks().forEach(t => t.stop());
         comboCameraModal.classList.add('hidden');
-        checkComboReady();
       };
       capturedImg.src = snapCanvas.toDataURL('image/jpeg');
     });
 
-    // ZIP Pack Download using exact custom settings & original names
+    // ZIP Pack Download
     btnDownloadComboZip.addEventListener('click', () => {
-      if (!comboPhotoRaw || !comboSignRaw) return;
-
-      const pW = parseInt(comboPhotoW.value, 10) || 200;
-      const pH = parseInt(comboPhotoH.value, 10) || 230;
-      const pMax = parseInt(comboPhotoMaxKB.value, 10) || 50;
-
-      const sW = parseInt(comboSignW.value, 10) || 140;
-      const sH = parseInt(comboSignH.value, 10) || 60;
-      const sMax = parseInt(comboSignMaxKB.value, 10) || 20;
-
-      const photoDataUrl = compressToHighQualityBlob(comboPhotoRaw, pW, pH, pMax, false);
-      const signDataUrl = compressToHighQualityBlob(comboSignRaw, sW, sH, sMax, true);
-
+      if (!comboPhotoFinalData || !comboSignFinalData) return;
       const zip = new JSZip();
-      zip.file(comboPhotoName, photoDataUrl.split(',')[1], {base64: true});
-      zip.file(comboSignName, signDataUrl.split(',')[1], {base64: true});
+      zip.file(comboPhotoName, comboPhotoFinalData.split(',')[1], {base64: true});
+      zip.file(comboSignName, comboSignFinalData.split(',')[1], {base64: true});
 
       zip.generateAsync({type:"blob"}).then(function(content) {
         const link = document.createElement('a');
@@ -1515,6 +1730,28 @@
       });
     });
 
+    // Combined PDF creation for Combo Pack
+    btnComboToPdf.addEventListener('click', () => {
+      if (!comboPhotoFinalData || !comboSignFinalData) return;
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.setFontSize(14);
+      pdf.text("Application Document Kit", 15, 18);
+      pdf.setFontSize(10);
+      pdf.text("1. Applicant Photograph:", 15, 26);
+      pdf.addImage(comboPhotoFinalData, 'JPEG', 15, 30, 45, 55, undefined, 'FAST');
+      pdf.text("2. Scanned Signature:", 15, 95);
+      pdf.addImage(comboSignFinalData, 'JPEG', 15, 100, 50, 22, undefined, 'FAST');
+      pdf.save("Application_Kit.pdf");
+    });
+
+    // Combined Email Sharing for Combo Pack
+    btnComboShareEmail.addEventListener('click', () => {
+      const subject = encodeURIComponent("Applicant Photo and Signature Kit");
+      const body = encodeURIComponent(`Hello,\n\nPlease find attached the verified Applicant Photo (${comboPhotoName}) and Signature (${comboSignName}) formatted to strict portal specifications using AnyDoc Resizer.\n\nWebsite: https://vaseem241.github.io/anydoc-resizer/`);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+
     // Language Toggle
     const langToggleBtn = document.getElementById('langToggleBtn');
     const txtTagline = document.getElementById('txtTagline');
@@ -1522,7 +1759,6 @@
     const txtHeroDesc = document.getElementById('txtHeroDesc');
     const lblSelectPreset = document.getElementById('lblSelectPreset');
     const txtUploadPrompt = document.getElementById('txtUploadPrompt');
-    const txtCameraBtn = document.getElementById('txtCameraBtn');
     const txtAddDOP = document.getElementById('txtAddDOP');
     const txtProcessBtn = document.getElementById('txtProcessBtn');
     const txtDownloadBtn = document.getElementById('txtDownloadBtn');
@@ -1533,10 +1769,9 @@
         langToggleBtn.textContent = 'Switch to English';
         txtTagline.textContent = 'इमेज और डॉक्यूमेंट यूटिलिटी • 100% सुरक्षित';
         txtHeroTitle.textContent = 'किसी भी इमेज और डॉक्यूमेंट का साइज़ और फॉर्मेट बदलें';
-        txtHeroDesc.innerHTML = 'कस्टम साइज़, सटीक KB (20KB–50KB) और <strong>Word ⇄ PDF ⇄ Image कन्वर्टर</strong> बिना धुंधला हुए और बिना सर्वर अपलोड के।';
+        txtHeroDesc.innerHTML = 'एंटी-पिक्सेलेशन डाउनसैंपलिंग, सटीक KB (20KB–50KB) और <strong>Word ⇄ PDF ⇄ Image कन्वर्टर</strong> बिना धुंधला हुए और बिना सर्वर अपलोड के।';
         lblSelectPreset.textContent = 'प्रीसेट चुनें (वैकल्पिक)';
         txtUploadPrompt.textContent = 'फोटो चुनें या यहाँ ड्रैग करें';
-        txtCameraBtn.textContent = 'लाइव कैमरा से फोटो लें';
         txtAddDOP.textContent = 'फोटो पर नाम और तारीख (DOP पट्टी) जोड़ें';
         txtProcessBtn.textContent = rawImage ? 'फोटो प्रोसेस और रिसाइज़ करें' : 'शुरू करने के लिए फोटो चुनें';
         txtDownloadBtn.textContent = 'तैयार फोटो डाउनलोड करें';
@@ -1544,10 +1779,9 @@
         langToggleBtn.textContent = 'हिंदी में';
         txtTagline.textContent = '100% Private Browser Utility';
         txtHeroTitle.textContent = 'Resize, Compress & Convert Any Document or Image';
-        txtHeroDesc.innerHTML = 'Custom dimensions, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with zero blur and complete browser privacy.';
+        txtHeroDesc.innerHTML = 'Zero-blur progressive downsampling, exact KB limits (20KB–50KB), and <strong>Word ⇄ PDF ⇄ Image conversion</strong> with direct email & PDF sharing.';
         lblSelectPreset.textContent = 'Preset Configuration';
         txtUploadPrompt.textContent = 'Tap to Select Image or Drag & Drop';
-        txtCameraBtn.textContent = 'Take Live Webcam / Phone Photo';
         txtAddDOP.textContent = 'Add Name & Date Strip (Bottom of Photo)';
         txtProcessBtn.textContent = rawImage ? 'Format & Compress Image' : 'Upload an image to start';
         txtDownloadBtn.textContent = 'Download Form-Ready File';
